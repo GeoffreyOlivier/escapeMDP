@@ -1,0 +1,36 @@
+@import '../../node_modules/bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap-vue/src/index';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+
+@font-face {
+    font-family: 'Gobold_Extra2';
+    src: url(../fonts/Gobold_Extra2.otf);
+    font-style: normal;
+    font-weight: normal;
+}
+
+;
+//@font-face {
+//    font-family: FontAwesome;
+//    font-style: normal;
+//    font-weight: 400;
+//    src: url(fonts/fontawesome-webfont.eot?v=#4.0.3);
+//}
+
+//body {
+//    background-color: #3d4852;
+//    font-family: "Gobold_Extra2", serif;
+//}
+
+//h1 {
+//    font-family: Roboto, serif;
+//}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #111D5E !important;
+    font-size: x-large;
+    font-weight: bolder;
+    font-family: Gobold_Extra2, serif;
+
+}
