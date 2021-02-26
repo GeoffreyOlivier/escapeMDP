@@ -12,6 +12,8 @@ export default [
   { path: '/email/verify/:id', name: 'verification.verify', component: page('auth/verification/verify.vue') },
   { path: '/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
 
+  { path: '/events', name: 'events', component: page('event/search.vue') },
+  { path: '/event/create', name: 'event_create', component: page('event/create.vue') },
   { path: '/home', name: 'home', component: page('home.vue') },
   {
     path: '/settings',

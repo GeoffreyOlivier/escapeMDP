@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e37c91a4-5743-4061-9d9b-9361fdbe38db" name="Default Changelist" comment="" />
+    <list default="true" id="e37c91a4-5743-4061-9d9b-9361fdbe38db" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_101343_create_event_types_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_101406_create_promotes_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_101422_create_event_users_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_110054_alter_event_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/videos/video1.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/videos/video2.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/custom.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/elements/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/elements/_buttons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/elements/_navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/elements/_navbar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +31,17 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -132,32 +164,39 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1okduW0vwSY5F54IesV29T0KmWv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../projetavider" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../maison-marot-drive-application2" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="ts.external.directory.path" value="C:\logiciel divers\PhpStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\escape\database\migrations" />
       <recent name="C:\xampp\htdocs\laravel-vue-spa\resources\sass" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\escape\resources\videos" />
+      <recent name="C:\xampp\htdocs\escape\resources\js\pages\event" />
+      <recent name="C:\xampp\htdocs\escape\resources\js\pages" />
+      <recent name="C:\xampp\htdocs\escape\app\Http\Controllers\Events" />
       <recent name="C:\xampp\htdocs\laravel-vue-spa\resources\images" />
-      <recent name="C:\xampp\htdocs\laravel-vue-spa\resources\img" />
-      <recent name="C:\xampp\htdocs\laravel-vue-spa\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.phpunit">
+  <component name="RunManager" selected="npm.watch">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
@@ -171,6 +210,8 @@
       <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
       <option name="INTERPRETER_PATH" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <envs />
       <method v="2" />
     </configuration>
     <configuration name="hot" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -214,48 +255,28 @@
       <workItem from="1613916450823" duration="1905000" />
       <workItem from="1613919947798" duration="3786000" />
       <workItem from="1613976925334" duration="316000" />
+      <workItem from="1613983161176" duration="20009000" />
+      <workItem from="1614067203219" duration="17037000" />
+      <workItem from="1614165341458" duration="1896000" />
+      <workItem from="1614249871472" duration="302000" />
+      <workItem from="1614261068974" duration="92000" />
+      <workItem from="1614326318313" duration="11415000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="476" y="254" key="#Log_Highlighting_(ideolog)" timestamp="1613908850367">
-      <screen x="87" y="0" width="2206" height="960" />
-    </state>
-    <state x="476" y="254" key="#Log_Highlighting_(ideolog)/87.0.2206.960@87.0.2206.960" timestamp="1613908850367" />
-    <state x="222" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1613908861539">
-      <screen x="87" y="0" width="2206" height="960" />
-    </state>
-    <state x="222" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog/87.0.2206.960@87.0.2206.960" timestamp="1613908861539" />
-    <state x="971" y="235" key="FileChooserDialogImpl" timestamp="1613921056383">
-      <screen x="87" y="0" width="2206" height="960" />
-    </state>
-    <state x="971" y="235" key="FileChooserDialogImpl/87.0.2206.960@87.0.2206.960" timestamp="1613921056383" />
-    <state width="2163" height="115" key="GridCell.Tab.0.bottom" timestamp="1613924916893">
-      <screen x="87" y="0" width="2206" height="960" />
-    </state>
-    <state width="2163" height="115" key="GridCell.Tab.0.bottom/87.0.2206.960@87.0.2206.960" timestamp="1613924916893" />
-    <state width="2163" height="115" key="GridCell.Tab.0.center" timestamp="1613924916892">
-      <screen x="87" y="0" width="2206" height="960" />
-    </state>
-    <state width="2163" height="115" key="GridCell.Tab.0.center/87.0.2206.960@87.0.2206.960" timestamp="1613924916892" />
-    <state width="2163" height="115" key="GridCell.Tab.0.left" timestamp="1613924916892">
-      <screen x="87" y="0" width="2206" height="960" />
-    </state>
-    <state width="2163" height="115" key="GridCell.Tab.0.left/87.0.2206.960@87.0.2206.960" timestamp="1613924916892" />
-    <state width="2163" height="115" key="GridCell.Tab.0.right" timestamp="1613924916893">
-      <screen x="87" y="0" width="2206" height="960" />
-    </state>
-    <state width="2163" height="115" key="GridCell.Tab.0.right/87.0.2206.960@87.0.2206.960" timestamp="1613924916893" />
-    <state x="1305" y="0" width="648" height="909" key="dock-window-1" timestamp="1613920253524">
-      <screen x="87" y="0" width="2206" height="960" />
-    </state>
-    <state x="1305" y="0" width="648" height="909" key="dock-window-1/87.0.2206.960@87.0.2206.960" timestamp="1613920253523" />
-    <state x="897" y="213" width="587" height="534" key="find.popup" timestamp="1613917241028">
-      <screen x="87" y="0" width="2206" height="960" />
-    </state>
-    <state x="897" y="213" width="587" height="534" key="find.popup/87.0.2206.960@87.0.2206.960" timestamp="1613917241028" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

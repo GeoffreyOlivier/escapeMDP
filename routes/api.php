@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Events\EventController;
 use App\Http\Controllers\Settings\PasswordController;
 use App\Http\Controllers\Settings\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -44,3 +45,14 @@ Route::group(['middleware' => 'guest:api'], function () {
     Route::post('oauth/{driver}', [OAuthController::class, 'redirect']);
     Route::get('oauth/{driver}/callback', [OAuthController::class, 'handleCallback'])->name('oauth.callback');
 });
+
+
+// Events
+
+Route::post('event/create', [EventController::class, 'create']);
+Route::get('events', [EventController::class, 'index']);
+Route::get('event/{id}', [EventController::class, 'show']);
+Route::put('event/update/{id}', [EventController::class, 'update']);
+Route::post('event/delete/{id}', [EventController::class, 'destroy']);
+
+
