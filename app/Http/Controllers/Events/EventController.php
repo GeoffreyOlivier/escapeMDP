@@ -28,38 +28,62 @@ class EventController extends Controller
      */
     public function create(Request $request)
     {
-
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required'
         ]);
 
-        $imageName = time().'.'.$request->image->extension();
-        print_r($imageName);
-        $attributes = [
-            'image' => $request->image->move(public_path('images'), $imageName),
-            'title' => $request->title,
-            'description' => $request->description,
-            'created_at' => Carbon::now(),
-            'start_at' => $request->start_at,
-            'ending_at' => $request->ending_at,
-            'nb_people_max' => $request->nb_people_max,
-            'need_subscribe' => $request->need_subscribe,
-            'place' => $request->place,
-            'address' => $request->address,
-            'street' => $request->street,
-            'town' =>$request->town,
-            'api_google_id' => $request->api_google_id,
-            'pictures' => $request->pictures,
-            'event_type_id' => $request->event_type_id
-        ];
-        print_r($attributes);
-        $event = Event::create($attributes);
+        $event = new Event;
 
-        return response()->json([
-            $event,
-            'message' => __('event created succefully')
-        ], 201, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        if ($request->file()) {
+            $file_name = time() . '_' . $request->image->getClientOriginalName();
+            $file_path = $request->file('image')->storeAs('uploads', $file_name, 'public');
+
+            $event->image_name = time() . '_' . $request->image->getClientOriginalName();
+            $event->image_path = '/storage/' . $file_path;
+            $event->title = $request->title;
+            $event->description = $request->description;
+            $event->save();
+
+            return response()->json(['success' => 'File uploaded successfully.']);
+//        $newPath = $request->photo->store('image', 'public');
+//        Event::create($validatedData);
+//        return ['message' => 'Post Created'];
+        }
     }
+//
+//        $request->validate([
+//            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+//        ]);
+//
+//        $imageName = time().'.'.$request->image->extension();
+//        print_r($imageName);
+//        $attributes = [
+//            'picture' => $request->picture->move(public_path('images'), $imageName),
+//            'title' => $request->title,
+//            'description' => $request->description,
+//            'created_at' => Carbon::now(),
+//            'start_at' => $request->start_at,
+//            'ending_at' => $request->ending_at,
+//            'nb_people_max' => $request->nb_people_max,
+//            'need_subscribe' => $request->need_subscribe,
+//            'place' => $request->place,
+//            'address' => $request->address,
+//            'street' => $request->street,
+//            'town' =>$request->town,
+//            'api_google_id' => $request->api_google_id,
+//            'pictures' => $request->pictures,
+//            'event_type_id' => $request->event_type_id
+//        ];
+//        print_r($attributes);
+//        $event = Event::create($attributes);
+//
+//        return response()->json([
+//            $event,
+//            'message' => __('event created succefully')
+//        ], 201, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+//    }
 
     /**
      * Store a newly created resource in storage.

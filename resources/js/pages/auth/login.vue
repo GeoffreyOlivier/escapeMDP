@@ -6,14 +6,14 @@
         <b-col sm class="login-account col-sm-6 order-sm-12">
           <h2>Connexion</h2>
           <b-form @submit.prevent="login" @keydown="formlogin.onKeydown($event)">
-            <b-form-group label="Mail" class="add-style">
+            <b-form-group label="Mail" class="label">
               <b-form-input
                 v-model="formlogin.email" :class="{ 'is-invalid': formlogin.errors.has('email') }" class="form-control"
                 type="email" name="email"
               />
               <has-error :form="formlogin" field="email" />
             </b-form-group>
-            <b-form-group label="Mot de passe" class="add-style">
+            <b-form-group label="Mot de passe" class="label">
               <b-form-input
                 v-model="formlogin.password" :class="{ 'is-invalid': formlogin.errors.has('password') }"
                 class="form-control" type="password" name="password"
@@ -37,21 +37,21 @@
         <b-col sm class="create-account col-sm-6 order-sm-1">
           <h2>Création de compte</h2>
           <b-form @submit.prevent="registerPromoter" @keydown="form.onKeydown($event)">
-            <b-form-group id="lastname" label="Nom*" class="add-style">
+            <b-form-group id="lastname" label="Nom*" class="label">
               <b-form-input
                 v-model="form.name" :class="{ 'is-invalid': form.errors.has('name') }"
                 class="form-control" type="text" name="name"
                 required
               />
             </b-form-group>
-            <b-form-group id="input-group-2" label="Mail" class="add-style">
+            <b-form-group id="email" label="Mail*" class="label">
               <b-form-input
                 v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }"
                 class="form-control" type="email" name="email"
                 required
               />
             </b-form-group>
-            <b-form-group class="add-style" label="Mot de passe">
+            <b-form-group class="label" label="Mot de passe*">
               <b-form-input
                 v-model="form.password"
                 :class="{ 'is-invalid': form.errors.has('password') }" class="form-control"
@@ -59,7 +59,7 @@
                 required
               />
             </b-form-group>
-            <b-form-group class="add-style" label="Confirmation">
+            <b-form-group class="label" label="Confirmation*">
               <b-form-input
                 v-model="form.password_confirmation"
                 :class="{ 'is-invalid': form.errors.has('password_confirmation') }" class="form-control"
@@ -67,7 +67,7 @@
                 required
               />
             </b-form-group>
-            <b-form-group id="town" label="Ville / Commune" class="add-style">
+            <b-form-group id="town" label="Ville / Commune*" class="label">
               <b-form-input
                 v-model="form.town" :class="{ 'is-invalid': form.errors.has('town') }"
                 class="form-control" type="text" name="town"
@@ -77,7 +77,7 @@
             <b-form-checkbox v-model="form.promoter" switch size="lg">
               Vous êtes un créateur d'évenement ?
             </b-form-checkbox>
-            <b-form-group v-if="form.promoter" id="email" label="Rue, avenue, lieu-dit*" class="add-style">
+            <b-form-group v-if="form.promoter" id="email" label="Rue, avenue, lieu-dit*" class="label">
               <b-form-input
                 v-model="form.street"
                 :class="{ 'is-invalid': form.errors.has('street') }" class="form-control" type="text"
@@ -85,7 +85,7 @@
                 required
               />
             </b-form-group>
-            <b-form-group v-if="form.promoter" id="firstname" label="Nom de l'entreprise, association" class="add-style">
+            <b-form-group v-if="form.promoter" id="firstname" label="Nom de l'entreprise, association*" class="label">
               <b-form-input
                 v-model="form.entreprise"
                 :class="{ 'is-invalid': form.errors.has('entreprise') }" class="form-control"
@@ -93,28 +93,28 @@
                 required
               />
             </b-form-group>
-            <b-form-group v-if="form.promoter" id="input-group-2" label="Téléphone" class="add-style">
+            <b-form-group v-if="form.promoter" id="phone" label="Téléphone" class="label">
               <b-form-input
                 v-model="form.phone" :class="{ 'is-invalid': form.errors.has('phone') }"
                 class="form-control" type="text" name="phone"
                 required
               />
             </b-form-group>
-            <b-form-group v-if="form.promoter" id="input-group-2" label="Siret" class="add-style">
+            <b-form-group v-if="form.promoter" id="siret" label="Siret*" class="label">
               <b-form-input
                 v-model="form.siret" :class="{ 'is-invalid': form.errors.has('siret') }"
                 class="form-control" type="text" name="siret"
                 required
               />
             </b-form-group>
-            <b-form-group v-if="form.promoter" id="input-group-2" label="Site Web" class="add-style">
+            <b-form-group v-if="form.promoter" id="site" label="Site Web" class="label">
               <b-form-input
                 v-model="form.site" :class="{ 'is-invalid': form.errors.has('site') }"
                 class="form-control" type="text" name="site"
                 required
               />
             </b-form-group>
-            <b-form-group v-if="form.promoter" id="input-group-2" label="Réseaux sociaux" class="add-style">
+            <b-form-group v-if="form.promoter" id="social" label="Réseaux sociaux" class="label">
               <b-form-input
                 v-model="form.social"
                 :class="{ 'is-invalid': form.errors.has('social') }" class="form-control" type="text"
@@ -133,19 +133,15 @@
 </template>
 
 <style>
-.login-container {
-  padding: 50px 10px;
+
+h2 {
+  font-family: Roboto, sans-serif;;
+  text-transform: uppercase;
+  color: #D70039;
 }
-
-
 
 h3 {
   padding-top: 10px;
-}
-
-.create-account, .login-account {
-  /*padding: 30px 0;*/
-
 }
 
 .create-account {
@@ -161,13 +157,21 @@ form {
 
 }
 
-.legend {
+.label {
   color: #111D5E;
   font-family: 'Roboto', serif;
   font-size: x-large;
 }
 
-input {
+h1 {
+  /*transform: translate(-15px);*/
+  font-family: 'Gobold_Extra2';
+  text-transform: capitalize;
+  color: #D70039;
+  margin-bottom: 20px;
+}
+
+.form-control {
   display: block;
   background-color: #e3e3e3;
   border-radius: 0;
@@ -175,10 +179,28 @@ input {
   width: 75%;
 }
 
-@media screen and (max-width: 640px) {
-  input {
-    width: 100%;
+@media screen and (max-width: 990px) {
+  .form-control {
+    width: 100% ;
   }
+}
+
+.btn-primary {
+  border-radius: 0 !important;
+  text-align: center;
+  font-family: 'Gobold_Extra2';
+  text-transform: uppercase;
+  display: block;
+  font-weight: bold;
+  color: #fff !important;
+  background: #D70039 !important;
+  border-color: #D70039 !important;
+  font-weight: bold;
+  width: auto;
+  margin-top: 15px;
+  padding: 5px 5px;
+  font-size: 18px;
+  letter-spacing: 1.5px;
 }
 
 </style>

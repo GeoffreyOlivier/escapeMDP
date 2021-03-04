@@ -13,7 +13,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '~/plugins'
 import '~/components'
 Vue.use({
-  install ( Vue) {
+  install (Vue) {
     Vue.prototype.$api = axios.create({
       baseURL: '/api'
     })

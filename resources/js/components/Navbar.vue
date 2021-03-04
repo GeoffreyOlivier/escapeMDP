@@ -10,12 +10,7 @@
       </button>
 
       <div id="navbarToggler" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <locale-dropdown />
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li> -->
-        </ul>
+
 
         <ul class="navbar-nav ml-auto">
           <!-- Authenticated -->
@@ -63,82 +58,8 @@
 
 <style scoped>
 
-.login-container {
-  padding: 50px 10px;
-}
-
-h2 {
-  font-family: Roboto, sans-serif;;
-  text-transform: uppercase;
-  color: #D70039;
-}
-
-h3 {
-  padding-top: 10px;
-}
-
-.create-account, .login-account {
-  /*padding: 30px 0;*/
-
-}
-
-.create-account {
-  padding: 20px 26px;
-}
-
-.login-account {
-  padding: 20px 26px;
-}
-
-form {
-  margin-top: 25px;
-
-}
-
-.legend {
-  color: #111D5E;
-  font-family: 'Roboto', serif;
-  font-size: x-large;
-}
-
-input {
-  display: block;
-  background-color: #e3e3e3;
-  border-radius: 0;
-  border: 0;
-  width: 75%;
-}
-
-@media screen and (max-width: 640px) {
-  input {
-    width: 100%;
-  }
-}
-
-.btn-primary {
-  border-radius: 0;
-  text-align: center;
-  font-family: 'Gobold_Extra2';
-  text-transform: uppercase;
-  display: block;
-  font-weight: bold;
-  color: #fff;
-  background: #D70039;
-  border-color: #D70039;
-  font-weight: bold;
-  width: 30%;
-  margin-top: 15px;
-  padding: 5px 5px;
-  font-size: 18px;
-  letter-spacing: 1.5px;
-}
-
-h1 {
-  /*transform: translate(-15px);*/
-  font-family: 'Gobold_Extra2';
-  text-transform: capitalize;
-  color: #D70039;
-  margin-bottom: 20px;
+.nav-link {
+  padding: 0 20px !important;
 }
 
 </style>

@@ -44,47 +44,5 @@ h1 {
     font-family: Gobold_Extra2, serif;
 
 }
-.form-control {
-  display: block;
-  background-color: #e3e3e3;
-  border-radius: 0;
-  border: 0;
-  width: 75%;
-}
 
-@media screen and (max-width: 640px) {
-  .form-control {
-    width: 100%;
-  }
-}
 
-.form-control {
-  display: block;
-  background-color: #e4e4e4 !important;
-  border-radius: 0 !important;
-  border: 0 !important;
-  width: 75%;
-}
-@media screen and (max-width: 640px) {
-  .form-control {
-    width: 100%;
-  }
-}
-
-.btn-primary {
-  border-radius: 0 !important;
-  text-align: center;
-  font-family: 'Gobold_Extra2';
-  text-transform: uppercase;
-  display: block;
-  font-weight: bold;
-  color: #fff !important;
-  background: #D70039 !important;
-  border-color: #D70039 !important;
-  font-weight: bold;
-  width: 30%;
-  margin-top: 15px;
-  padding: 5px 5px;
-  font-size: 18px;
-  letter-spacing: 1.5px;
-}

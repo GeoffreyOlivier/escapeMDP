@@ -2,56 +2,55 @@
   <div>
     <b-container>
       <b-row>
-        <b-form @submit.prevent="CreateEvent" @keydown="form.onKeydown($event)">
+        <b-form @submit.prevent="submitForm" >
           <h1>Mon évènement</h1>
           <b-col>
             <b-form-group id="title" label="Titre" class="add-style">
               <b-form-input
                 v-model="form.title" :class="{ 'is-invalid': form.errors.has('title') }"
                 class="form-control" type="text" name="title"
-                required
+
               />
             </b-form-group>
             <b-form-group id="description" label="Description" class="add-style">
               <b-form-input
                 v-model="form.description" :class="{ 'is-invalid': form.errors.has('description') }"
                 class="form-control" type="text" name="description"
-                required
+
               />
             </b-form-group>
             <b-form-group id="price" label="Tarif" class="add-style">
               <b-form-input
                 v-model="form.price" :class="{ 'is-invalid': form.errors.has('price') }"
                 class="form-control" type="text" name="price"
-                required
+
               />
             </b-form-group>
             <b-form-group id="date" label="Date et heure début" class="add-style">
               <b-form-input
                 v-model="form.start_at" :class="{ 'is-invalid': form.errors.has('date') }"
                 class="form-control" type="datetime-local" name="date"
-                required
+
               />
             </b-form-group>
             <b-form-group id="date" label="Date et heure fin" class="add-style">
               <b-form-input
                 v-model="form.ending_at" :class="{ 'is-invalid': form.errors.has('date') }"
                 class="form-control" type="datetime-local" name="date"
-                required
+
               />
             </b-form-group>
             <b-form-group id="nb_people_max" label="Nombre de personnes maximum" class="add-style">
               <b-form-input
                 v-model="form.nb_people_max" :class="{ 'is-invalid': form.errors.has('nb_people_max') }"
                 class="form-control" type="text" name="nb_people_max"
-                required
+
               />
             </b-form-group>
-            <b-form-file v-model="form.image" class="mt-3" plain></b-form-file>
-            <div class="mt-3">Selected file: {{ form.image ? form.image.name : '' }}</div>
-<!--            <b-form-checkbox v-model="form.need_subscribe" switch size="lg">-->
-<!--              Sur réservation ?-->
-<!--            </b-form-checkbox>-->
+            <input id=" image" type="file" name=" image" class="form-control-file" @change="onFileChange">
+            <!--            <b-form-checkbox v-model="form.need_subscribe" switch size="lg">-->
+            <!--              Sur réservation ?-->
+            <!--            </b-form-checkbox>-->
             <b-form-checkbox
               id="checkbox-1"
               v-model="form.need_subscribe"
@@ -65,36 +64,35 @@
               <b-form-input
                 v-model="form.place" :class="{ 'is-invalid': form.errors.has('place') }"
                 class="form-control" type="text" name="place"
-                required
+
               />
             </b-form-group>
             <b-form-group id="address" label="Adresse" class="add-style">
               <b-form-input
                 v-model="form.address" :class="{ 'is-invalid': form.errors.has('address') }"
                 class="form-control" type="text" name="address"
-                required
+
               />
             </b-form-group>
             <b-form-group id="street" label="Rue, Avenue, lieu dit" class="add-style">
               <b-form-input
                 v-model="form.street" :class="{ 'is-invalid': form.errors.has('street') }"
                 class="form-control" type="text" name="street"
-                required
+
               />
             </b-form-group>
             <b-form-group id="town" label="Ville" class="add-style">
               <b-form-input
                 v-model="form.town" :class="{ 'is-invalid': form.errors.has('town') }"
                 class="form-control" type="text" name="town"
-                required
+
               />
             </b-form-group>
-            <v-button  :loading="form.busy">
+            <v-button :loading="form.busy">
               Valider
             </v-button>
           </b-col>
-          <b-col>
-          </b-col>
+          <b-col />
         </b-form>
       </b-row>
     </b-container>
@@ -166,16 +164,39 @@ export default {
       address: '',
       street: '',
       town: '',
-      image: File
+      image: null
     })
   }),
   methods: {
     CreateEvent () {
       // Submit the form.
-      this.$api.get('/api/event/create')
-
+      console.log(this.form)
+      this.$api.post('/event/create', this.form).then(response => {
+        console.log(response)
+      }
+      ).catch(err => {
+        console.log(err)
+      })
       // Redirect home.
-      this.redirect()
+      this.$router.push('/events')
+    },
+    onFileChange (event) {
+      this.form. image = event.target.files[0]
+    },
+    submitForm () {
+      const formData = new FormData()
+
+      formData.append(' image', this.form. image)
+      formData.append('title', this.form.title)
+      formData.append('description', this.form.description)
+
+      this.$api.post('/event/create', formData)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 }

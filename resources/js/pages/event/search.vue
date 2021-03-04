@@ -16,7 +16,7 @@
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="../../../images/event-img.png" alt="bar">
+              <img :src="image" alt="bar">
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -60,17 +60,19 @@ h5 {
 export default {
 
   data: () => ({
-    events: ''
+    events: '',
+    image: ''
   }),
-  created() {
+  created () {
     this.fetchEvent()
   },
   methods: {
-    fetchEvent() {
+    fetchEvent () {
       this.$api.get('/events')
         .then((response) => {
           console.log(response.data)
           this.events = response.data
+          this.image = this.events.image
           console.log(this.events)
         })
         .catch((error) => {
