@@ -13,10 +13,10 @@
       </div>
       <h1>Mon compte</h1>
       <div v-for="item in events" :key="item.id">
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card mb-3" >
           <div class="row g-0">
             <div class="col-md-4">
-              <img :src="image" alt="bar">
+              <img :src="item.image_path" alt="bar">
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -24,7 +24,7 @@
                 <p class="card-text subtitle">{{ item.place }}, {{ item.price }}</p>
                 <p class="card-text subtitle">{{ item.start_at }}, {{ item.town }}</p>
 
-                <p class="card-text text">{{ item.description }}</p>
+                <p class="card-text text">{{ item.description | truncate(300, '...') }}</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
             </div>
@@ -60,8 +60,7 @@ h5 {
 export default {
 
   data: () => ({
-    events: '',
-    image: ''
+    events: ''
   }),
   created () {
     this.fetchEvent()
@@ -72,7 +71,6 @@ export default {
         .then((response) => {
           console.log(response.data)
           this.events = response.data
-          this.image = this.events.image
           console.log(this.events)
         })
         .catch((error) => {

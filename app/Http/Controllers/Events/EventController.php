@@ -28,30 +28,32 @@ class EventController extends Controller
      */
     public function create(Request $request)
     {
+//        dump($request);
         $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
             'image' => 'required'
         ]);
-
-        $event = new Event;
-
-        if ($request->file()) {
-            $file_name = time() . '_' . $request->image->getClientOriginalName();
-            $file_path = $request->file('image')->storeAs('uploads', $file_name, 'public');
-
-            $event->image_name = time() . '_' . $request->image->getClientOriginalName();
-            $event->image_path = '/storage/' . $file_path;
-            $event->title = $request->title;
-            $event->description = $request->description;
-            $event->save();
-
-            return response()->json(['success' => 'File uploaded successfully.']);
+//
+//        $event = new Event;
+//
+//        if ($request->file()) {
+//            $file_name = time() . '_' . $request->image->getClientOriginalName();
+//            $file_path = $request->file('image')->storeAs('uploads', $file_name, 'public');
+//
+//            $event->image_name = time() . '_' . $request->image->getClientOriginalName();
+//            $event->image_path = '/storage/' . $file_path;
+//            $event->title = $request->title;
+//            $event->description = $request->description;
+//
+//            $event->save();
+//
+//            return response()->json(['success' => 'File uploaded successfully.']);
 //        $newPath = $request->photo->store('image', 'public');
 //        Event::create($validatedData);
 //        return ['message' => 'Post Created'];
-        }
-    }
+//        }
+//    }
 //
 //        $request->validate([
 //            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -59,31 +61,35 @@ class EventController extends Controller
 //
 //        $imageName = time().'.'.$request->image->extension();
 //        print_r($imageName);
-//        $attributes = [
-//            'picture' => $request->picture->move(public_path('images'), $imageName),
-//            'title' => $request->title,
-//            'description' => $request->description,
-//            'created_at' => Carbon::now(),
-//            'start_at' => $request->start_at,
-//            'ending_at' => $request->ending_at,
-//            'nb_people_max' => $request->nb_people_max,
-//            'need_subscribe' => $request->need_subscribe,
-//            'place' => $request->place,
-//            'address' => $request->address,
-//            'street' => $request->street,
-//            'town' =>$request->town,
-//            'api_google_id' => $request->api_google_id,
-//            'pictures' => $request->pictures,
-//            'event_type_id' => $request->event_type_id
-//        ];
-//        print_r($attributes);
-//        $event = Event::create($attributes);
-//
-//        return response()->json([
-//            $event,
-//            'message' => __('event created succefully')
-//        ], 201, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
-//    }
+        $file_name = time() . '_' . $request->file('image')->getClientOriginalName();
+        $file_path = $request->file('image')->storeAs('uploads', $file_name, 'public');
+        dump($file_name);
+        dump($file_path);
+        $attributes = [
+            'title' => $request->title,
+            'image_name' => $file_name,
+            'image_path' => '/storage/' . $file_path,
+            'description' => $request->description,
+            'created_at' => Carbon::now(),
+            'start_at' => $request->start_at,
+            'ending_at' => $request->ending_at,
+            'nb_people_max' => $request->nb_people_max,
+            'need_subscribe' => $request->need_subscribe,
+            'place' => $request->place,
+            'address' => $request->address,
+            'street' => $request->street,
+            'town' => $request->town,
+            'api_google_id' => $request->api_google_id,
+            'pictures' => $request->pictures,
+            'event_type_id' => $request->event_type_id
+        ];
+        $event = Event::create($attributes);
+
+        return response()->json([
+            $event,
+            'message' => __('event created succefully')
+        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -124,7 +130,7 @@ class EventController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $imageName = time().'.'.$request->image->extension();
+        $imageName = time() . '.' . $request->image->extension();
 
 
         $attributes = [
@@ -145,7 +151,7 @@ class EventController extends Controller
 
         return response()->json([
             'message' => __('event edit succefully')
-        ], 201, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
 
     /**
@@ -188,11 +194,11 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        $existingEvent = Event::find( $id );
-        if ($existingEvent ) {
+        $existingEvent = Event::find($id);
+        if ($existingEvent) {
             Event::findOrFail($id)->delete();
             return "Event succefully deleted";
-        }else{
+        } else {
             return "Event not found";
         }
     }

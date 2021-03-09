@@ -13,6 +13,8 @@ class Event extends Model
     protected $fillable = [
         'title',
         'description',
+        'image_name',
+        'image_path',
         'start_at',
         'ending_at',
         'nb_people_max',
