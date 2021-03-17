@@ -5,6 +5,9 @@ import i18n from '~/plugins/i18n'
 import App from '~/components/App'
 import axios from 'axios'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import EvaIcons from 'vue-eva-icons'
+
+Vue.use(EvaIcons)
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'

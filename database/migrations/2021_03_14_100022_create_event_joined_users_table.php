@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventUsersTable extends Migration
+class CreateEventJoinedUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateEventUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_users', function (Blueprint $table) {
+        Schema::create('event_joined_users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('event_id');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
-            $table->boolean('is_creator');
             $table->boolean('deprecated')->default(false);
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ class CreateEventUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_users');
+        Schema::dropIfExists('event_joined_users');
     }
 }

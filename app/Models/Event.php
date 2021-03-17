@@ -13,6 +13,7 @@ class Event extends Model
     protected $fillable = [
         'title',
         'description',
+        'user_id',
         'image_name',
         'image_path',
         'start_at',
@@ -27,4 +28,6 @@ class Event extends Model
         'image',
         'event_type_id',
     ];
+
+
 }

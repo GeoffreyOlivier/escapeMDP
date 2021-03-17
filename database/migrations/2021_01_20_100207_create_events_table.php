@@ -19,6 +19,8 @@ class CreateEventsTable extends Migration
             $table->longText('description');
             $table->dateTime('start_at')->nullable();
             $table->dateTime('ending_at')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('nb_people_max')->nullable();
             $table->string('need_subscribe')->nullable();
             $table->string('place')->nullable();

@@ -54,5 +54,11 @@ Route::get('events', [EventController::class, 'index']);
 Route::get('event/{id}', [EventController::class, 'show']);
 Route::put('event/update/{id}', [EventController::class, 'update']);
 Route::post('event/delete/{id}', [EventController::class, 'destroy']);
+Route::post('event/join/{id}', [EventController::class, 'joinEvent']);
+Route::post('event/book/{id}', [EventController::class, 'bookEvent']);
+Route::post('event/like/{id}', [EventController::class, 'likeEvent']);
+Route::put('event/join/{id}', [EventController::class, 'unJoinEvent']);
+Route::put('event/book/{id}', [EventController::class, 'unBookEvent']);
+Route::put('event/like/{id}', [EventController::class, 'unLikeEvent']);
 
 
