@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e37c91a4-5743-4061-9d9b-9361fdbe38db" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-vue-spa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-vue-spa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_101422_create_event_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_101422_create_event_liked_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/spa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/spa.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +165,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../maison-marot-drive-application2" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -191,15 +179,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\escape" />
       <recent name="C:\xampp\htdocs\escape\database\migrations" />
       <recent name="C:\xampp\htdocs\laravel-vue-spa\resources\sass" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\escape\storage\app\json" />
       <recent name="C:\xampp\htdocs\escape\resources\images" />
       <recent name="C:\xampp\htdocs\escape\resources\videos" />
       <recent name="C:\xampp\htdocs\escape\resources\js\pages\event" />
       <recent name="C:\xampp\htdocs\escape\resources\js\pages" />
-      <recent name="C:\xampp\htdocs\escape\app\Http\Controllers\Events" />
     </key>
   </component>
   <component name="RunManager" selected="npm.watch">
@@ -287,6 +276,8 @@
       <workItem from="1615817654352" duration="1749000" />
       <workItem from="1615894583181" duration="494000" />
       <workItem from="1616007292180" duration="6573000" />
+      <workItem from="1616608221635" duration="3758000" />
+      <workItem from="1616691877476" duration="7143000" />
     </task>
     <servers />
   </component>

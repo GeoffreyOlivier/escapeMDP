@@ -21,6 +21,10 @@ class EventController extends Controller
      */
     public function index()
     {
+
+        $path = '/storage/app/json/france.json';
+        $content = json_decode(file_get_contents($path), true);
+        dd($content);
         return Event::orderBy('created_at', 'DESC')->get();
     }
 
