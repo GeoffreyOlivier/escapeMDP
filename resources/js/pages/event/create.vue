@@ -1,9 +1,10 @@
 <template>
   <div>
     <b-container>
-      <b-row>
-        <b-form enctype="multipart/form-data" @submit.prevent="submitForm">
-          <h1>Mon évènement</h1>
+      <h1>Mon évènement</h1>
+      <b-form enctype="multipart/form-data" @submit.prevent="submitForm">
+        <b-row>
+
           <b-col>
             <b-form-group id="title" label="Titre" class="add-style">
               <b-form-input
@@ -17,6 +18,146 @@
                 class="form-control" type="text" name="description"
               />
             </b-form-group>
+            <b-form-group id="description" label="Catégorie" class="add-style">
+              <b-form-select v-on:change="changeItem()" v-model="selected" :options="options_cat"></b-form-select>
+            </b-form-group>
+            <b-form-group v-if="selected == 'music'" id="Style" label="Style musicale" class="add-style">
+              <VueFuse
+                :list="styles"
+                :fuse-opts="options"
+                :search="search"
+                :map-results="false"
+                v-model="input_fuse"
+                class="autocomplete-input"
+                placeholder="Techno, Hip-Hop, Pop, ..."
+                @fuse-results="handleResults"
+              />
+
+              <ul class="autocomplete-result-list">
+                <li class="autocomplete-result"
+                    v-for="(style, i) in results"
+                    :key="i">
+                  <div @click="add_style(style, 'music')"
+                       class="list-group-item">
+                    {{ style.item.sub_style_name }} - <span class="style">{{ style.item.name }}</span>
+                  </div>
+                </li>
+              </ul>
+              <div class="tag-style">
+                <div>
+                  <div v-for="sub_style_selected in sub_style_selecteds" :keys:="sub_style_selecteds.item">
+                    <b-button class="btn-sub-style" variant="outline-primary"
+                              @click="remove_sub_style(sub_style_selected)">
+                      {{ sub_style_selected.item.sub_style_name }} X
+                    </b-button>
+                  </div>
+                </div>
+                <div>
+                  <div v-for="style_selected in style_selecteds" :keys:="style_selecteds.id">
+                    <b-button class="btn-style" variant="outline-secondary" @click="remove_style(style_selected)">
+                      {{ style_selected }} X
+                    </b-button>
+                  </div>
+                </div>
+              </div>
+            </b-form-group>
+            <b-form-group v-if="selected == 'sport'" id="sport" label="Sport" class="add-style">
+              <VueFuse
+                :list="sport"
+                :fuse-opts="options"
+                :search="search"
+                :map-results="false"
+                class="autocomplete-input"
+                placeholder="Tennis, Foot, Course à pied, ..."
+                @fuse-results="handleResults"
+              />
+
+              <ul class="autocomplete-result-list">
+                <li class="autocomplete-result"
+                    v-for="(sport, i) in results"
+                    :key="i">
+                  <div @click="add_sport( sport,'sport')"
+                       class="list-group-item">
+                    {{ sport.item.name }}
+                  </div>
+                </li>
+              </ul>
+              <div class="tag-style">
+                <div>
+                  <div v-for="sport_selected in sport_selecteds" :keys:="sport_selecteds.item">
+                    <b-button class="btn-sub-style" variant="outline-primary"
+                              @click="add_sport(sport_selected)">
+                      {{ sport_selected.item.name }} X
+                    </b-button>
+                  </div>
+                </div>
+              </div>
+            </b-form-group>
+            <b-form-group v-if="selected == 'game'" id="game" label="Jeux" class="add-style">
+              <VueFuse
+                :list="game"
+                :fuse-opts="options"
+                :search="search"
+                :map-results="false"
+                class="autocomplete-input"
+                placeholder="Société, en ligne, etc.."
+                @fuse-results="handleResults"
+              />
+
+              <ul class="autocomplete-result-list">
+                <li class="autocomplete-result"
+                    v-for="(game, i) in results"
+                    :key="i">
+                  <div @click="add_game( game,'game')"
+                       class="list-group-item">
+                    {{ game.item.name }}
+                  </div>
+                </li>
+              </ul>
+              <div class="tag-style">
+                <div>
+                  <div v-for="game_selected in game_selecteds" :keys:="game_selecteds.item">
+                    <b-button class="btn-sub-style" variant="outline-primary"
+                              @click="add_game(game_selected)">
+                      {{ game_selected.item.name }} X
+                    </b-button>
+                  </div>
+                </div>
+              </div>
+            </b-form-group>
+            <b-form-group v-if="selected == 'art'" id="art" label="Art et culture" class="add-style">
+              <VueFuse
+                :list="art"
+                :fuse-opts="options"
+                :search="search"
+                :map-results="false"
+                class="autocomplete-input"
+                placeholder="Festival, Danse, Exposition, ..."
+                @fuse-results="handleResults"
+              />
+
+              <ul class="autocomplete-result-list">
+                <li class="autocomplete-result"
+                    v-for="(art, i) in results"
+                    :key="i">
+                  <div @click="add_art( art,'art')"
+                       class="list-group-item">
+                    {{ art.item.name }}
+                  </div>
+                </li>
+              </ul>
+              <div class="tag-style">
+                <div>
+                  <div v-for="art_selected in art_selecteds" :keys:="art_selecteds.item">
+                    <b-button class="btn-sub-style" variant="outline-primary"
+                              @click="add_art(art_selected)">
+                      {{ art_selected.item.name }} X
+                    </b-button>
+                  </div>
+                </div>
+              </div>
+            </b-form-group>
+
             <b-form-group id="price" label="Tarif" class="add-style">
               <b-form-input
                 v-model="form.price" :class="{ 'is-invalid': form.errors.has('price') }"
@@ -41,17 +182,7 @@
                 class="form-control" type="text" name="nb_people_max"
               />
             </b-form-group>
-<!--            <b-form-file-->
-<!--              v-model="form.image"-->
-<!--              :state="Boolean(form.image)"-->
-<!--              placeholder="Choose a file or drop it here..."-->
-<!--              drop-placeholder="Drop file here..."-->
-<!--            ></b-form-file>-->
-<!--            <div class="mt-3">Selected file: {{ form.image ? form.image.name : '' }}</div>-->
             <input id="file" type="file" @change="processFile($event)">
-            <!--            <b-form-checkbox v-model="form.need_subscribe" switch size="lg">-->
-            <!--              Sur réservation ?-->
-            <!--            </b-form-checkbox>-->
             <b-form-checkbox
               id="checkbox-1"
               v-model="form.need_subscribe"
@@ -89,15 +220,58 @@
               Valider
             </v-button>
           </b-col>
-          <b-col />
-        </b-form>
-      </b-row>
+          <b-col>
+            <h1>test</h1>
+          </b-col>
+        </b-row>
+      </b-form>
     </b-container>
   </div>
 </template>
 <style>
+.btn-style {
+  color: #000000;
+  border-color: #111D5E;
+  margin: 2px 0;
+}
+
+.btn-style:hover {
+  color: #fff;
+  background-color: #111D5E;
+  border-color: #111D5E;
+}
+
+.btn-sub-style {
+  color: #D70039;
+  border-color: #D70039;
+  margin: 2px 0;
+}
+
+.btn-sub-style:hover {
+  color: #fff;
+  border-color: #D70039;
+  background-color: #D70039;
+}
+
+.btn {
+  border-radius: 25px;
+}
+
+.tag-style {
+  display: flex;
+  justify-content: space-between;
+
+}
+
 .login-container {
   padding: 50px 10px;
+}
+
+.autocomplete-result-list {
+  margin-left: -40px;
+  overflow: auto;
+  list-style-type: none;
+  max-height: 200px;
 }
 
 h2 {
@@ -146,9 +320,38 @@ form {
 <script>
 
 import Form from 'vform'
+import VueFuse from "../components/fuse";
 
 export default {
+  name: 'App',
+  components: {
+    VueFuse,
+  },
   data: () => ({
+    advanced: false,
+    search: '',
+    includeScore: false,
+    results: [],
+    styles: [],
+    style_selecteds: [],
+    sport_selecteds: [],
+    game_selecteds: [],
+    art_selecteds: [],
+    sub_style_selecteds: [],
+    input_search: false,
+    input: '',
+    input_fuse: '',
+    selected: 'null',
+    game: [],
+    art: [],
+    sport:[],
+    options_cat: [
+      {value: 'null', text: 'Choisir une option'},
+      {value: 'music', text: 'Musique'},
+      {value: 'game', text: 'Jeux'},
+      {value: 'art', text: 'Art et culture'},
+      {value: 'sport', text: 'Sport'}
+    ],
     form: new Form({
       title: '',
       description: '',
@@ -164,13 +367,125 @@ export default {
       image: null
     })
   }),
+  computed: {
+    options() {
+      return {
+        keys: [
+          'name',
+          'sub_style_name',
+        ],
+        includeScore: this.includeScore,
+        threshold: 0.4
+      }
+    },
+  },
+  created() {
+    this.fetchStyle()
+    this.fetchArt()
+    this.fetchGame()
+    this.fetchSport()
+    console.log(this.search)
+  },
   methods: {
-    CreateEvent () {
+    changeItem: function changeItem(){
+      console.log("ok")
+      this.input_fuse = ''
+    },
+    add_sport(v, c) {
+      if (this.sport_selecteds.includes(v)) {
+        this.sport_selecteds.splice(this.sport_selecteds.indexOf(v), 1)
+      } else {
+        this.sport_selecteds.push(v)
+      }
+    },
+    add_game(v, c) {
+      if (this.game_selecteds.includes(v)) {
+        this.game_selecteds.splice(this.game_selecteds.indexOf(v), 1)
+      } else {
+        this.game_selecteds.push(v)
+      }
+    },
+    add_style(v, c) {
+      if (!this.style_selecteds.includes(v.item.name)) {
+        this.style_selecteds.push(v.item.name)
+      }
+      if (this.sub_style_selecteds.includes(v)) {
+        this.sub_style_selecteds.splice(this.sub_style_selecteds.indexOf(v), 1)
+      } else {
+        this.sub_style_selecteds.push(v)
+      }
+    },
+    add_art(v, c) {
+      if (this.art_selecteds.includes(v)) {
+        this.art_selecteds.splice(this.art_selecteds.indexOf(v), 1)
+      } else {
+        this.art_selecteds.push(v)
+      }
+    },
+    remove_sub_style(v) {
+      const nb_of_style = this.sub_style_selecteds.filter(item => item.item.name === v.item.name).length;
+      if (nb_of_style < 2) {
+        let style_selecteds_trash = this.style_selecteds.indexOf(v.item.name)
+        this.style_selecteds.splice(style_selecteds_trash, 1)
+      }
+      let sub_tyle_selecteds_trash = this.sub_style_selecteds.indexOf(v)
+      this.sub_style_selecteds.splice(sub_tyle_selecteds_trash, 1)
+    },
+    remove_style(v) {
+      let style_selecteds_trash = this.style_selecteds.indexOf(v)
+      this.style_selecteds.splice(style_selecteds_trash, 1)
+      let tabsubstyle = this.sub_style_selecteds.filter(item => item.item.name === v)
+      for (var i = 0; i < tabsubstyle.length; i++) {
+        let sub_tyle_selecteds_trash = this.sub_style_selecteds.indexOf(tabsubstyle[i])
+        this.sub_style_selecteds.splice(sub_tyle_selecteds_trash, 1)
+      }
+    },
+    handleResults(r) {
+      this.results = r
+    },
+    fetchStyle() {
+      this.$api.get('/style')
+        .then((response) => {
+          this.styles = response.data
+        })
+        .catch((error) => {
+          this.loading = false
+        })
+    },
+    fetchSport() {
+      this.$api.get('/sport')
+        .then((response) => {
+          console.log(response)
+          this.sport = response.data
+        })
+        .catch((error) => {
+          this.loading = false
+        })
+    },
+    fetchArt() {
+      this.$api.get('/art')
+        .then((response) => {
+          this.art = response.data
+        })
+        .catch((error) => {
+          this.loading = false
+        })
+    },
+    fetchGame() {
+      this.$api.get('/game')
+        .then((response) => {
+          this.game = response.data
+        })
+        .catch((error) => {
+          this.loading = false
+        })
+    },
+    CreateEvent() {
       // Submit the form.
       console.log(this.form)
       this.$api.post('/event/create', this.form).then(response => {
-        console.log(response)
-      }
+          console.log(response)
+        }
       ).catch(err => {
         console.log(err)
       })
@@ -180,7 +495,7 @@ export default {
     processFile(event) {
       this.form.image = event.target.files[0]
     },
-    submitForm () {
+    submitForm() {
 
       const formData = new FormData()
 
@@ -201,14 +516,21 @@ export default {
       this.$api.post('/event/create', formData)
         .then((res) => {
           console.log('success')
-          console.log(res)
+
+          this.associate(res.data[0])
         })
         .catch((error) => {
           console.log('error')
           console.log(error)
         })
       console.log('after axios')
-    }
+    },
+    associate(v){
+      this.$api
+
+
+    },
+
   }
 
 }

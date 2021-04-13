@@ -61,4 +61,10 @@ Route::put('event/join/{id}', [EventController::class, 'unJoinEvent']);
 Route::put('event/book/{id}', [EventController::class, 'unBookEvent']);
 Route::put('event/like/{id}', [EventController::class, 'unLikeEvent']);
 
+Route::get('style', [EventController::class, 'getStyle']);
+Route::get('game', [EventController::class, 'getGame']);
+Route::get('sport', [EventController::class, 'getSport']);
+Route::get('art', [EventController::class, 'getCulturalJourney']);
+
+
 

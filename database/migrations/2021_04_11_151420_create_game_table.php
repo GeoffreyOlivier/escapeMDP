@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubstyleTable extends Migration
+class CreateGameTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateSubstyleTable extends Migration
      */
     public function up()
     {
-        Schema::create('substyle', function (Blueprint $table) {
+        Schema::create('game', function (Blueprint $table) {
             $table->id();
-            $table->integer("style_id");
-            $table->string("sub_style_name");
+            $table->string("name");
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateSubstyleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('substyle');
+        Schema::dropIfExists('game');
     }
 }

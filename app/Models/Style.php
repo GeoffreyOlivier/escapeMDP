@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Style extends Model
 {
     use HasFactory;
+    protected $table = "style_music";
 
     protected $fillable = [
-        'name',
-        'sub_style'
+        'name'
     ];
 }

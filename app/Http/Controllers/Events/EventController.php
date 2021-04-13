@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\Events;
 
 use App\Http\Controllers\Controller;
+use App\Models\CulturalJourney;
 use App\Models\Event;
 use App\Models\EventBookedUser;
 use App\Models\EventJoinedUser;
 use App\Models\EventLikedUser;
+use App\Models\EventSport;
+use App\Models\Game;
+use App\Models\Sports;
+use App\Models\Style;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -43,8 +49,6 @@ class EventController extends Controller
 
         $file_name = time() . '_' . $request->file('image')->getClientOriginalName();
         $file_path = $request->file('image')->storeAs('uploads', $file_name, 'public');
-        dump($file_name);
-        dump($file_path);
 
         $attributes = [
             'title' => $request->title,
@@ -68,7 +72,7 @@ class EventController extends Controller
         $event = Event::create($attributes);
 
         return response()->json([
-            $event,
+            $event->id,
             'message' => __('event created succefully')
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
@@ -301,6 +305,18 @@ class EventController extends Controller
         }
     }
 
+
+    public function eventStyle($event_id, $sport_id)
+    {
+        $event = EventSport::where('event_id', $id)
+            ->where('event_id', $id)
+            ->update(['deprecated' => true]);
+        return response()->json([
+            $event,
+            'message' => __('event unbook successfully')
+        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -316,5 +332,26 @@ class EventController extends Controller
         } else {
             return "Event not found";
         }
+    }
+
+    public function getStyle()
+    {
+        return DB::select("SELECT substyle.id as id_sub_style, substyle.sub_style_name, style_music.name
+         FROM `substyle` INNER JOIN style_music ON substyle.style_id = style_music.id");
+    }
+
+    public function getGame()
+    {
+        return Game::all();
+    }
+
+    public function getCulturalJourney()
+    {
+        return CulturalJourney::all();
+    }
+
+    public function getSport()
+    {
+        return Sports::all();
     }
 }

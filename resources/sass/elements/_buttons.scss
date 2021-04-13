@@ -19,6 +19,33 @@
   }
 }
 
+
+.form-control {
+  display: block;
+  background-color: #e3e3e3;
+  border-radius: 25px;
+  border: 0;
+  width: 75%;
+
+}
+.btn-primary {
+  border-radius: 25px !important;
+  text-align: center;
+  font-family: 'Gobold_Extra2';
+  text-transform: uppercase;
+  display: block;
+  font-weight: bold;
+  color: #fff !important;
+  background: #D70039 !important;
+  border-color: #D70039 !important;
+  font-weight: bold;
+  width: auto;
+  margin-top: 15px;
+  padding: 5px 5px;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+}
+
 @keyframes spinAround {
   from { transform: rotate(0deg); }
   to { transform: rotate(359deg); }

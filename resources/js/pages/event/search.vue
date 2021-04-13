@@ -1,13 +1,12 @@
 <template>
-  <div>
-    <b-container>
+  <div class="container-fluid">
       <div class="header">
         <b-row>
           <b-col>
-            <img src="../../../images/Composition1.gif" alt="gif">
+            <img src="../../../images/rennesRoute.gif" alt="gif">
           </b-col>
           <b-col>
-            <img src="../../../images/Composition1.gif" alt="gif">
+            <img src="../../../images/RennesMetro.gif" alt="gif">
           </b-col>
         </b-row>
       </div>
@@ -31,7 +30,6 @@
           </div>
         </div>
       </div>
-    </b-container>
   </div>
 </template>
 <style>
@@ -67,7 +65,7 @@ export default {
   },
   methods: {
     fetchEvent () {
-      this.$api.get('/events')
+      this.$api.get('/event/style')
         .then((response) => {
           console.log(response.data)
           this.events = response.data

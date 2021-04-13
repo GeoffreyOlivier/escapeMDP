@@ -14,8 +14,7 @@ class SubStyleSeeder extends Seeder
      */
     public function run()
     {
-        $african = ["African heavy metal",
-            "African hip hop",
+        $african = [
             "Afrobeat",
             "Apala",
             "Benga",
@@ -835,83 +834,83 @@ class SubStyleSeeder extends Seeder
         foreach ($african as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '1',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
 
         foreach ($asian as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '2',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($South_and_southeast_Asian as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '3',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($Avant_garde as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '4',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($Blues as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '5',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($Caribbean as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '6',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($Country as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '8',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($Easy_listening as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '9',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($Electronics as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '10',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($Folk as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '11',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($Hip_hop as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '12',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($Jazz as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '13',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($Latin as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '14',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($pop as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '15',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($RnB as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '16',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
         foreach ($Rock as $obj)
             DB::table('substyle')->insert([
                 'style_id' => '17',
-                'name' => $obj
+                'sub_style_name' => $obj
             ]);
 
     }

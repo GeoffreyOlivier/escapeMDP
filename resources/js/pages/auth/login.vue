@@ -37,11 +37,17 @@
         <b-col sm class="create-account col-sm-6 order-sm-1">
           <h2>Création de compte</h2>
           <b-form @submit.prevent="registerPromoter" @keydown="form.onKeydown($event)">
-            <b-form-group id="lastname" label="Nom*" class="label">
+            <b-form-group id="firstname" label="Prénom*" class="label">
               <b-form-input
-                v-model="form.name" :class="{ 'is-invalid': form.errors.has('name') }"
-                class="form-control" type="text" name="name"
+                v-model="form.firstname" :class="{ 'is-invalid': form.errors.has('firstname') }"
+                class="form-control" type="text" name="firstname"
                 required
+              />
+            </b-form-group>
+            <b-form-group id="lastname" label="Nom" class="label">
+              <b-form-input
+                v-model="form.lastname" :class="{ 'is-invalid': form.errors.has('lastname') }"
+                class="form-control" type="text" name="lastname"
               />
             </b-form-group>
             <b-form-group id="email" label="Mail*" class="label">
@@ -171,13 +177,13 @@ h1 {
   margin-bottom: 20px;
 }
 
-.form-control {
-  display: block;
-  background-color: #e3e3e3;
-  border-radius: 0;
-  border: 0;
-  width: 75%;
-}
+/*.form-control {*/
+/*  display: block;*/
+/*  background-color: #e3e3e3;*/
+/*  border-radius: 0;*/
+/*  border: 0;*/
+/*  width: 75%;*/
+/*}*/
 
 @media screen and (max-width: 990px) {
   .form-control {
@@ -185,23 +191,23 @@ h1 {
   }
 }
 
-.btn-primary {
-  border-radius: 0 !important;
-  text-align: center;
-  font-family: 'Gobold_Extra2';
-  text-transform: uppercase;
-  display: block;
-  font-weight: bold;
-  color: #fff !important;
-  background: #D70039 !important;
-  border-color: #D70039 !important;
-  font-weight: bold;
-  width: auto;
-  margin-top: 15px;
-  padding: 5px 5px;
-  font-size: 18px;
-  letter-spacing: 1.5px;
-}
+/*.btn-primary {*/
+/*  border-radius: 0 !important;*/
+/*  text-align: center;*/
+/*  font-family: 'Gobold_Extra2';*/
+/*  text-transform: uppercase;*/
+/*  display: block;*/
+/*  font-weight: bold;*/
+/*  color: #fff !important;*/
+/*  background: #D70039 !important;*/
+/*  border-color: #D70039 !important;*/
+/*  font-weight: bold;*/
+/*  width: auto;*/
+/*  margin-top: 15px;*/
+/*  padding: 5px 5px;*/
+/*  font-size: 18px;*/
+/*  letter-spacing: 1.5px;*/
+/*}*/
 
 </style>
 <script>
@@ -221,7 +227,8 @@ export default {
     }),
     remember: false,
     form: new Form({
-      name: '',
+      firstname: '',
+      lastname: '',
       email: '',
       password: '',
       password_confirmation: '',

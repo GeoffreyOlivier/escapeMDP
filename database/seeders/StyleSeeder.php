@@ -16,12 +16,12 @@ class StyleSeeder extends Seeder
     {
 
 
-        $style = ["African","Asian",'South and southeast Asian','Avant-garde','Blues','Caribbean and Caribbean-influenced','Comedy',
-            'Country','Easy listening','Electronic','Folk','Hip hop','Jazz','Latin','Pop','R&B and soul','Rock'];
+        $style = ["African", "Asian", 'South and southeast Asian', 'Avant-garde', 'Blues', 'Caribbean and Caribbean-influenced', 'Comedy',
+            'Country', 'Easy listening', 'Electronic', 'Folk', 'Hip hop', 'Jazz', 'Latin', 'Pop', 'R&B and soul', 'Rock'];
         foreach ($style as $obj)
-        DB::table('style_music')->insert([
-            'name' => $obj,
-        ]);
+            DB::table('style_music')->insert([
+                'name' => $obj,
+            ]);
 
     }
 }

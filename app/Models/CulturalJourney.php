@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CuturalJourney extends Model
+class CulturalJourney extends Model
 {
     use HasFactory;
+    protected $table = "cultural_journey";
 
     protected $fillable = [
         'name',

@@ -14,9 +14,9 @@ class CulturalJourneySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cultural_journey')->insert([
-           'name' => 'Concert'
-        ]);
+//        DB::table('cultural_journey')->insert([
+//           'name' => 'Concert'
+//        ]);
         DB::table('cultural_journey')->insert([
             'name' => 'Théatre'
         ]);

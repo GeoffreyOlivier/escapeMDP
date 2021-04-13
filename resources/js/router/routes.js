@@ -11,6 +11,9 @@ export default [
   { path: '/password/reset/:token', name: 'password.reset', component: page('auth/password/reset.vue') },
   { path: '/email/verify/:id', name: 'verification.verify', component: page('auth/verification/verify.vue') },
   { path: '/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
+  { path: '/profile', name: 'profile', component: page('user/Profile.vue') },
+  { path: '/labo', name: 'labo', component: page('user/modal.vue') },
+
 
   { path: '/events', name: 'events', component: page('event/search.vue') },
   { path: '/events/:id', name: 'event', component: page('event/event.vue') },

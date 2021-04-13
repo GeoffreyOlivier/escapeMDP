@@ -7,7 +7,7 @@ import axios from 'axios'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import EvaIcons from 'vue-eva-icons'
 
-Vue.use(EvaIcons)
+
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -25,6 +25,9 @@ Vue.use({
     })
   }
 })
+import VueFuse from 'vue-fuse'
+Vue.use(VueFuse)
+Vue.use(EvaIcons)
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
@@ -33,5 +36,6 @@ new Vue({
   i18n,
   store,
   router,
+  VueFuse,
   ...App
 })
