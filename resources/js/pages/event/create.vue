@@ -387,6 +387,7 @@ export default {
     console.log(this.search)
   },
   methods: {
+
     changeItem: function changeItem(){
       console.log("ok")
       this.input_fuse = ''
@@ -516,8 +517,8 @@ export default {
       this.$api.post('/event/create', formData)
         .then((res) => {
           console.log('success')
-
-          this.associate(res.data[0])
+          console.log(this.sport_selecteds);
+          // this.associate(res.data[0], this.sport_selecteds.item.id)
         })
         .catch((error) => {
           console.log('error')
@@ -525,11 +526,23 @@ export default {
         })
       console.log('after axios')
     },
-    associate(v){
-      this.$api
+    associate(v, s){
+      console.log("associate")
+      console.log(v)
+      console.log(s)
 
+      this.$api.post('event/sport', {v, s})
+        .then((res) => {
+          console.log('success')
+          console.log(res)
+        })
+        .catch((error) => {
+          console.log('error')
+          console.log(error)
+        })
 
     },
+
 
   }
 

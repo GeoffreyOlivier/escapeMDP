@@ -67,4 +67,7 @@ Route::get('sport', [EventController::class, 'getSport']);
 Route::get('art', [EventController::class, 'getCulturalJourney']);
 
 
+Route::post('event/sport', [EventController::class, 'eventStyle']);
+
+
 

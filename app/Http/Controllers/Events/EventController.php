@@ -308,13 +308,18 @@ class EventController extends Controller
 
     public function eventStyle($event_id, $sport_id)
     {
-        $event = EventSport::where('event_id', $id)
-            ->where('event_id', $id)
-            ->update(['deprecated' => true]);
+
+        $attributes = [
+            "sport_id" => $sport_id,
+            "event_id" => $event_id,
+        ];
+
+        $event_sport = EventSport::create($attributes);
         return response()->json([
-            $event,
-            'message' => __('event unbook successfully')
+            $event_sport,
+            'message' => __('event like successfully')
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
     }
 
     /**
@@ -325,6 +330,8 @@ class EventController extends Controller
      */
     public function destroy(int $id)
     {
+
+
         $existingEvent = Event::find($id);
         if ($existingEvent) {
             Event::findOrFail($id)->delete();
