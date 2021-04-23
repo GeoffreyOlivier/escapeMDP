@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Events;
 use App\Http\Controllers\Controller;
 use App\Models\CulturalJourney;
 use App\Models\Event;
+use App\Models\EventArt;
 use App\Models\EventBookedUser;
+use App\Models\EventGame;
 use App\Models\EventJoinedUser;
 use App\Models\EventLikedUser;
 use App\Models\EventSport;
+use App\Models\EventStyle;
+use App\Models\EventSubStyle;
 use App\Models\Game;
 use App\Models\Sports;
 use App\Models\Style;
@@ -276,7 +280,7 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request1
      * @param int $id
      */
     public function update(Request $request, $id)
@@ -306,21 +310,83 @@ class EventController extends Controller
     }
 
 
-    public function eventStyle($event_id, $sport_id)
+    public function eventSport(Request $request)
     {
 
         $attributes = [
-            "sport_id" => $sport_id,
-            "event_id" => $event_id,
+            "sport_id" => $request->sport_id,
+            "event_id" => $request->event_id,
         ];
 
         $event_sport = EventSport::create($attributes);
         return response()->json([
             $event_sport,
-            'message' => __('event like successfully')
+            'message' => __('event sport successfully')
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
 
     }
+    public function eventGame(Request $request)
+    {
+
+        $attributes = [
+            "game_id" => $request->game_id,
+            "event_id" => $request->event_id,
+        ];
+
+        $event_game = EventGame::create($attributes);
+        return response()->json([
+            $event_game,
+            'message' => __('event game successfully')
+        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+    }
+    public function eventArt(Request $request)
+    {
+
+        $attributes = [
+            "cultural_journey_id" => $request->cultural_journey_id,
+            "event_id" => $request->event_id,
+        ];
+
+    $event_art = EventArt::create($attributes);
+        return response()->json([
+            $event_art,
+            'message' => __('event art successfully')
+        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+    }
+    public function eventStyle(Request $request)
+    {
+        $attributes = [
+            "style_id" => $request->style_id,
+            "event_id" => $request->event_id,
+        ];
+
+        $event_style = EventStyle::create($attributes);
+        return response()->json([
+            $event_style,
+            'message' => __('event sport successfully')
+        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+    }
+    public function eventSubStyle(Request $request)
+    {
+
+        $attributes = [
+            "substyle_id" => $request->sub_style_id,
+            "event_id" => $request->event_id,
+        ];
+
+        $event_sub_style = EventSubStyle::create($attributes);
+        return response()->json([
+            $event_sub_style,
+            'message' => __('event sub_style_id successfully')
+        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+    }
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -343,7 +409,7 @@ class EventController extends Controller
 
     public function getStyle()
     {
-        return DB::select("SELECT substyle.id as id_sub_style, substyle.sub_style_name, style_music.name
+        return DB::select("SELECT substyle.id as id_sub_style, substyle.sub_style_name, style_music.name, style_music.id
          FROM `substyle` INNER JOIN style_music ON substyle.style_id = style_music.id");
     }
 

@@ -19,7 +19,6 @@ class CreatePromotesTable extends Migration
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->timestamp('start_at');
             $table->float('price_per_clic')->nullable();
-            $table->float('price_per_hour')->nullable();
             $table->integer('nb_clic');
             $table->boolean('deprecated')->default(false);
             $table->time('duration');

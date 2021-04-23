@@ -27,12 +27,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37c91a4-5743-4061-9d9b-9361fdbe38db" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-vue-spa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-vue-spa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_101406_create_promotes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_101406_create_promotes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/GameSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/GameSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo.js" beforeDir="false" afterPath="$PROJECT_DIR$/labo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/event/search.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/search.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -205,28 +207,30 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\escape\resources\js\pages\components" />
-      <recent name="C:\xampp\htdocs\escape\resources\js\pages\user" />
-      <recent name="C:\xampp\htdocs\escape\resources\js\pages\Components" />
-      <recent name="C:\xampp\htdocs\escape\resources\images" />
-      <recent name="C:\xampp\htdocs\escape\public\images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\escape_mdp\escapeMDP" />
       <recent name="C:\xampp\htdocs\escape" />
       <recent name="C:\xampp\htdocs\escape\database\migrations" />
       <recent name="C:\xampp\htdocs\laravel-vue-spa\resources\sass" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\escape_mdp\escapeMDP\resources\images" />
+      <recent name="C:\xampp\htdocs\escape\resources\js\pages\components" />
+      <recent name="C:\xampp\htdocs\escape\resources\js\pages\user" />
+      <recent name="C:\xampp\htdocs\escape\resources\js\pages\Components" />
+      <recent name="C:\xampp\htdocs\escape\resources\images" />
     </key>
   </component>
   <component name="RunManager" selected="npm.watch">
@@ -347,11 +351,28 @@
       <workItem from="1618312025621" duration="1349000" />
       <workItem from="1618320490266" duration="2775000" />
       <workItem from="1618388150776" duration="618000" />
+      <workItem from="1618471349086" duration="38000" />
+      <workItem from="1618556946449" duration="5866000" />
+      <workItem from="1618563992722" duration="14567000" />
+      <workItem from="1618664123822" duration="242000" />
+      <workItem from="1618664388858" duration="1054000" />
+      <workItem from="1618735733551" duration="55000" />
+      <workItem from="1618749369442" duration="10000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -378,41 +399,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1212" y="378" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1618319491048">
-      <screen x="124" y="0" width="2628" height="1152" />
+    <state x="476" y="311" key="FileChooserDialogImpl" timestamp="1618735786922">
+      <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state x="1212" y="378" key="#com.intellij.fileTypes.FileTypeChooser/124.0.2628.1152@124.0.2628.1152" timestamp="1618319491048" />
-    <state width="2585" height="97" key="GridCell.Tab.0.bottom" timestamp="1618324663269">
-      <screen x="124" y="0" width="2628" height="1152" />
-    </state>
-    <state width="2585" height="97" key="GridCell.Tab.0.bottom/124.0.2628.1152@124.0.2628.1152" timestamp="1618324663269" />
-    <state width="2585" height="97" key="GridCell.Tab.0.center" timestamp="1618324663269">
-      <screen x="124" y="0" width="2628" height="1152" />
-    </state>
-    <state width="2585" height="97" key="GridCell.Tab.0.center/124.0.2628.1152@124.0.2628.1152" timestamp="1618324663269" />
-    <state width="2585" height="97" key="GridCell.Tab.0.left" timestamp="1618324663269">
-      <screen x="124" y="0" width="2628" height="1152" />
-    </state>
-    <state width="2585" height="97" key="GridCell.Tab.0.left/124.0.2628.1152@124.0.2628.1152" timestamp="1618324663269" />
-    <state width="2585" height="97" key="GridCell.Tab.0.right" timestamp="1618324663269">
-      <screen x="124" y="0" width="2628" height="1152" />
-    </state>
-    <state width="2585" height="97" key="GridCell.Tab.0.right/124.0.2628.1152@124.0.2628.1152" timestamp="1618324663269" />
-    <state x="380" y="97" key="MergeDialog" timestamp="1618316666668">
-      <screen x="124" y="0" width="2628" height="1152" />
-    </state>
-    <state x="380" y="97" key="MergeDialog/124.0.2628.1152@124.0.2628.1152" timestamp="1618316666668" />
-    <state x="947" y="221" key="SettingsEditor" timestamp="1618320825941">
-      <screen x="124" y="0" width="2628" height="1152" />
-    </state>
-    <state x="947" y="221" key="SettingsEditor/124.0.2628.1152@124.0.2628.1152" timestamp="1618320825941" />
-    <state x="1218" y="289" key="git4idea.branch.GitSmartOperationDialog" timestamp="1618316659522">
-      <screen x="124" y="0" width="2628" height="1152" />
-    </state>
-    <state x="1218" y="289" key="git4idea.branch.GitSmartOperationDialog/124.0.2628.1152@124.0.2628.1152" timestamp="1618316659522" />
-    <state x="1101" y="253" width="672" height="678" key="search.everywhere.popup" timestamp="1618320805174">
-      <screen x="124" y="0" width="2628" height="1152" />
-    </state>
-    <state x="1101" y="253" width="672" height="678" key="search.everywhere.popup/124.0.2628.1152@124.0.2628.1152" timestamp="1618320805174" />
+    <state x="476" y="311" key="FileChooserDialogImpl/0.0.2752.1112@0.0.2752.1112" timestamp="1618735786922" />
   </component>
 </project>

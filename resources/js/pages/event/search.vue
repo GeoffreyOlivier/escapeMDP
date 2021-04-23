@@ -2,15 +2,16 @@
   <div class="container-fluid">
       <div class="header">
         <b-row>
-          <b-col>
-            <img src="../../../images/rennesRoute.gif" alt="gif">
+          <b-col class="relative">
+            <img src="../../../images/today.gif" alt="gif">
+            <h1>Aujourd'hui</h1>
           </b-col>
-          <b-col>
-            <img src="../../../images/RennesMetro.gif" alt="gif">
+          <b-col class="relative">
+            <img src="../../../images/festival.gif" alt="gif">
+            <h1>Festival</h1>
           </b-col>
         </b-row>
       </div>
-      <h1>Mon compte</h1>
       <div v-for="item in events" :key="item.id">
         <div class="card mb-3" >
           <div class="row g-0">
@@ -33,6 +34,13 @@
   </div>
 </template>
 <style>
+.relative{
+
+}
+h1{
+  position: absolute;
+  color: #fff;
+}
 img {
   width: 100%;
 }

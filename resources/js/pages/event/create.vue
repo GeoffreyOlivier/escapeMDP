@@ -55,7 +55,7 @@
                 <div>
                   <div v-for="style_selected in style_selecteds" :keys:="style_selecteds.id">
                     <b-button class="btn-style" variant="outline-secondary" @click="remove_style(style_selected)">
-                      {{ style_selected }} X
+                      {{ style_selected.item.name }} X
                     </b-button>
                   </div>
                 </div>
@@ -344,7 +344,7 @@ export default {
     selected: 'null',
     game: [],
     art: [],
-    sport:[],
+    sport: [],
     options_cat: [
       {value: 'null', text: 'Choisir une option'},
       {value: 'music', text: 'Musique'},
@@ -388,7 +388,7 @@ export default {
   },
   methods: {
 
-    changeItem: function changeItem(){
+    changeItem: function changeItem() {
       console.log("ok")
       this.input_fuse = ''
     },
@@ -407,8 +407,11 @@ export default {
       }
     },
     add_style(v, c) {
-      if (!this.style_selecteds.includes(v.item.name)) {
-        this.style_selecteds.push(v.item.name)
+      if (!this.style_selecteds.find(e => e.item.id === v.item.id)) {
+        console.log(this.style_selecteds)
+        console.log("pass double")
+        this.style_selecteds.push(v)
+        console.log(this.style_selecteds)
       }
       if (this.sub_style_selecteds.includes(v)) {
         this.sub_style_selecteds.splice(this.sub_style_selecteds.indexOf(v), 1)
@@ -433,14 +436,13 @@ export default {
       this.sub_style_selecteds.splice(sub_tyle_selecteds_trash, 1)
     },
     remove_style(v) {
-      let style_selecteds_trash = this.style_selecteds.indexOf(v)
-      this.style_selecteds.splice(style_selecteds_trash, 1)
-      let tabsubstyle = this.sub_style_selecteds.filter(item => item.item.name === v)
-      for (var i = 0; i < tabsubstyle.length; i++) {
-        let sub_tyle_selecteds_trash = this.sub_style_selecteds.indexOf(tabsubstyle[i])
-        this.sub_style_selecteds.splice(sub_tyle_selecteds_trash, 1)
+      const array_tmp = this.sub_style_selecteds.filter(item => item.item.name === v.item.name)
+      for (var i = 0; i < array_tmp.length; i++) {
+        this.sub_style_selecteds.splice(this.sub_style_selecteds.indexOf(array_tmp[i]), 1)
       }
+      this.style_selecteds.splice(this.style_selecteds.indexOf(v), 1)
     },
+
     handleResults(r) {
       this.results = r
     },
@@ -517,8 +519,7 @@ export default {
       this.$api.post('/event/create', formData)
         .then((res) => {
           console.log('success')
-          console.log(this.sport_selecteds);
-          // this.associate(res.data[0], this.sport_selecteds.item.id)
+          this.associate(res.data[0])
         })
         .catch((error) => {
           console.log('error')
@@ -526,20 +527,81 @@ export default {
         })
       console.log('after axios')
     },
-    associate(v, s){
+    associate(v) {
+      console.log(this.selected)
       console.log("associate")
       console.log(v)
-      console.log(s)
 
-      this.$api.post('event/sport', {v, s})
-        .then((res) => {
-          console.log('success')
-          console.log(res)
-        })
-        .catch((error) => {
-          console.log('error')
-          console.log(error)
-        })
+
+      switch (this.selected) {
+        case 'sport':
+          for (let i = 0; i < this.sport_selecteds.length; i++) {
+            this.$api.post('event/sport', {event_id: v, sport_id: this.sport_selecteds[i].item.id})
+              .then((res) => {
+                console.log('success')
+                console.log(res)
+              })
+              .catch((error) => {
+                console.log('error')
+                console.log(error)
+              })
+          }
+          break;
+        case 'game':
+          for (let i = 0; i < this.game_selecteds.length; i++) {
+            this.$api.post('event/game', {event_id: v, game_id: this.game_selecteds[i].item.id})
+              .then((res) => {
+                console.log('success')
+                console.log(res)
+              })
+              .catch((error) => {
+                console.log('error')
+                console.log(error)
+              })
+          }
+          break;
+        case 'art':
+          for (let i = 0; i < this.art_selecteds.length; i++) {
+            this.$api.post('event/art', {event_id: v, cultural_journey_id: this.art_selecteds[i].item.id})
+              .then((res) => {
+                console.log('success')
+                console.log(res)
+              })
+              .catch((error) => {
+                console.log('error')
+                console.log(error)
+              })
+          }
+          break;
+        case 'music':
+          console.log("case style")
+          for (let i = 0; i < this.style_selecteds.length; i++) {
+            this.$api.post('event/style', {event_id: v, style_id: this.style_selecteds[i].item.id})
+              .then((res) => {
+                console.log('success')
+                console.log(res)
+              })
+              .catch((error) => {
+                console.log('error')
+                console.log(error)
+              })
+          }
+          for (let i = 0; i < this.sub_style_selecteds.length; i++) {
+            this.$api.post('event/substyle', {event_id: v, sub_style_id: this.sub_style_selecteds[i].item.id})
+              .then((res) => {
+                console.log('success')
+                console.log(res)
+              })
+              .catch((error) => {
+                console.log('error')
+                console.log(error)
+              })
+          }
+          break;
+        default:
+          console.log(`Sorry, we are out of expression.`);
+      }
+
 
     },
 
