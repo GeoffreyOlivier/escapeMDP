@@ -27,13 +27,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37c91a4-5743-4061-9d9b-9361fdbe38db" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_04_2021_14_24__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_101406_create_promotes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_101406_create_promotes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/GameSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/GameSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Event.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/EventArt.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EventArt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/EventGame.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EventGame.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/EventStyle.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EventStyle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_24_181534_create_city_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_24_181534_create_city_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/labo.js" beforeDir="false" afterPath="$PROJECT_DIR$/labo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/event/search.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/search.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
@@ -204,12 +213,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../maison-marot-drive-application" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -219,18 +229,18 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\escape_mdp\escapeMDP" />
-      <recent name="C:\xampp\htdocs\escape" />
-      <recent name="C:\xampp\htdocs\escape\database\migrations" />
-      <recent name="C:\xampp\htdocs\laravel-vue-spa\resources\sass" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\escape_mdp\escapeMDP\resources\images" />
       <recent name="C:\xampp\htdocs\escape\resources\js\pages\components" />
       <recent name="C:\xampp\htdocs\escape\resources\js\pages\user" />
       <recent name="C:\xampp\htdocs\escape\resources\js\pages\Components" />
       <recent name="C:\xampp\htdocs\escape\resources\images" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\escape_mdp\escapeMDP" />
+      <recent name="C:\xampp\htdocs\escape" />
+      <recent name="C:\xampp\htdocs\escape\database\migrations" />
+      <recent name="C:\xampp\htdocs\laravel-vue-spa\resources\sass" />
     </key>
   </component>
   <component name="RunManager" selected="npm.watch">
@@ -358,6 +368,11 @@
       <workItem from="1618664388858" duration="1054000" />
       <workItem from="1618735733551" duration="55000" />
       <workItem from="1618749369442" duration="10000" />
+      <workItem from="1619276840896" duration="373000" />
+      <workItem from="1619279559785" duration="7350000" />
+      <workItem from="1619334644805" duration="6124000" />
+      <workItem from="1619345896407" duration="4827000" />
+      <workItem from="1619540091170" duration="2761000" />
     </task>
     <servers />
   </component>
@@ -399,9 +414,38 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="476" y="311" key="FileChooserDialogImpl" timestamp="1618735786922">
+    <state x="468" y="358" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619347306709">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state x="476" y="311" key="FileChooserDialogImpl/0.0.2752.1112@0.0.2752.1112" timestamp="1618735786922" />
+    <state x="468" y="358" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2752.1112@0.0.2752.1112" timestamp="1619347306709" />
+    <state x="469" y="311" key="FileChooserDialogImpl" timestamp="1619540959078">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state x="469" y="311" key="FileChooserDialogImpl/0.0.2752.1112/-800.1299.800.480@0.0.2752.1112" timestamp="1619279670722" />
+    <state x="469" y="311" key="FileChooserDialogImpl/0.0.2752.1112@0.0.2752.1112" timestamp="1619540959078" />
+    <state width="1334" height="230" key="GridCell.Tab.0.bottom" timestamp="1619543021281">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1332" height="235" key="GridCell.Tab.0.bottom/0.0.2752.1112/-800.1299.800.480@0.0.2752.1112" timestamp="1619294049391" />
+    <state width="1334" height="230" key="GridCell.Tab.0.bottom/0.0.2752.1112@0.0.2752.1112" timestamp="1619543021281" />
+    <state width="1334" height="230" key="GridCell.Tab.0.center" timestamp="1619543021280">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1332" height="235" key="GridCell.Tab.0.center/0.0.2752.1112/-800.1299.800.480@0.0.2752.1112" timestamp="1619294049391" />
+    <state width="1334" height="230" key="GridCell.Tab.0.center/0.0.2752.1112@0.0.2752.1112" timestamp="1619543021280" />
+    <state width="1334" height="230" key="GridCell.Tab.0.left" timestamp="1619543021280">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1332" height="235" key="GridCell.Tab.0.left/0.0.2752.1112/-800.1299.800.480@0.0.2752.1112" timestamp="1619294049391" />
+    <state width="1334" height="230" key="GridCell.Tab.0.left/0.0.2752.1112@0.0.2752.1112" timestamp="1619543021280" />
+    <state width="1334" height="230" key="GridCell.Tab.0.right" timestamp="1619543021280">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1332" height="235" key="GridCell.Tab.0.right/0.0.2752.1112/-800.1299.800.480@0.0.2752.1112" timestamp="1619294049391" />
+    <state width="1334" height="230" key="GridCell.Tab.0.right/0.0.2752.1112@0.0.2752.1112" timestamp="1619543021280" />
+    <state x="406" y="289" width="579" height="534" key="find.popup" timestamp="1619346671525">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state x="406" y="289" width="579" height="534" key="find.popup/0.0.2752.1112@0.0.2752.1112" timestamp="1619346671525" />
   </component>
 </project>

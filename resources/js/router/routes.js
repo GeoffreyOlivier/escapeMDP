@@ -12,7 +12,7 @@ export default [
   { path: '/email/verify/:id', name: 'verification.verify', component: page('auth/verification/verify.vue') },
   { path: '/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
   { path: '/profile', name: 'profile', component: page('user/Profile.vue') },
-  { path: '/labo', name: 'labo', component: page('user/modal.vue') },
+  { path: '/labo', name: 'labo', component: page('event/labo.vue') },
 
 
   { path: '/events', name: 'events', component: page('event/search.vue') },

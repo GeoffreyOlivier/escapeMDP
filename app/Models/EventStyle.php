@@ -9,7 +9,7 @@ class EventStyle extends Model
 {
     use HasFactory;
 
-    protected $table = "event_substyle";
+    protected $table = "event_style";
 
     protected $fillable = ['deprecated', 'style_id', 'event_id'];
 

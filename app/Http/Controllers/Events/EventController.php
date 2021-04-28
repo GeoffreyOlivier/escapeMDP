@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Events;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\Models\CulturalJourney;
 use App\Models\Event;
 use App\Models\EventArt;
@@ -66,8 +67,8 @@ class EventController extends Controller
             'need_subscribe' => $request->need_subscribe,
             'place' => $request->place,
             'address' => $request->address,
-            'street' => $request->street,
-            'town' => $request->town,
+            'city_id' => $request->city,
+            'art_id' => $request->art,
             'api_google_id' => $request->api_google_id,
             'pictures' => $request->pictures,
             'event_type_id' => $request->event_type_id
@@ -228,7 +229,7 @@ class EventController extends Controller
         $tab_completed["place"] = $event->place;
         $tab_completed["address"] = $event->address;
         $tab_completed["street"] = $event->street;
-        $tab_completed["town"] = $event->town;
+        $tab_completed["city"] = $event->city;
         $tab_completed["api_google_id"] = $event->api_google_id;
         $tab_completed["pictures"] = $event->pictures;
         $tab_completed["event_type_id"] = $event->event_type_id;
@@ -384,10 +385,6 @@ class EventController extends Controller
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
 
     }
-
-
-
-
     /**
      * Remove the specified resource from storage.
      *
@@ -426,5 +423,10 @@ class EventController extends Controller
     public function getSport()
     {
         return Sports::all();
+    }
+
+    public function getCity()
+    {
+        return City::all();
     }
 }

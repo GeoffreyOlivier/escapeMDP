@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EventArt extends Model
+class City extends Model
 {
     use HasFactory;
-    protected $table = "event_art";
 
+    protected $table = "city";
 
-    protected $fillable = ['deprecated', 'cultural_journey_id', 'event_id'];
+    protected $fillable = [
+        'nom_commune',
+        'code_postal'
+    ];
 }

@@ -65,13 +65,14 @@ Route::get('style', [EventController::class, 'getStyle']);
 Route::get('game', [EventController::class, 'getGame']);
 Route::get('sport', [EventController::class, 'getSport']);
 Route::get('art', [EventController::class, 'getCulturalJourney']);
+Route::get('city', [EventController::class, 'getCity']);
 
 
 Route::post('event/style', [EventController::class, 'eventStyle']);
-Route::post('event/substyle', [EventController::class, 'eventStyle']);
-Route::post('event/game', [EventController::class, 'eventStyle']);
-Route::post('event/sport', [EventController::class, 'eventStyle']);
-Route::post('event/art', [EventController::class, 'eventStyle']);
+Route::post('event/substyle', [EventController::class, 'eventSubStyle']);
+Route::post('event/game', [EventController::class, 'eventGame']);
+Route::post('event/sport', [EventController::class, 'eventSport']);
+Route::post('event/art', [EventController::class, 'eventArt']);
 
 
 

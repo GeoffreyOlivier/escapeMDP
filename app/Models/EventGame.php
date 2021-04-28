@@ -9,6 +9,9 @@ class EventGame extends Model
 {
     use HasFactory;
 
+    protected $table = "event_game";
+
+
     protected $fillable = ['deprecated', 'game_id', 'event_id'];
 
 }

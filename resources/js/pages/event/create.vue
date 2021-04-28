@@ -2,26 +2,38 @@
   <div>
     <b-container>
       <h1>Mon évènement</h1>
-      <b-form enctype="multipart/form-data" @submit.prevent="submitForm">
+      <b-form @submit.prevent="submitForm">
         <b-row>
-
           <b-col>
+
             <b-form-group id="title" label="Titre" class="add-style">
               <b-form-input
-                v-model="form.title" :class="{ 'is-invalid': form.errors.has('title') }"
-                class="form-control" type="text" name="title"
-              />
+                id="example-input-1"
+                name="example-input-1"
+                v-model="form.title"
+                aria-describedby="input-1-live-feedback"
+              ></b-form-input>
+              <div v-if="submitted && !$v.form.title.required" class="invalid-feedback">Le champs est obligatoire</div>
+              <div v-if="submitted && !$v.form.title.minLength" class="invalid-feedback">Le champs doit faire au minimum 4 caractères</div>
+
+
             </b-form-group>
+
             <b-form-group id="description" label="Description" class="add-style">
               <b-form-input
-                v-model="form.description" :class="{ 'is-invalid': form.errors.has('description') }"
+                v-model="form.description"
                 class="form-control" type="text" name="description"
               />
+              <b-form-invalid-feedback
+                id="input-1-live-feedback"
+              >This is a required field and must be at least 3 characters.</b-form-invalid-feedback>
             </b-form-group>
-            <b-form-group id="description" label="Catégorie" class="add-style">
-              <b-form-select v-on:change="changeItem()" v-model="selected" :options="options_cat"></b-form-select>
+
+            <b-form-group id="categorie" label="Catégorie" class="add-style">
+              <b-form-select v-on:change="changeItem()" v-model="form.event_type_id"
+                             :options="options_cat"></b-form-select>
             </b-form-group>
-            <b-form-group v-if="selected == 'music'" id="Style" label="Style musicale" class="add-style">
+            <b-form-group v-if="form.event_type_id === '1'" id="Style" label="Style musicale" class="add-style">
               <VueFuse
                 :list="styles"
                 :fuse-opts="options"
@@ -61,7 +73,7 @@
                 </div>
               </div>
             </b-form-group>
-            <b-form-group v-if="selected == 'sport'" id="sport" label="Sport" class="add-style">
+            <b-form-group v-if="form.event_type_id === '2'" id="sport" label="Sport" class="add-style">
               <VueFuse
                 :list="sport"
                 :fuse-opts="options"
@@ -93,7 +105,7 @@
                 </div>
               </div>
             </b-form-group>
-            <b-form-group v-if="selected == 'game'" id="game" label="Jeux" class="add-style">
+            <b-form-group v-if="form.event_type_id === '3'" id="game" label="Jeux" class="add-style">
               <VueFuse
                 :list="game"
                 :fuse-opts="options"
@@ -125,7 +137,7 @@
                 </div>
               </div>
             </b-form-group>
-            <b-form-group v-if="selected == 'art'" id="art" label="Art et culture" class="add-style">
+            <b-form-group v-if="form.event_type_id === '4'" id="art" label="Art et culture" class="add-style">
               <VueFuse
                 :list="art"
                 :fuse-opts="options"
@@ -160,25 +172,25 @@
 
             <b-form-group id="price" label="Tarif" class="add-style">
               <b-form-input
-                v-model="form.price" :class="{ 'is-invalid': form.errors.has('price') }"
+                v-model="form.price"
                 class="form-control" type="text" name="price"
               />
             </b-form-group>
-            <b-form-group id="date" label="Date et heure début" class="add-style">
+            <b-form-group id="date_start" label="Date et heure début" class="add-style">
               <b-form-input
-                v-model="form.start_at" :class="{ 'is-invalid': form.errors.has('date') }"
+                v-model="form.start_at"
                 class="form-control" type="datetime-local" name="date"
               />
             </b-form-group>
-            <b-form-group id="date" label="Date et heure fin" class="add-style">
+            <b-form-group id="date_end" label="Date et heure fin" class="add-style">
               <b-form-input
-                v-model="form.ending_at" :class="{ 'is-invalid': form.errors.has('date') }"
+                v-model="form.ending_at"
                 class="form-control" type="datetime-local" name="date"
               />
             </b-form-group>
             <b-form-group id="nb_people_max" label="Nombre de personnes maximum" class="add-style">
               <b-form-input
-                v-model="form.nb_people_max" :class="{ 'is-invalid': form.errors.has('nb_people_max') }"
+                v-model="form.nb_people_max"
                 class="form-control" type="text" name="nb_people_max"
               />
             </b-form-group>
@@ -194,28 +206,24 @@
             </b-form-checkbox>
             <b-form-group id="place" label="Lieu" class="add-style">
               <b-form-input
-                v-model="form.place" :class="{ 'is-invalid': form.errors.has('place') }"
+                v-model="form.place"
                 class="form-control" type="text" name="place"
               />
             </b-form-group>
             <b-form-group id="address" label="Adresse" class="add-style">
               <b-form-input
-                v-model="form.address" :class="{ 'is-invalid': form.errors.has('address') }"
+                v-model="form.address"
                 class="form-control" type="text" name="address"
               />
             </b-form-group>
-            <b-form-group id="street" label="Rue, Avenue, lieu dit" class="add-style">
+            <b-form-group id="town" label="Code postal" class="add-style">
               <b-form-input
-                v-model="form.street" :class="{ 'is-invalid': form.errors.has('street') }"
-                class="form-control" type="text" name="street"
-              />
-            </b-form-group>
-            <b-form-group id="town" label="Ville" class="add-style">
-              <b-form-input
-                v-model="form.town" :class="{ 'is-invalid': form.errors.has('town') }"
+                v-model="code"
                 class="form-control" type="text" name="town"
               />
             </b-form-group>
+            <b-form-select v-model="form.city" :options="cities" :select-size="4"></b-form-select>
+
             <v-button :loading="form.busy">
               Valider
             </v-button>
@@ -274,6 +282,13 @@
   max-height: 200px;
 }
 
+.autocomplete-result-list-city {
+  margin-left: -40px;
+  overflow: auto;
+  list-style-type: none;
+  max-height: 100px;
+}
+
 h2 {
   font-family: Roboto, sans-serif;;
   text-transform: uppercase;
@@ -318,9 +333,10 @@ form {
 
 </style>
 <script>
-
+import { required, minLength } from "vuelidate/lib/validators";
 import Form from 'vform'
 import VueFuse from "../components/fuse";
+import {LOGOUT} from "../../store/mutation-types";
 
 export default {
   name: 'App',
@@ -338,6 +354,7 @@ export default {
     game_selecteds: [],
     art_selecteds: [],
     sub_style_selecteds: [],
+    code_selecteds: [],
     input_search: false,
     input: '',
     input_fuse: '',
@@ -345,14 +362,18 @@ export default {
     game: [],
     art: [],
     sport: [],
+    cities: [],
+    code: '35',
+    city_result: [],
+    submitted: false,
     options_cat: [
       {value: 'null', text: 'Choisir une option'},
-      {value: 'music', text: 'Musique'},
-      {value: 'game', text: 'Jeux'},
-      {value: 'art', text: 'Art et culture'},
-      {value: 'sport', text: 'Sport'}
+      {value: '1', text: 'Musique'},
+      {value: '2', text: 'Jeux'},
+      {value: '3', text: 'Art et culture'},
+      {value: '4', text: 'Sport'}
     ],
-    form: new Form({
+    form: {
       title: '',
       description: '',
       start_at: '',
@@ -362,10 +383,10 @@ export default {
       price: '',
       place: '',
       address: '',
-      street: '',
-      town: '',
+      city: '',
+      event_type_id: '',
       image: null
-    })
+    }
   }),
   computed: {
     options() {
@@ -373,6 +394,7 @@ export default {
         keys: [
           'name',
           'sub_style_name',
+          'code_postal'
         ],
         includeScore: this.includeScore,
         threshold: 0.4
@@ -384,10 +406,39 @@ export default {
     this.fetchArt()
     this.fetchGame()
     this.fetchSport()
+    this.fetchCity()
     console.log(this.search)
   },
-  methods: {
+  watch: {
+    code(value) {
+      console.log(typeof 'value')
+      console.log(value)
+      if (value.length === 5) {
+        console.log("the count is five")
+        this.city_result = this.city.filter(e => e.code_postal === value)
+        console.log(this.city_result)
 
+        for (let i = 0; i < this.city_result.length; i++) {
+          this.cities.push(
+            {
+              value: this.city_result[i].id,
+              text: this.city_result[i].nom_commune
+            }
+          )
+        }
+        console.log(this.cities)
+        console.log(this.form.city)
+      }
+      // this.form.city = value;
+      // console.log(this.form.city)
+    }
+  },
+  validations: {
+    form: {
+      title: { required, minLength: minLength(3)},
+    }
+  },
+  methods: {
     changeItem: function changeItem() {
       console.log("ok")
       this.input_fuse = ''
@@ -425,6 +476,7 @@ export default {
       } else {
         this.art_selecteds.push(v)
       }
+      console.log(this.code_selecteds)
     },
     remove_sub_style(v) {
       const nb_of_style = this.sub_style_selecteds.filter(item => item.item.name === v.item.name).length;
@@ -442,7 +494,6 @@ export default {
       }
       this.style_selecteds.splice(this.style_selecteds.indexOf(v), 1)
     },
-
     handleResults(r) {
       this.results = r
     },
@@ -483,6 +534,15 @@ export default {
           this.loading = false
         })
     },
+    fetchCity() {
+      this.$api.get('/city')
+        .then((response) => {
+          this.city = response.data
+        })
+        .catch((error) => {
+          this.loading = false
+        })
+    },
     CreateEvent() {
       // Submit the form.
       console.log(this.form)
@@ -499,89 +559,98 @@ export default {
       this.form.image = event.target.files[0]
     },
     submitForm() {
+      this.$v.form.$touch();
+      if (this.$v.form.$invalid) {
+        return;
+      }
 
-      const formData = new FormData()
-
-      formData.append(' image', this.form.image)
-      formData.append('title', this.form.title)
-      formData.append('description', this.form.description)
-      formData.append('start_at', this.form.start_at)
-      formData.append('ending_at', this.form.ending_at)
-      formData.append('nb_people_max', this.form.nb_people_max)
-      formData.append('price', this.form.price)
-      formData.append('place', this.form.place)
-      formData.append('address', this.form.address)
-      formData.append('street', this.form.street)
-      formData.append('address', this.form.address)
-      formData.append('town', this.form.town)
-
-      console.log('before axios')
-      this.$api.post('/event/create', formData)
-        .then((res) => {
-          console.log('success')
-          this.associate(res.data[0])
-        })
-        .catch((error) => {
-          console.log('error')
-          console.log(error)
-        })
-      console.log('after axios')
+      alert("Form submitted!");
+      // this.submitted = false
+      // const formData = new FormData()
+      //
+      // formData.append('image', this.form.image)
+      // formData.append('title', this.form.title)
+      // formData.append('description', this.form.description)
+      // formData.append('start_at', this.form.start_at)
+      // formData.append('ending_at', this.form.ending_at)
+      // formData.append('nb_people_max', this.form.nb_people_max)
+      // formData.append('need_subscribe', this.form.need_subscribe)
+      // formData.append('price', this.form.price)
+      // formData.append('place', this.form.place)
+      // formData.append('address', this.form.address)
+      // formData.append('city', this.form.city)
+      // formData.append('event_type_id', this.form.event_type_id)
+      //
+      //
+      // console.log('before axios')
+      // this.$api.post('/event/create', formData)
+      //   .then((res) => {
+      //     console.log('success')
+      //     this.associate(res.data[0])
+      //   })
+      //   .catch((error) => {
+      //     console.log('error')
+      //     console.log(error)
+      //   })
     },
     associate(v) {
-      console.log(this.selected)
-      console.log("associate")
-      console.log(v)
-
-
-      switch (this.selected) {
-        case 'sport':
+      switch (this.form.event_type_id) {
+        case '4':
           for (let i = 0; i < this.sport_selecteds.length; i++) {
             this.$api.post('event/sport', {event_id: v, sport_id: this.sport_selecteds[i].item.id})
               .then((res) => {
+                console.log("sport")
                 console.log('success')
                 console.log(res)
               })
               .catch((error) => {
+                console.log("sport")
                 console.log('error')
                 console.log(error)
               })
           }
           break;
-        case 'game':
+        case '2':
           for (let i = 0; i < this.game_selecteds.length; i++) {
             this.$api.post('event/game', {event_id: v, game_id: this.game_selecteds[i].item.id})
               .then((res) => {
+                console.log("game")
+                console.log(this.game_selecteds[i])
                 console.log('success')
                 console.log(res)
               })
               .catch((error) => {
+                console.log("game")
                 console.log('error')
                 console.log(error)
               })
           }
           break;
-        case 'art':
+        case '3':
           for (let i = 0; i < this.art_selecteds.length; i++) {
             this.$api.post('event/art', {event_id: v, cultural_journey_id: this.art_selecteds[i].item.id})
               .then((res) => {
+                console.log("art")
                 console.log('success')
                 console.log(res)
               })
               .catch((error) => {
+                console.log("art")
                 console.log('error')
                 console.log(error)
               })
           }
           break;
-        case 'music':
-          console.log("case style")
+        case '1':
           for (let i = 0; i < this.style_selecteds.length; i++) {
             this.$api.post('event/style', {event_id: v, style_id: this.style_selecteds[i].item.id})
               .then((res) => {
+                console.log("music")
                 console.log('success')
                 console.log(res)
               })
               .catch((error) => {
+                console.log("music")
                 console.log('error')
                 console.log(error)
               })
@@ -589,10 +658,12 @@ export default {
           for (let i = 0; i < this.sub_style_selecteds.length; i++) {
             this.$api.post('event/substyle', {event_id: v, sub_style_id: this.sub_style_selecteds[i].item.id})
               .then((res) => {
+                console.log("substyle")
                 console.log('success')
                 console.log(res)
               })
               .catch((error) => {
+                console.log("substyle")
                 console.log('error')
                 console.log(error)
               })
@@ -601,12 +672,11 @@ export default {
         default:
           console.log(`Sorry, we are out of expression.`);
       }
-
-
     },
 
 
-  }
+  },
+
 
 }
 </script>
