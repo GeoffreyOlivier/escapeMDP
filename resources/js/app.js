@@ -8,6 +8,8 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import EvaIcons from 'vue-eva-icons'
 import Vuelidate from 'vuelidate'
 
+import MagicGrid from 'vue-magic-grid'
+
 
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
@@ -33,6 +35,7 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Vuelidate)
+Vue.use(MagicGrid)
 
 new Vue({
   i18n,

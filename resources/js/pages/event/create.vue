@@ -373,7 +373,7 @@ export default {
       {value: '3', text: 'Art et culture'},
       {value: '4', text: 'Sport'}
     ],
-    form: {
+    form: new Form ({
       title: '',
       description: '',
       start_at: '',
@@ -386,7 +386,7 @@ export default {
       city: '',
       event_type_id: '',
       image: null
-    }
+    })
   }),
   computed: {
     options() {
@@ -564,34 +564,34 @@ export default {
         return;
       }
 
-      alert("Form submitted!");
-      // this.submitted = false
-      // const formData = new FormData()
-      //
-      // formData.append('image', this.form.image)
-      // formData.append('title', this.form.title)
-      // formData.append('description', this.form.description)
-      // formData.append('start_at', this.form.start_at)
-      // formData.append('ending_at', this.form.ending_at)
-      // formData.append('nb_people_max', this.form.nb_people_max)
-      // formData.append('need_subscribe', this.form.need_subscribe)
-      // formData.append('price', this.form.price)
-      // formData.append('place', this.form.place)
-      // formData.append('address', this.form.address)
-      // formData.append('city', this.form.city)
-      // formData.append('event_type_id', this.form.event_type_id)
-      //
-      //
-      // console.log('before axios')
-      // this.$api.post('/event/create', formData)
-      //   .then((res) => {
-      //     console.log('success')
-      //     this.associate(res.data[0])
-      //   })
-      //   .catch((error) => {
-      //     console.log('error')
-      //     console.log(error)
-      //   })
+      // alert("Form submitted!");
+      this.submitted = false
+      const formData = new FormData()
+
+      formData.append('image', this.form.image)
+      formData.append('title', this.form.title)
+      formData.append('description', this.form.description)
+      formData.append('start_at', this.form.start_at)
+      formData.append('ending_at', this.form.ending_at)
+      formData.append('nb_people_max', this.form.nb_people_max)
+      formData.append('need_subscribe', this.form.need_subscribe)
+      formData.append('price', this.form.price)
+      formData.append('place', this.form.place)
+      formData.append('address', this.form.address)
+      formData.append('city', this.form.city)
+      formData.append('event_type_id', this.form.event_type_id)
+
+
+      console.log('before axios')
+      this.$api.post('/event/create', formData)
+        .then((res) => {
+          console.log('success')
+          this.associate(res.data[0])
+        })
+        .catch((error) => {
+          console.log('error')
+          console.log(error)
+        })
     },
     associate(v) {
       switch (this.form.event_type_id) {

@@ -28,15 +28,13 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Event[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
      */
-    public function index()
-    {
-
-        $path = '/storage/app/json/france.json';
-        $content = json_decode(file_get_contents($path), true);
-        dd($content);
-        return Event::orderBy('created_at', 'DESC')->get();
+    public function index(){
+//
+//        $path = '/storage/app/json/france.json';
+//        $content = json_decode(file_get_contents($path), true);
+        return Event::all();
     }
 
     /**

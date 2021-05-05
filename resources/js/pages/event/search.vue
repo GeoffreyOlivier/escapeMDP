@@ -12,6 +12,9 @@
           </b-col>
         </b-row>
       </div>
+
+
+
       <div v-for="item in events" :key="item.id">
         <div class="card mb-3" >
           <div class="row g-0">
@@ -63,8 +66,9 @@ h5 {
 </style>
 
 <script>
-export default {
 
+
+export default {
   data: () => ({
     events: ''
   }),
@@ -73,7 +77,7 @@ export default {
   },
   methods: {
     fetchEvent () {
-      this.$api.get('/event/style')
+      this.$api.get('/events')
         .then((response) => {
           console.log(response.data)
           this.events = response.data
