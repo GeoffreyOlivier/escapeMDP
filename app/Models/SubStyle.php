@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Style extends Model
+class SubStyle extends Model
 {
     use HasFactory;
 
-    protected $table = "style_music";
+    protected $table = "substyle";
 
     protected $fillable = [
         'name'
     ];
+
 }

@@ -28,15 +28,21 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Event[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
      */
     public function index()
     {
 
-        $path = '/storage/app/json/france.json';
-        $content = json_decode(file_get_contents($path), true);
-        dd($content);
-        return Event::orderBy('created_at', 'DESC')->get();
+//        $path = '/storage/app/json/france.json';
+//        $content = json_decode(file_get_contents($path), true);
+//        dd($content);
+        return Event::with('eventType')
+            ->with('eventStyle')
+            ->with('eventSubStyle')
+            ->with('eventSport')
+            ->with('eventGame')
+            ->with('eventArt')
+            ->get();
     }
 
     /**
@@ -66,6 +72,7 @@ class EventController extends Controller
             'nb_people_max' => $request->nb_people_max,
             'need_subscribe' => $request->need_subscribe,
             'place' => $request->place,
+            'price' => $request->price,
             'address' => $request->address,
             'city_id' => $request->city,
             'art_id' => $request->art,
@@ -206,10 +213,13 @@ class EventController extends Controller
 
     public function show($id)
     {
-        $event = Event::find($id);
+        $event = Event::where('id', $id)
+        ->with('eventType')
+        ->get();
         $nb_like = EventLikedUser::where('event_id', $id)->count();
         $nb_book = EventBookedUser::where('event_id', $id)->count();
         $nb_join = EventJoinedUser::where('event_id', $id)->count();
+
 
         $tab_completed = [];
 
@@ -227,6 +237,7 @@ class EventController extends Controller
         $tab_completed["nb_people_max"] = $event->nb_people_max;
         $tab_completed["need_subscribe"] = $event->need_subscribe;
         $tab_completed["place"] = $event->place;
+        $tab_completed["price"] = $event->price;
         $tab_completed["address"] = $event->address;
         $tab_completed["street"] = $event->street;
         $tab_completed["city"] = $event->city;
@@ -263,6 +274,7 @@ class EventController extends Controller
             'created_at' => Carbon::now(),
             'start_at' => $request->start_at,
             'end_at' => $request->end_at,
+            'price' => $request->price,
             'nb_people_max' => $request->nb_people_max,
             'need_subscribe' => $request->need_subscribe,
             'api_google_id' => $request->api_google_id,
@@ -296,6 +308,7 @@ class EventController extends Controller
                 'created_at' => Carbon::now(),
                 'start_at' => $request->start_at,
                 'end_at' => $request->end_at,
+                'price' => $request->price,
                 'nb_people_max' => $request->nb_people_max,
                 'need_subscribe' => $request->need_subscribe,
                 'api_google_id' => $request->api_google_id,

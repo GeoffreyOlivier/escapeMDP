@@ -236,102 +236,7 @@
     </b-container>
   </div>
 </template>
-<style>
-.btn-style {
-  color: #000000;
-  border-color: #111D5E;
-  margin: 2px 0;
-}
 
-.btn-style:hover {
-  color: #fff;
-  background-color: #111D5E;
-  border-color: #111D5E;
-}
-
-.btn-sub-style {
-  color: #D70039;
-  border-color: #D70039;
-  margin: 2px 0;
-}
-
-.btn-sub-style:hover {
-  color: #fff;
-  border-color: #D70039;
-  background-color: #D70039;
-}
-
-.btn {
-  border-radius: 25px;
-}
-
-.tag-style {
-  display: flex;
-  justify-content: space-between;
-
-}
-
-.login-container {
-  padding: 50px 10px;
-}
-
-.autocomplete-result-list {
-  margin-left: -40px;
-  overflow: auto;
-  list-style-type: none;
-  max-height: 200px;
-}
-
-.autocomplete-result-list-city {
-  margin-left: -40px;
-  overflow: auto;
-  list-style-type: none;
-  max-height: 100px;
-}
-
-h2 {
-  font-family: Roboto, sans-serif;;
-  text-transform: uppercase;
-  color: #D70039;
-}
-
-h3 {
-  padding-top: 10px;
-}
-
-.create-account, .login-account {
-  /*padding: 30px 0;*/
-
-}
-
-.create-account {
-  padding: 20px 26px;
-}
-
-.login-account {
-  padding: 20px 26px;
-}
-
-form {
-  margin-top: 25px;
-
-}
-
-.legend {
-  color: #111D5E;
-  font-family: 'Roboto', serif;
-  font-size: x-large;
-}
-
-/*h1 {*/
-/*  !*transform: translate(-15px);*!*/
-/*  font-family: 'Gobold_Extra2';*/
-/*  text-transform: capitalize;*/
-/*  color: #D70039;*/
-/*  margin-bottom: 20px;*/
-/*}*/
-
-</style>
 <script>
 import { required, minLength } from "vuelidate/lib/validators";
 import Form from 'vform'
@@ -559,39 +464,39 @@ export default {
       this.form.image = event.target.files[0]
     },
     submitForm() {
-      this.$v.form.$touch();
-      if (this.$v.form.$invalid) {
-        return;
-      }
+      // this.$v.form.$touch();
+      // if (this.$v.form.$invalid) {
+      //   return;
+      // }
+      //
+      // alert("Form submitted!");
+      this.submitted = false
+      const formData = new FormData()
 
-      alert("Form submitted!");
-      // this.submitted = false
-      // const formData = new FormData()
-      //
-      // formData.append('image', this.form.image)
-      // formData.append('title', this.form.title)
-      // formData.append('description', this.form.description)
-      // formData.append('start_at', this.form.start_at)
-      // formData.append('ending_at', this.form.ending_at)
-      // formData.append('nb_people_max', this.form.nb_people_max)
-      // formData.append('need_subscribe', this.form.need_subscribe)
-      // formData.append('price', this.form.price)
-      // formData.append('place', this.form.place)
-      // formData.append('address', this.form.address)
-      // formData.append('city', this.form.city)
-      // formData.append('event_type_id', this.form.event_type_id)
-      //
-      //
-      // console.log('before axios')
-      // this.$api.post('/event/create', formData)
-      //   .then((res) => {
-      //     console.log('success')
-      //     this.associate(res.data[0])
-      //   })
-      //   .catch((error) => {
-      //     console.log('error')
-      //     console.log(error)
-      //   })
+      formData.append('image', this.form.image)
+      formData.append('title', this.form.title)
+      formData.append('description', this.form.description)
+      formData.append('start_at', this.form.start_at)
+      formData.append('ending_at', this.form.ending_at)
+      formData.append('nb_people_max', this.form.nb_people_max)
+      formData.append('need_subscribe', this.form.need_subscribe)
+      formData.append('price', this.form.price)
+      formData.append('place', this.form.place)
+      formData.append('address', this.form.address)
+      formData.append('city', this.form.city)
+      formData.append('event_type_id', this.form.event_type_id)
+
+
+      console.log('before axios')
+      this.$api.post('/event/create', formData)
+        .then((res) => {
+          console.log('success')
+          this.associate(res.data[0])
+        })
+        .catch((error) => {
+          console.log('error')
+          console.log(error)
+        })
     },
     associate(v) {
       switch (this.form.event_type_id) {
@@ -680,3 +585,99 @@ export default {
 
 }
 </script>
+<style>
+.btn-style {
+  color: #000000;
+  border-color: #111D5E;
+  margin: 2px 0;
+}
+
+.btn-style:hover {
+  color: #fff;
+  background-color: #111D5E;
+  border-color: #111D5E;
+}
+
+.btn-sub-style {
+  color: #D70039;
+  border-color: #D70039;
+  margin: 2px 0;
+}
+
+.btn-sub-style:hover {
+  color: #fff;
+  border-color: #D70039;
+  background-color: #D70039;
+}
+
+.btn {
+  border-radius: 25px;
+}
+
+.tag-style {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.login-container {
+  padding: 50px 10px;
+}
+
+.autocomplete-result-list {
+  margin-left: -40px;
+  overflow: auto;
+  list-style-type: none;
+  max-height: 200px;
+}
+
+.autocomplete-result-list-city {
+  margin-left: -40px;
+  overflow: auto;
+  list-style-type: none;
+  max-height: 100px;
+}
+
+h2 {
+  font-family: Roboto, sans-serif;;
+  text-transform: uppercase;
+  color: #D70039;
+}
+
+h3 {
+  padding-top: 10px;
+}
+
+.create-account, .login-account {
+  /*padding: 30px 0;*/
+
+}
+
+.create-account {
+  padding: 20px 26px;
+}
+
+.login-account {
+  padding: 20px 26px;
+}
+
+form {
+  margin-top: 25px;
+
+}
+
+.legend {
+  color: #111D5E;
+  font-family: 'Roboto', serif;
+  font-size: x-large;
+}
+
+/*h1 {*/
+/*  !*transform: translate(-15px);*!*/
+/*  font-family: 'Gobold_Extra2';*/
+/*  text-transform: capitalize;*/
+/*  color: #D70039;*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+</style>

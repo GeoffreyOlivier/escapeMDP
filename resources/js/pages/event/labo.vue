@@ -1,91 +1,70 @@
 <template>
-  <div>
-    <b-form @submit.stop.prevent="onSubmit">
-      <b-form-group id="example-input-group-1" label="Name" label-for="example-input-1">
-        <b-form-input
-          id="example-input-1"
-          name="example-input-1"
-          v-model="form.name"
-          v-validate="{ required: true, min: 3 }"
-          :state="validateState('example-input-1')"
-          aria-describedby="input-1-live-feedback"
-          data-vv-as="Name"
-        ></b-form-input>
+  <div class="container">
+    <h1>test</h1>
+    <StackGrid
+      :columnWidth="200"
+      :gutterX="20"
+      :gutterY="20">
+      <!-- you component like this -->
+      <div class="stack-item" v-for="(item, id) in events" :key="id">
+        <img class="img-card" :src="item.image_path" alt="bar">
+        <div class="color" :class="{blue: id%2 === 0}">
+          <h6 >{{ item.title }}</h6>
+          <p>{{ item.start_at | moment('ll') }} / {{ item.place }}</p>
+          <p v-if="item.price">{{ item.price }}€</p>
+          <p v-else>Gratuit</p>
+          <p>{{item.event_type.name}}</p>
+        </div>
 
-        <b-form-invalid-feedback id="input-1-live-feedback">{{ veeErrors.first('example-input-1') }}</b-form-invalid-feedback>
-      </b-form-group>
-
-      <b-form-group id="example-input-group-2" label="Food" label-for="example-input-2">
-        <b-form-select
-          id="example-input-2"
-          name="example-input-2"
-          v-model="form.food"
-          v-validate="{ required: true }"
-          :options="foods"
-          :state="validateState('example-input-2')"
-          aria-describedby="input-2-live-feedback"
-          data-vv-as="Food"
-        ></b-form-select>
-
-        <b-form-invalid-feedback id="input-2-live-feedback">{{ veeErrors.first('example-input-2') }}</b-form-invalid-feedback>
-      </b-form-group>
-
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button class="ml-2" @click="resetForm()">Reset</b-button>
-    </b-form>
+      </div>
+    </StackGrid>
   </div>
 </template>
-
-<style>
-body {
-  padding: 1rem;
-}
-</style>
-
 <script>
+import StackGrid from 'vue-stack-grid-component'
+
 export default {
-  data() {
-    return {
-      foods: [
-        { value: null, text: "Choose..." },
-        { value: "apple", text: "Apple" },
-        { value: "orange", text: "Orange" }
-      ],
-      form: {
-        name: null,
-        food: null
-      }
-    };
+  components: {
+    StackGrid
+  },
+  data: () => ({
+    events: ''
+  }),
+  created() {
+    console.log("created")
+    this.fetchEvent()
   },
   methods: {
-    validateState(ref) {
-      if (
-        this.veeFields[ref] &&
-        (this.veeFields[ref].dirty || this.veeFields[ref].validated)
-      ) {
-        return !this.veeErrors.has(ref);
-      }
-      return null;
-    },
-    resetForm() {
-      this.form = {
-        name: null,
-        food: null
-      };
-
-      this.$nextTick(() => {
-        this.$validator.reset();
-      });
-    },
-    onSubmit() {
-      this.$validator.validateAll().then(result => {
-        if (!result) {
-          return;
-        }
-
-        alert("Form submitted!");
-      });
+    fetchEvent() {
+      this.$api.get('/events')
+        .then((response) => {
+          console.log(response.data)
+          this.events = response.data
+          console.log(this.events)
+        })
+        .catch((error) => {
+          this.loading = false
+          console.log(error)
+          console.log(error.response)
+        })
     }
   }
-};
+}
 </script>
+<style>
+.color{
+  color: #D70039;
+  text-align: center;
+}
+.blue{
+  color: #2b40a7;
+}
+h6{
+ font-weight: bold;
+}
+.img-card{
+  max-width: 200px;
+  max-height: 225px;
+  border-radius: 35px;
+}
+</style>

@@ -63,8 +63,12 @@ h5 {
 </style>
 
 <script>
-export default {
 
+import MagicGrid from 'vue-magic-grid'
+export default {
+components: {
+  'magic-grid' : MagicGrid
+},
   data: () => ({
     events: ''
   }),
@@ -73,7 +77,7 @@ export default {
   },
   methods: {
     fetchEvent () {
-      this.$api.get('/event/style')
+      this.$api.get('/events')
         .then((response) => {
           console.log(response.data)
           this.events = response.data

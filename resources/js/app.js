@@ -13,7 +13,9 @@ import Vuelidate from 'vuelidate'
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import MagicGrid from 'vue-magic-grid'
 
+Vue.use(MagicGrid)
 import '~/plugins'
 import '~/components'
 Vue.filter('truncate', function (text, stop, clamp) {
@@ -33,7 +35,12 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Vuelidate)
+const moment = require('moment')
+require('moment/locale/fr')
 
+Vue.use(require('vue-moment'), {
+  moment
+})
 new Vue({
   i18n,
   store,
