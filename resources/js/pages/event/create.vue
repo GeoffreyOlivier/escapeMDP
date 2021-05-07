@@ -1,11 +1,11 @@
 <template>
   <div>
     <b-container>
-      <h1>Mon évènement</h1>
+      <h2>Mon évènement</h2>
       <b-form @submit.prevent="submitForm">
         <b-row>
           <b-col>
-
+            <h3>Information</h3>
             <b-form-group id="title" label="Titre" class="add-style">
               <b-form-input
                 id="example-input-1"
@@ -15,8 +15,6 @@
               ></b-form-input>
               <div v-if="submitted && !$v.form.title.required" class="invalid-feedback">Le champs est obligatoire</div>
               <div v-if="submitted && !$v.form.title.minLength" class="invalid-feedback">Le champs doit faire au minimum 4 caractères</div>
-
-
             </b-form-group>
 
             <b-form-group id="description" label="Description" class="add-style">
@@ -28,8 +26,8 @@
                 id="input-1-live-feedback"
               >This is a required field and must be at least 3 characters.</b-form-invalid-feedback>
             </b-form-group>
-
-            <b-form-group id="categorie" label="Catégorie" class="add-style">
+            <input id="file" type="file" @change="processFile($event)">
+            <b-form-group id="categorie" label="Catégorie" class="add-style mt-3">
               <b-form-select v-on:change="changeItem()" v-model="form.event_type_id"
                              :options="options_cat"></b-form-select>
             </b-form-group>
@@ -73,39 +71,7 @@
                 </div>
               </div>
             </b-form-group>
-            <b-form-group v-if="form.event_type_id === '2'" id="sport" label="Sport" class="add-style">
-              <VueFuse
-                :list="sport"
-                :fuse-opts="options"
-                :search="search"
-                :map-results="false"
-                class="autocomplete-input"
-                placeholder="Tennis, Foot, Course à pied, ..."
-                @fuse-results="handleResults"
-              />
-
-              <ul class="autocomplete-result-list">
-                <li class="autocomplete-result"
-                    v-for="(sport, i) in results"
-                    :key="i">
-                  <div @click="add_sport( sport,'sport')"
-                       class="list-group-item">
-                    {{ sport.item.name }}
-                  </div>
-                </li>
-              </ul>
-              <div class="tag-style">
-                <div>
-                  <div v-for="sport_selected in sport_selecteds" :keys:="sport_selecteds.item">
-                    <b-button class="btn-sub-style" variant="outline-primary"
-                              @click="add_sport(sport_selected)">
-                      {{ sport_selected.item.name }} X
-                    </b-button>
-                  </div>
-                </div>
-              </div>
-            </b-form-group>
-            <b-form-group v-if="form.event_type_id === '3'" id="game" label="Jeux" class="add-style">
+            <b-form-group v-if="form.event_type_id === '2'" id="game" label="Jeux" class="add-style">
               <VueFuse
                 :list="game"
                 :fuse-opts="options"
@@ -137,7 +103,7 @@
                 </div>
               </div>
             </b-form-group>
-            <b-form-group v-if="form.event_type_id === '4'" id="art" label="Art et culture" class="add-style">
+            <b-form-group v-if="form.event_type_id === '3'" id="art" label="Art et culture" class="add-style">
               <VueFuse
                 :list="art"
                 :fuse-opts="options"
@@ -169,6 +135,38 @@
                 </div>
               </div>
             </b-form-group>
+            <b-form-group v-if="form.event_type_id === '4'" id="sport" label="Sport" class="add-style">
+              <VueFuse
+                :list="sport"
+                :fuse-opts="options"
+                :search="search"
+                :map-results="false"
+                class="autocomplete-input"
+                placeholder="Tennis, Foot, Course à pied, ..."
+                @fuse-results="handleResults"
+              />
+
+              <ul class="autocomplete-result-list">
+                <li class="autocomplete-result"
+                    v-for="(sport, i) in results"
+                    :key="i">
+                  <div @click="add_sport( sport,'sport')"
+                       class="list-group-item">
+                    {{ sport.item.name }}
+                  </div>
+                </li>
+              </ul>
+              <div class="tag-style">
+                <div>
+                  <div v-for="sport_selected in sport_selecteds" :keys:="sport_selecteds.item">
+                    <b-button class="btn-sub-style" variant="outline-primary"
+                              @click="add_sport(sport_selected)">
+                      {{ sport_selected.item.name }} X
+                    </b-button>
+                  </div>
+                </div>
+              </div>
+            </b-form-group>
 
             <b-form-group id="price" label="Tarif" class="add-style">
               <b-form-input
@@ -176,6 +174,24 @@
                 class="form-control" type="text" name="price"
               />
             </b-form-group>
+            <b-row>
+              <b-col class="col-7">
+                <b-form-checkbox class="switch" v-model="form.need_subscribe" switch >
+                  Sur réservation ?
+                </b-form-checkbox>
+              </b-col>
+              <b-col class="col-5">
+                <b-form-group id="nb_people_max" class="add-style">
+                  <b-form-input
+                    :disabled="form.need_subscribe === false"
+                    placeholder="Nombre de place"
+                    v-model="form.nb_people_max"
+                    class="form-control" type="text" name="nb_people_max"
+                  />
+                </b-form-group>
+              </b-col>
+            </b-row>
+
             <b-form-group id="date_start" label="Date et heure début" class="add-style">
               <b-form-input
                 v-model="form.start_at"
@@ -188,22 +204,9 @@
                 class="form-control" type="datetime-local" name="date"
               />
             </b-form-group>
-            <b-form-group id="nb_people_max" label="Nombre de personnes maximum" class="add-style">
-              <b-form-input
-                v-model="form.nb_people_max"
-                class="form-control" type="text" name="nb_people_max"
-              />
-            </b-form-group>
-            <input id="file" type="file" @change="processFile($event)">
-            <b-form-checkbox
-              id="checkbox-1"
-              v-model="form.need_subscribe"
-              name="checkbox-1"
-              value="accepted"
-              unchecked-value="not_accepted"
-            >
-              Sur réservation ?
-            </b-form-checkbox>
+          </b-col>
+          <b-col>
+            <h3>Localisation</h3>
             <b-form-group id="place" label="Lieu" class="add-style">
               <b-form-input
                 v-model="form.place"
@@ -222,16 +225,15 @@
                 class="form-control" type="text" name="town"
               />
             </b-form-group>
-            <b-form-select v-model="form.city" :options="cities" :select-size="4"></b-form-select>
+            <b-form-select v-model="form.city" :options="cities" :select-size="3">
+              <div class="mt-3">Selected: <strong>{{ form.city }}</strong></div>
+            </b-form-select>
 
-            <v-button :loading="form.busy">
-              Valider
-            </v-button>
-          </b-col>
-          <b-col>
-            <h1>test</h1>
           </b-col>
         </b-row>
+        <v-button class="text-center" :loading="form.busy">
+          Valider
+        </v-button>
       </b-form>
     </b-container>
   </div>
@@ -242,6 +244,7 @@ import { required, minLength } from "vuelidate/lib/validators";
 import Form from 'vform'
 import VueFuse from "../components/fuse";
 import {LOGOUT} from "../../store/mutation-types";
+
 
 export default {
   name: 'App',
@@ -284,7 +287,7 @@ export default {
       start_at: '',
       ending_at: '',
       nb_people_max: '',
-      need_subscribe: '',
+      need_subscribe: false,
       price: '',
       place: '',
       address: '',
@@ -312,16 +315,12 @@ export default {
     this.fetchGame()
     this.fetchSport()
     this.fetchCity()
-    console.log(this.search)
+    console.log(this.form.need_subscribe)
   },
   watch: {
     code(value) {
-      console.log(typeof 'value')
-      console.log(value)
       if (value.length === 5) {
-        console.log("the count is five")
         this.city_result = this.city.filter(e => e.code_postal === value)
-        console.log(this.city_result)
 
         for (let i = 0; i < this.city_result.length; i++) {
           this.cities.push(
@@ -333,9 +332,15 @@ export default {
         }
         console.log(this.cities)
         console.log(this.form.city)
+      }if (value.length < 5) {
+        console.log("pass if")
+        if(this.cities){
+          this.cities = []
+        }
+
       }
       // this.form.city = value;
-      // console.log(this.form.city)
+      console.log(this.form.city)
     }
   },
   validations: {
@@ -586,6 +591,26 @@ export default {
 }
 </script>
 <style>
+
+.switch:checked {
+  color: #fff;
+  border-color: #111D5E;
+  background-color: #111D5E;
+}
+.switch:before {
+  color: #fff;
+  border-color: #111D5E;
+  background-color: #111D5E;
+}
+h3{
+  font-family: 'Gobold_Extra2';
+  color: #111D5E;
+  padding-bottom: 25px;
+}
+.col-form-label{
+  font-family: 'Gobold_Extra2';
+  color: #111D5E;
+}
 .btn-style {
   color: #000000;
   border-color: #111D5E;

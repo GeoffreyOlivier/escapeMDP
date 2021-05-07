@@ -26,19 +26,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37c91a4-5743-4061-9d9b-9361fdbe38db" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-vue-spa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-vue-spa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Style.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Style.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Footer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/layouts/default.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/event/labo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/labo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/event/labo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/MyFeed.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/search.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/search.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/custom.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +203,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../exam/recipe_manager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/pages/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -221,6 +219,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\escape\resources\js\pages\components" />
       <recent name="C:\xampp\htdocs\escape\escapeMDP" />
       <recent name="C:\xampp\htdocs\escape\database\migrations" />
       <recent name="C:\xampp\htdocs\laravel-vue-spa\resources\sass" />
@@ -247,6 +246,8 @@
       <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
       <option name="INTERPRETER_PATH" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <envs />
       <method v="2" />
     </configuration>
     <configuration name="hot" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -321,6 +322,12 @@
       <workItem from="1619947021117" duration="754000" />
       <workItem from="1619949345357" duration="1866000" />
       <workItem from="1619953803022" duration="8763000" />
+      <workItem from="1620203180891" duration="1247000" />
+      <workItem from="1620204606894" duration="5132000" />
+      <workItem from="1620211702581" duration="12396000" />
+      <workItem from="1620284467091" duration="27000" />
+      <workItem from="1620293891861" duration="606000" />
+      <workItem from="1620300097967" duration="34000" />
     </task>
     <servers />
   </component>
@@ -350,55 +357,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="418" y="311" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1619962364743">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state x="418" y="311" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2752.1112@0.0.2752.1112" timestamp="1619962364743" />
-    <state x="100" y="100" width="1174" height="912" key="DiffContextDialog" timestamp="1619958348149">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state x="100" y="100" width="1174" height="912" key="DiffContextDialog/0.0.2752.1112@0.0.2752.1112" timestamp="1619958348149" />
-    <state x="476" y="310" key="FileChooserDialogImpl" timestamp="1619962237032">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state x="476" y="310" key="FileChooserDialogImpl/0.0.2752.1112@0.0.2752.1112" timestamp="1619962237032" />
-    <state width="1316" height="224" key="GridCell.Tab.0.bottom" timestamp="1619966935265">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state width="1316" height="224" key="GridCell.Tab.0.bottom/0.0.2752.1112@0.0.2752.1112" timestamp="1619966935265" />
-    <state width="1316" height="224" key="GridCell.Tab.0.center" timestamp="1619966935264">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state width="1316" height="224" key="GridCell.Tab.0.center/0.0.2752.1112@0.0.2752.1112" timestamp="1619966935264" />
-    <state width="1316" height="224" key="GridCell.Tab.0.left" timestamp="1619966935264">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state width="1316" height="224" key="GridCell.Tab.0.left/0.0.2752.1112@0.0.2752.1112" timestamp="1619966935264" />
-    <state width="1316" height="224" key="GridCell.Tab.0.right" timestamp="1619966935264">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state width="1316" height="224" key="GridCell.Tab.0.right/0.0.2752.1112@0.0.2752.1112" timestamp="1619966935264" />
-    <state x="269" y="302" key="IDE.errors.dialog" timestamp="1619965859930">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state x="269" y="302" key="IDE.errors.dialog/0.0.2752.1112@0.0.2752.1112" timestamp="1619965859930" />
-    <state x="0" y="93" key="MergeDialog" timestamp="1619866521238">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state x="0" y="93" key="MergeDialog/0.0.2752.1112@0.0.2752.1112" timestamp="1619866521238" />
-    <state x="399" y="292" width="579" height="534" key="find.popup" timestamp="1619965827042">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state x="399" y="292" width="579" height="534" key="find.popup/0.0.2752.1112@0.0.2752.1112" timestamp="1619965827042" />
-    <state x="477" y="269" key="git4idea.branch.GitSmartOperationDialog" timestamp="1619866488724">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state x="477" y="269" key="git4idea.branch.GitSmartOperationDialog/0.0.2752.1112@0.0.2752.1112" timestamp="1619866488724" />
-    <state x="136" y="252" key="new project wizard" timestamp="1619892392745">
-      <screen x="0" y="0" width="2752" height="1112" />
-    </state>
-    <state x="136" y="252" key="new project wizard/0.0.2752.1112@0.0.2752.1112" timestamp="1619892392745" />
   </component>
 </project>

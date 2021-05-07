@@ -14,20 +14,26 @@
 
         <ul class="navbar-nav ml-auto">
           <!-- Authenticated -->
-          <li>
+          <li v-if="!user || promoter === 1">
             <router-link to="/events" class="nav-link">Rechercher</router-link>
           </li>
-          <li>
+          <li v-if="!user || promoter === 1">
             <router-link to="#" class="nav-link">A propos</router-link>
           </li>
-          <li>
+          <li v-if="!user || promoter === 1">
             <router-link to="/event/create" class="nav-link">Publier</router-link>
+          </li>
+          <li v-if="promoter === 0">
+            <router-link to="my-feed" class="nav-link">Mon fil</router-link>
+          </li>
+          <li v-if="promoter === 0">
+            <router-link to="#" class="nav-link">Agenda</router-link>
           </li>
           <li v-if="user" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-dark"
                href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
             >
-              {{ user.name }}
+             Mon compte
             </a>
             <div class="dropdown-menu">
               <router-link :to="{ name: 'settings.profile' }" class="dropdown-item pl-3">
@@ -73,8 +79,13 @@ export default {
   },
 
   data: () => ({
-    appName: window.config.appName
+    appName: window.config.appName,
+    promoter: ''
   }),
+  created() {
+    this.promoter = this.user.promoter
+    console.log(this.promoter)
+  },
 
   computed: mapGetters({
     user: 'auth/user'

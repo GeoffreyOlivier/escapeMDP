@@ -5,17 +5,19 @@
     <div class="container mt-4">
       <child />
     </div>
+    <foot/>
   </div>
 </template>
 
 <script>
 import Navbar from '~/components/Navbar'
-
+import foot from '~/components/footer'
 export default {
   name: 'MainLayout',
 
   components: {
-    Navbar
+    Navbar,
+    foot
   }
 }
 </script>

@@ -12,10 +12,9 @@
           <h6 >{{ item.title }}</h6>
           <p>{{ item.start_at | moment('ll') }} / {{ item.place }}</p>
           <p v-if="item.price">{{ item.price }}€</p>
-          <p v-else>Gratuit</p>
-          <p>{{item.event_type.name}}</p>
+          <p v-if="item.price === 0  || !item.price">Gratuit</p>
+<!--          <p>{{item.event_type.name}}</p>-->
         </div>
-
       </div>
     </StackGrid>
   </div>
@@ -24,6 +23,7 @@
 import StackGrid from 'vue-stack-grid-component'
 
 export default {
+  name: 'my_feed',
   components: {
     StackGrid
   },
@@ -52,6 +52,9 @@ export default {
 }
 </script>
 <style>
+.stack-item{
+
+}
 .color{
   color: #D70039;
   text-align: center;

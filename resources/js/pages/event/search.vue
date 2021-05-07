@@ -2,13 +2,13 @@
   <div class="container-fluid">
       <div class="header">
         <b-row>
-          <b-col class="relative">
+          <b-col class="img-header">
             <img src="../../../images/today.gif" alt="gif">
-            <h1>Aujourd'hui</h1>
+            <h3 class="titre-images" >Aujourd'hui</h3>
           </b-col>
-          <b-col class="relative">
+          <b-col class="img-header">
             <img src="../../../images/festival.gif" alt="gif">
-            <h1>Festival</h1>
+            <h3 class="titre-images">Les + populaires</h3>
           </b-col>
         </b-row>
       </div>
@@ -34,15 +34,26 @@
   </div>
 </template>
 <style>
-.relative{
-
+.header{
+  margin-bottom: 50px;
+}
+.img-header{
+  position: relative;
+}
+.titre-images{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: Gobold_Extra2, serif;
 }
 h1{
   position: absolute;
   color: #fff;
 }
 img {
-  width: 100%;
+  width: 110%;
 }
 
 h5 {
