@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid body-height">
       <div class="header">
         <b-row>
           <b-col class="img-header">
@@ -12,7 +12,7 @@
           </b-col>
         </b-row>
       </div>
-      <div v-for="item in events" :key="item.id">
+      <div v-for="item in events">
         <div class="card mb-3" >
           <div class="row g-0">
             <div class="col-md-4">
@@ -34,11 +34,17 @@
   </div>
 </template>
 <style>
+.body-height{
+  height: 600vh
+}
 .header{
   margin-bottom: 50px;
 }
 .img-header{
   position: relative;
+}
+.card-title{
+  text-transform: uppercase;
 }
 .titre-images{
   position: absolute;

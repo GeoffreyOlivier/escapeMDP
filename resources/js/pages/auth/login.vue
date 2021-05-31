@@ -20,15 +20,15 @@
               />
               <has-error :form="formlogin" field="password" />
             </b-form-group>
-            <v-button :loading="formlogin.busy">
+            <v-button class="mb-2" :loading="formlogin.busy">
               {{ $t('login') }}
             </v-button>
             <!-- Remember Me -->
-            <checkbox v-model="remember" name="remember">
+            <checkbox class="mb-2" v-model="remember" name="remember">
               {{ $t('remember_me') }}
             </checkbox>
             <!-- forgot password -->
-            <router-link :to="{ name: 'password.request' }" class="small ml-auto my-auto">
+            <router-link  :to="{ name: 'password.request' }" class="small ml-auto my-auto">
               {{ $t('forgot_password') }}
             </router-link>
           </b-form>
@@ -80,8 +80,10 @@
                 required
               />
             </b-form-group>
-            <b-form-checkbox v-model="form.promoter" switch size="lg">
-              Vous êtes un créateur d'évenement ?
+            <b-form-checkbox
+              type="checkbox"
+              id="customSwitch1" v-model="form.promoter" switch >
+              Sur réservation ?
             </b-form-checkbox>
             <b-form-group v-if="form.promoter" id="email" label="Rue, avenue, lieu-dit*" class="label">
               <b-form-input
@@ -139,6 +141,11 @@
 </template>
 
 <style>
+.custom-control-input:checked ~
+.custom-control-label::before {
+  border-color: #111D5E !important;
+  background-color: #111D5E !important;
+}
 
 h2 {
   font-family: Roboto, sans-serif;;
@@ -278,7 +285,7 @@ export default {
         // Update the user.
         await this.$store.dispatch('auth/updateUser', { user: data })
         // Redirect home.
-        this.$router.push({ name: 'home' })
+        this.$router.push({ name: 'my-feed' })
       }
     },
     redirect () {

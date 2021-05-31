@@ -58,6 +58,16 @@ class Event extends Model
         return $this->hasMany(EventGame::class);
     }
 
+    public function user()
+    {
+        return $this->belongsToMany(User::class, 'interest', 'event_id', 'user_id');
+    }
+
+    public function interest()
+    {
+        return $this->hasMany(Interest::class);
+    }
+
 
 
 

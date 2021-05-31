@@ -18,7 +18,7 @@
             <router-link to="/events" class="nav-link">Rechercher</router-link>
           </li>
           <li v-if="!user || promoter === 1">
-            <router-link to="#" class="nav-link">A propos</router-link>
+            <router-link to="#" class="nav-link">À propos</router-link>
           </li>
           <li v-if="!user || promoter === 1">
             <router-link to="/event/create" class="nav-link">Publier</router-link>
@@ -83,8 +83,7 @@ export default {
     promoter: ''
   }),
   created() {
-    this.promoter = this.user.promoter
-    console.log(this.promoter)
+      this.promoter = this.user.promoter
   },
 
   computed: mapGetters({

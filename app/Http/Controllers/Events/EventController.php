@@ -15,9 +15,11 @@ use App\Models\EventSport;
 use App\Models\EventStyle;
 use App\Models\EventSubStyle;
 use App\Models\Game;
+use App\Models\Interest;
 use App\Models\Sports;
 use App\Models\Style;
 use Carbon\Carbon;
+use Doctrine\DBAL\Schema\AbstractAsset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -89,133 +91,44 @@ class EventController extends Controller
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
 
-    public function joinEvent($id)
+
+    public function interestEvent($id, $type)
     {
 
-        if (EventJoinedUser::where('user_id', Auth::id())->where('event_id', $id)->exists()) {
+        $interest = Interest::where("user_id", Auth::id())->first();
 
-            $event = EventJoinedUser::where('user_id', Auth::id())
-                ->where('event_id', $id)
-                ->update(['deprecated' => false]);
 
-            return response()->json([
-                $event,
-                'message' => __('event re like successfully')
-            ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        $like = $interest->liked;
+        $join = $interest->joined;
+        $book = $interest->booked;
 
-        } else {
-            $attributes = [
-                "user_id" => Auth::id(),
-                "event_id" => $id,
-            ];
-
-            $event = EventJoinedUser::create($attributes);
-
-            return response()->json([
-                $event,
-                'message' => __('event join successfully')
-            ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        switch ($type) {
+            case "like":
+                $like = !$like;
+                break;
+            case "join":
+                $join = !$join;
+                break;
+            case "book":
+                $book = !$book;
+                break;
         }
+
+        return Interest::updateOrCreate(
+            ["user_id" => Auth::id()],
+            ["event_id" => $id,
+                "liked" => $like ?? null,
+                "joined" => $join ?? null,
+                "booked" => $book ?? null]);
+
     }
 
-    public function unJoinEvent($id)
-    {
-
-        $event = EventJoinedUser::where('user_id', Auth::id())
-            ->where('event_id', $id)
-            ->update(['deprecated' => true]);
-        return response()->json([
-            $event,
-            'message' => __('event unjoin successfully')
-        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
-    }
-
-    public function likeEvent($id)
-    {
-
-        if (EventLikedUser::where('user_id', Auth::id())->where('event_id', $id)->exists()) {
-
-            $event = EventLikedUser::where('user_id', Auth::id())
-                ->where('event_id', $id)
-                ->update(['deprecated' => false]);
-
-            return response()->json([
-                $event,
-                'message' => __('event re like successfully')
-            ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
-
-        } else {
-            $attributes = [
-                "user_id" => Auth::id(),
-                "event_id" => $id,
-            ];
-
-            $event = EventLikedUser::create($attributes);
-
-            return response()->json([
-                $event,
-                'message' => __('event like successfully')
-            ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
-        }
-    }
-
-    public function unLikeEvent($id)
-    {
-
-        $event = EventLikedUser::where('user_id', Auth::id())
-            ->where('event_id', $id)
-            ->update(['deprecated' => true]);
-        return response()->json([
-            $event,
-            'message' => __('event unlike successfully')
-        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
-    }
-
-    public function bookEvent($id)
-    {
-        if (EventBookedUser::where('user_id', Auth::id())->where('event_id', $id)->exists()) {
-
-            $event = EventBookedUser::where('user_id', Auth::id())
-                ->where('event_id', $id)
-                ->update(['deprecated' => false]);
-
-            return response()->json([
-                $event,
-                'message' => __('event re book successfully')
-            ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
-
-        } else {
-            $attributes = [
-                "user_id" => Auth::id(),
-                "event_id" => $id,
-            ];
-
-            $event = EventBookedUser::create($attributes);
-
-            return response()->json([
-                $event,
-                'message' => __('event book successfully')
-            ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
-        }
-    }
-
-    public function unBookEvent($id)
-    {
-
-        $event = EventBookedUser::where('user_id', Auth::id())
-            ->where('event_id', $id)
-            ->update(['deprecated' => true]);
-        return response()->json([
-            $event,
-            'message' => __('event unbook successfully')
-        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
-    }
 
     public function show($id)
     {
         $event = Event::where('id', $id)
-        ->with('eventType')
-        ->get();
+            ->with('eventType')
+            ->get();
         $nb_like = EventLikedUser::where('event_id', $id)->count();
         $nb_book = EventBookedUser::where('event_id', $id)->count();
         $nb_join = EventJoinedUser::where('event_id', $id)->count();
@@ -249,6 +162,58 @@ class EventController extends Controller
             $tab_completed,
             'message' => __('event unbook successfully')
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+    }
+
+    public function myFeed()
+    {
+
+
+        $events = Event::all();
+
+        $myEvents = Interest::where("user_id", Auth::id())->get();
+
+
+
+        $tab_completeds = [];
+        foreach ($events as $event) {
+            $tab_completed = [];
+            $tab_completed["id"] = $event->id;
+            $tab_completed["title"] = $event->title;
+            $tab_completed["description"] = $event->description;
+            $tab_completed["start_at"] = $event->start_at;
+            $tab_completed["ending_at"] = $event->ending_at;
+            $tab_completed["user_id"] = $event->user_id;
+            $tab_completed["nb_people_max"] = $event->nb_people_max;
+            $tab_completed["need_subscribe"] = $event->need_subscribe;
+            $tab_completed["place"] = $event->place;
+            $tab_completed["address"] = $event->address;
+            $tab_completed["price"] = $event->price;
+            $tab_completed["city"] = $event->city;
+            $tab_completed["api_google_id"] = $event->api_google_id;
+            $tab_completed["created_at"] = $event->created_at;
+            $tab_completed["event_type_id"] = $event->event_type_id;
+            $tab_completed["image_path"] = $event->image_path;
+            $tab_completed["image_name"] = $event->file_name;
+            foreach ($myEvents as $myEvent) {
+                if ($myEvent->event_id === $event->id) {
+                    $tab_completed["liked"] = $myEvent->liked;
+                    $tab_completed["joined"] = $myEvent->joined;
+                    $tab_completed["booked"] = $myEvent->booked;
+                }else{
+                    $tab_completed["liked"] = null;
+                    $tab_completed["joined"] = null;
+                    $tab_completed["booked"] = null;
+                }
+            }
+
+
+            array_push($tab_completeds, $tab_completed);
+        }
+
+
+        return $tab_completeds;
+
 
     }
 
@@ -339,6 +304,7 @@ class EventController extends Controller
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
 
     }
+
     public function eventGame(Request $request)
     {
 
@@ -354,6 +320,7 @@ class EventController extends Controller
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
 
     }
+
     public function eventArt(Request $request)
     {
 
@@ -362,13 +329,14 @@ class EventController extends Controller
             "event_id" => $request->event_id,
         ];
 
-    $event_art = EventArt::create($attributes);
+        $event_art = EventArt::create($attributes);
         return response()->json([
             $event_art,
             'message' => __('event art successfully')
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
 
     }
+
     public function eventStyle(Request $request)
     {
         $attributes = [
@@ -383,6 +351,7 @@ class EventController extends Controller
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
 
     }
+
     public function eventSubStyle(Request $request)
     {
 
@@ -398,6 +367,7 @@ class EventController extends Controller
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
 
     }
+
     /**
      * Remove the specified resource from storage.
      *

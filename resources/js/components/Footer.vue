@@ -33,6 +33,7 @@ export default {
   background-color: #666363;
   height: 130px;
   width: 100%;
+
 }
 .link-footer{
   margin-top: 30px;

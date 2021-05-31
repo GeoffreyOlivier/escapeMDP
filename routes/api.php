@@ -74,5 +74,10 @@ Route::post('event/game', [EventController::class, 'eventGame']);
 Route::post('event/sport', [EventController::class, 'eventSport']);
 Route::post('event/art', [EventController::class, 'eventArt']);
 
+Route::get('events/myfeed', [EventController::class, 'myFeed']);
+Route::post('event/{event_id}/interest/{type}', [EventController::class, 'interestEvent']);
+
+
+
 
 

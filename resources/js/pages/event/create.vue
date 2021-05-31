@@ -176,7 +176,9 @@
             </b-form-group>
             <b-row>
               <b-col class="col-7">
-                <b-form-checkbox class="switch" v-model="form.need_subscribe" switch >
+                <b-form-checkbox
+                  type="checkbox"
+                id="customSwitch1" v-model="form.need_subscribe" switch >
                   Sur réservation ?
                 </b-form-checkbox>
               </b-col>
@@ -231,9 +233,12 @@
 
           </b-col>
         </b-row>
-        <v-button class="text-center" :loading="form.busy">
-          Valider
-        </v-button>
+        <div class="bottom">
+          <v-button class="center" :loading="form.busy">
+            Valider
+          </v-button>
+        </div>
+
       </b-form>
     </b-container>
   </div>
@@ -591,17 +596,28 @@ export default {
 }
 </script>
 <style>
+.bottom{
+  height: 100px;
+  position: relative;
+}
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
 
-.switch:checked {
-  color: #fff;
-  border-color: #111D5E;
-  background-color: #111D5E;
+
+
+.custom-control-input:checked ~
+.custom-control-label::before {
+  border-color: #111D5E !important;
+  background-color: #111D5E !important;
 }
-.switch:before {
-  color: #fff;
-  border-color: #111D5E;
-  background-color: #111D5E;
-}
+
+
 h3{
   font-family: 'Gobold_Extra2';
   color: #111D5E;
@@ -697,12 +713,12 @@ form {
   font-size: x-large;
 }
 
-/*h1 {*/
-/*  !*transform: translate(-15px);*!*/
-/*  font-family: 'Gobold_Extra2';*/
-/*  text-transform: capitalize;*/
-/*  color: #D70039;*/
-/*  margin-bottom: 20px;*/
-/*}*/
+h1 {
+  /*transform: translate(-15px);*/
+  font-family: 'Gobold_Extra2';
+  text-transform: capitalize;
+  color: #D70039;
+  margin-bottom: 20px;
+}
 
 </style>
