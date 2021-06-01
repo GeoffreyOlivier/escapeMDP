@@ -95,17 +95,20 @@ class EventController extends Controller
     public function interestEvent($id, $type)
     {
 
-        $interest = Interest::where("user_id", Auth::id())->first();
+        $interest = Interest::where("user_id", Auth::id())
+            ->where("event_id", $id)
+            ->first();
 
 
         $like = $interest->liked;
         $join = $interest->joined;
         $book = $interest->booked;
 
+
         switch ($type) {
             case "like":
                 $like = !$like;
-                break;
+                 break;
             case "join":
                 $join = !$join;
                 break;
@@ -115,9 +118,8 @@ class EventController extends Controller
         }
 
         return Interest::updateOrCreate(
-            ["user_id" => Auth::id()],
-            ["event_id" => $id,
-                "liked" => $like ?? null,
+            ["user_id" => Auth::id(), "event_id" => $id],
+            ["liked" => $like ?? null,
                 "joined" => $join ?? null,
                 "booked" => $book ?? null]);
 
@@ -174,7 +176,6 @@ class EventController extends Controller
         $myEvents = Interest::where("user_id", Auth::id())->get();
 
 
-
         $tab_completeds = [];
         foreach ($events as $event) {
             $tab_completed = [];
@@ -200,10 +201,6 @@ class EventController extends Controller
                     $tab_completed["liked"] = $myEvent->liked;
                     $tab_completed["joined"] = $myEvent->joined;
                     $tab_completed["booked"] = $myEvent->booked;
-                }else{
-                    $tab_completed["liked"] = null;
-                    $tab_completed["joined"] = null;
-                    $tab_completed["booked"] = null;
                 }
             }
 

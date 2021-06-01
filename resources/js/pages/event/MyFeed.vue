@@ -12,7 +12,18 @@
         <div class="container-img">
           <img class="img-card" :src="item.image_path" alt="bar">
           <div class="bar-icon">
-            <svg v-if="item.liked != 1" @click="interests('like', item)" class="filter-svg"
+            <svg v-if="item.liked !== 1" @click="interests('like', item)" class="filter-svg"
+                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <g data-name="Layer 2">
+                <g data-name="heart">
+                  <rect opacity="0"/>
+                  <path
+                    d="M12 21a1 1 0 0 1-.71-.29l-7.77-7.78a5.26 5.26 0 0 1 0-7.4 5.24 5.24 0 0 1 7.4 0L12 6.61l1.08-1.08a5.24 5.24 0 0 1 7.4 0 5.26 5.26 0 0 1 0 7.4l-7.77 7.78A1 1 0 0 1 12 21zM7.22 6a3.2 3.2 0 0 0-2.28.94 3.24 3.24 0 0 0 0 4.57L12 18.58l7.06-7.07a3.24 3.24 0 0 0 0-4.57 3.32 3.32 0 0 0-4.56 0l-1.79 1.8a1 1 0 0 1-1.42 0L9.5 6.94A3.2 3.2 0 0 0 7.22 6z"/>
+                </g>
+              </g>
+            </svg>
+            <svg v-if="item.liked === 1" @click="interests('like', item)" class="filter-svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="heart"><rect  opacity="0"/><path d="M12 21a1 1 0 0 1-.71-.29l-7.77-7.78a5.26 5.26 0 0 1 0-7.4 5.24 5.24 0 0 1 7.4 0L12 6.61l1.08-1.08a5.24 5.24 0 0 1 7.4 0 5.26 5.26 0 0 1 0 7.4l-7.77 7.78A1 1 0 0 1 12 21z"/></g></g></svg>
+            <svg v-if="item.booked !== 1" @click="interests('book', item)" class="filter-svg"
                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="bell">
@@ -22,8 +33,18 @@
                 </g>
               </g>
             </svg>
-            <svg v-if="item.liked === 1" class="filter-svg" width="24" height="24"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="bell"><rect opacity="0"/><path d="M20.52 15.21l-1.8-1.81V8.94a6.86 6.86 0 0 0-5.82-6.88 6.74 6.74 0 0 0-7.62 6.67v4.67l-1.8 1.81A1.64 1.64 0 0 0 4.64 18H8v.34A3.84 3.84 0 0 0 12 22a3.84 3.84 0 0 0 4-3.66V18h3.36a1.64 1.64 0 0 0 1.16-2.79zM14 18.34A1.88 1.88 0 0 1 12 20a1.88 1.88 0 0 1-2-1.66V18h4z"/></g></g></svg>
-            <svg class="filter-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <svg v-if="item.booked === 1" @click="interests('book', item)" class="filter-svg" width="24" height="24"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g data-name="Layer 2">
+                <g data-name="bell">
+                  <rect opacity="0"/>
+                  <path
+                    d="M20.52 15.21l-1.8-1.81V8.94a6.86 6.86 0 0 0-5.82-6.88 6.74 6.74 0 0 0-7.62 6.67v4.67l-1.8 1.81A1.64 1.64 0 0 0 4.64 18H8v.34A3.84 3.84 0 0 0 12 22a3.84 3.84 0 0 0 4-3.66V18h3.36a1.64 1.64 0 0 0 1.16-2.79zM14 18.34A1.88 1.88 0 0 1 12 20a1.88 1.88 0 0 1-2-1.66V18h4z"/>
+                </g>
+              </g>
+            </svg>
+            <svg v-if="item.joined !== 1" @click="interests('join', item)" class="filter-svg"
+                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="person">
                   <rect width="24" height="24" opacity="0"/>
@@ -32,12 +53,15 @@
                 </g>
               </g>
             </svg>
-            <svg class="filter-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <svg v-if="item.joined === 1" @click="interests('join', item)" class="filter-svg" width="24" height="24"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <g data-name="Layer 2">
-                <g data-name="heart">
+                <g data-name="person-done">
                   <rect opacity="0"/>
                   <path
-                    d="M12 21a1 1 0 0 1-.71-.29l-7.77-7.78a5.26 5.26 0 0 1 0-7.4 5.24 5.24 0 0 1 7.4 0L12 6.61l1.08-1.08a5.24 5.24 0 0 1 7.4 0 5.26 5.26 0 0 1 0 7.4l-7.77 7.78A1 1 0 0 1 12 21zM7.22 6a3.2 3.2 0 0 0-2.28.94 3.24 3.24 0 0 0 0 4.57L12 18.58l7.06-7.07a3.24 3.24 0 0 0 0-4.57 3.32 3.32 0 0 0-4.56 0l-1.79 1.8a1 1 0 0 1-1.42 0L9.5 6.94A3.2 3.2 0 0 0 7.22 6z"/>
+                    d="M21.66 4.25a1 1 0 0 0-1.41.09l-1.87 2.15-.63-.71a1 1 0 0 0-1.5 1.33l1.39 1.56a1 1 0 0 0 .75.33 1 1 0 0 0 .74-.34l2.61-3a1 1 0 0 0-.08-1.41z"/>
+                  <path d="M10 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"/>
+                  <path d="M16 21a1 1 0 0 0 1-1 7 7 0 0 0-14 0 1 1 0 0 0 1 1"/>
                 </g>
               </g>
             </svg>
@@ -52,7 +76,7 @@
           <!--          <p>{{item.event_type.name}}</p>-->
         </div>
       </div>
-     </StackGrid>
+    </StackGrid>
   </div>
 </template>
 <script>
@@ -105,12 +129,10 @@ export default {
       }
     },
     interests(v, i) {
-      console.log(v)
-      console.log(i)
-      console.log("click")
-      this.$api.get('/event/' + i.id + "/interest/" + v)
+      this.$api.post('/event/' + i.id + "/interest/" + v)
         .then((response) => {
           console.log(response.data)
+          this.fetchEvent()
         })
         .catch((error) => {
           console.log(error)
