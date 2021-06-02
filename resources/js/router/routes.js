@@ -18,7 +18,7 @@ export default [
   { path: '/events', name: 'events', component: page('event/search.vue') },
   { path: '/my-feed', name: 'my_feed', component: page('event/MyFeed.vue') },
 
-  { path: '/events/:id', name: 'event', component: page('event/event.vue') },
+  { path: '/events/:id', name: 'anevent', component: page('event/event.vue') },
   { path: '/event/create', name: 'event_create', component: page('event/create.vue') },
   { path: '/home', name: 'home', component: page('home.vue') },
   {

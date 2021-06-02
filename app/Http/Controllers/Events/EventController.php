@@ -128,21 +128,25 @@ class EventController extends Controller
 
     public function show($id)
     {
-        $event = Event::where('id', $id)
-            ->with('eventType')
-            ->get();
-        $nb_like = EventLikedUser::where('event_id', $id)->count();
-        $nb_book = EventBookedUser::where('event_id', $id)->count();
-        $nb_join = EventJoinedUser::where('event_id', $id)->count();
+         $event = Event::find($id);
 
+         $nb_liked = Interest::where('event_id', $id)
+             ->where('liked', 1)
+             ->count();
+        $nb_joined = Interest::where('event_id', $id)
+            ->where('joined', 1)
+            ->count();
+        $nb_booked = Interest::where('event_id', $id)
+            ->where('booked', 1)
+            ->count();
 
         $tab_completed = [];
 
         $tab_completed["id"] = $event->id;
         $tab_completed["title"] = $event->title;
-        $tab_completed["nb_like"] = $nb_like;
-        $tab_completed["nb_book"] = $nb_book;
-        $tab_completed["nb_join"] = $nb_join;
+        $tab_completed["nb_like"] = $nb_liked;
+        $tab_completed["nb_join"] = $nb_joined;
+        $tab_completed["nb_book"] = $nb_booked;
         $tab_completed["image_name"] = $event->file_name;
         $tab_completed["image_path"] = $event->file_path;
         $tab_completed["description"] = $event->description;
@@ -160,9 +164,10 @@ class EventController extends Controller
         $tab_completed["pictures"] = $event->pictures;
         $tab_completed["event_type_id"] = $event->event_type_id;
 
+        return $tab_completed;
         return response()->json([
             $tab_completed,
-            'message' => __('event unbook successfully')
+            'message' => __('event find successfully')
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
 
     }

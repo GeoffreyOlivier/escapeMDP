@@ -6,9 +6,9 @@
           <img class="img-header" src="../../../images/bar.jpg" alt="bar">
         </div>
         <div class="bar-button">
-          <p><eva-icon class="icon-heart" name="heart-outline" fill="#D70039" width="40px" height="40px"></eva-icon> <span>{{ event.nb_like }} PERS</span></p>
-          <p>Je participe <span> {{ event.nb_join }} PERS</span></p>
-          <p>Je réserve <span> {{ event.nb_book }} PERS</span></p>
+          <p @click="interests('like', event)" ><eva-icon class="icon-heart" name="heart-outline" fill="#D70039" width="40px" height="40px"></eva-icon> <span>{{ event.nb_like }} PERS</span></p>
+          <p @click="interests('join', event)" >Je participe <span> {{ event.nb_join }} PERS</span></p>
+          <p @click="interests('book', event)" >Je réserve <span> {{ event.nb_book }} PERS</span></p>
         </div>
         <eva-icon name="github" animation="pulse" fill="limegreen"></eva-icon>
       </div>
@@ -65,17 +65,18 @@ export default {
     [EvaIcon.name]: EvaIcon
   },
   data: () => ({
-    event: ''
+    event: '',
   }),
   created() {
-    console.log(this.$route.params.id)
+    console.log(this.$route.params.eventID)
+
     this.fetchEvent()
   },
   methods: {
     fetchEvent() {
-      this.$api.get('event/' + this.$route.params.id).then(response => {
+      this.$api.get('event/' + this.$route.params.eventID).then(response => {
           console.log(response)
-          this.event = response.data[0]
+          this.event = response.data
           console.log(this.event)
 
           console.log("success")
@@ -85,73 +86,16 @@ export default {
         console.log("error")
       })
     },
-    join() {
-      console.log("join")
-      this.$api.post('event/join/' + this.$route.params.id).then(response => {
-          console.log(response)
-          console.log(this.event)
-          console.log("success")
-        }
-      ).catch(err => {
-        console.log(err)
-        console.log("error")
-      })
-    },
-    unjoin() {
-      console.log("unjoin")
-      this.$api.put('event/join/' + this.$route.params.id).then(response => {
-          console.log(response)
-          console.log(this.event)
-          console.log("success")
-        }
-      ).catch(err => {
-        console.log(err)
-        console.log("error")
-      })
-    },
-    book() {
-      console.log("book")
-      this.$api.post('event/book/' + this.$route.params.id).then(response => {
-          console.log(response)
-          console.log("success")
-        }
-      ).catch(err => {
-        console.log(err)
-        console.log("error")
-      })
-    },
-    unbook() {
-      console.log("unbook")
-      this.$api.put('event/book/' + this.$route.params.id).then(response => {
-          console.log(response)
-          console.log("success")
-        }
-      ).catch(err => {
-        console.log(err)
-        console.log("error")
-      })
-    },
-    like() {
-      console.log("like")
-      this.$api.post('event/like/' + this.$route.params.id).then(response => {
-          console.log(response)
-          console.log("success")
-        }
-      ).catch(err => {
-        console.log(err)
-        console.log("error")
-      })
-    },
-    unlike() {
-      console.log("unlike")
-      this.$api.put('event/like/' + this.$route.params.id).then(response => {
-          console.log(response)
-          console.log("success")
-        }
-      ).catch(err => {
-        console.log(err)
-        console.log("error")
-      })
+    interests(v, i) {
+      this.$api.post('/event/' + i.id + "/interest/" + v)
+        .then((response) => {
+          console.log(response.data)
+          this.fetchEvent()
+        })
+        .catch((error) => {
+          console.log(error)
+          console.log(error.response)
+        })
     }
   }
 }

@@ -10,6 +10,7 @@
     >
       <div class="stack-item " v-for="(item, id) in events" :key="id">
         <div class="container-img">
+          <router-link class="container-img" :to="{ name: 'anevent', params: { eventID: item.id } }">5555</router-link>
           <img class="img-card" :src="item.image_path" alt="bar">
           <div class="bar-icon">
             <svg v-if="item.liked !== 1" @click="interests('like', item)" class="filter-svg"
