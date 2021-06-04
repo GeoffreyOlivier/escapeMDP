@@ -28,9 +28,13 @@
     <list default="true" id="e37c91a4-5743-4061-9d9b-9361fdbe38db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Event.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/MyFeed.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/MyFeed.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/event/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/create.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/event.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/event.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/user/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/user/Profile.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,6 +234,17 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.watch">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
@@ -243,8 +258,6 @@
       <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
       <option name="INTERPRETER_PATH" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="EXECUTE_IN_TERMINAL" value="true" />
-      <envs />
       <method v="2" />
     </configuration>
     <configuration name="hot" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -340,6 +353,11 @@
       <workItem from="1622466576281" duration="341000" />
       <workItem from="1622467061692" duration="3998000" />
       <workItem from="1622553265780" duration="1625000" />
+      <workItem from="1622623315645" duration="530000" />
+      <workItem from="1622627421585" duration="6912000" />
+      <workItem from="1622642714418" duration="2005000" />
+      <workItem from="1622704822938" duration="3371000" />
+      <workItem from="1622723299885" duration="4471000" />
     </task>
     <servers />
   </component>
@@ -379,5 +397,23 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1331" height="270" key="GridCell.Tab.0.bottom" timestamp="1622736139855">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1331" height="270" key="GridCell.Tab.0.bottom/0.0.2752.1112@0.0.2752.1112" timestamp="1622736139855" />
+    <state width="1331" height="270" key="GridCell.Tab.0.center" timestamp="1622736139854">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1331" height="270" key="GridCell.Tab.0.center/0.0.2752.1112@0.0.2752.1112" timestamp="1622736139854" />
+    <state width="1331" height="270" key="GridCell.Tab.0.left" timestamp="1622736139854">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1331" height="270" key="GridCell.Tab.0.left/0.0.2752.1112@0.0.2752.1112" timestamp="1622736139854" />
+    <state width="1331" height="270" key="GridCell.Tab.0.right" timestamp="1622736139855">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1331" height="270" key="GridCell.Tab.0.right/0.0.2752.1112@0.0.2752.1112" timestamp="1622736139855" />
   </component>
 </project>

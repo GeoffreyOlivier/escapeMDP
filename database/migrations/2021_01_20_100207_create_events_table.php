@@ -25,7 +25,10 @@ class CreateEventsTable extends Migration
             $table->string('need_subscribe')->nullable();
             $table->string('place')->nullable();
             $table->string('address')->nullable();
-            $table->string('price')->nullable();
+            $table->string('price_one')->nullable();
+            $table->string('price_two')->nullable();
+            $table->string('price_three')->nullable();
+            $table->string('price_four')->nullable();
             $table->string('city')->nullable();
             $table->string('api_google_id')->nullable();
             $table->string('coordinates')->nullable();

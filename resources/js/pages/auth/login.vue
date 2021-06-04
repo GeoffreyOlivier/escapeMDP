@@ -83,7 +83,7 @@
             <b-form-checkbox
               type="checkbox"
               id="customSwitch1" v-model="form.promoter" switch >
-              Sur réservation ?
+              Vous êtes créateur d'événement ?
             </b-form-checkbox>
             <b-form-group v-if="form.promoter" id="email" label="Rue, avenue, lieu-dit*" class="label">
               <b-form-input

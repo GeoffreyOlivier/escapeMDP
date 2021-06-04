@@ -167,10 +167,29 @@
                 </div>
               </div>
             </b-form-group>
-
-            <b-form-group id="price" label="Tarif" class="add-style">
+            <b-form-group id="price" label="Premier tarif"  class="add-style">
               <b-form-input
-                v-model="form.price"
+                placeholder="Sur place : 45€"
+                v-model="form.price_one"
+                class="form-control" type="text" name="price"
+              />
+            </b-form-group>
+            <b-form-group  v-if="form.price_one !== ''" id="price" label="Deuxième tarif " class="add-style">
+              <b-form-input
+                placeholder="Early Bird : 35€"
+                v-model="form.price_two"
+                class="form-control" type="text" name="price"
+              />
+            </b-form-group>
+            <b-form-group v-if="form.price_two !== ''" id="price" label="Troisème tarif" class="add-style">
+              <b-form-input
+                v-model="form.price_three"
+                class="form-control" type="text" name="price"
+              />
+            </b-form-group>
+            <b-form-group  v-if="form.price_three !== ''" id="price" label="Quatrième tarif" class="add-style">
+              <b-form-input
+                v-model="form.price_four"
                 class="form-control" type="text" name="price"
               />
             </b-form-group>
@@ -221,15 +240,17 @@
                 class="form-control" type="text" name="address"
               />
             </b-form-group>
-            <b-form-group id="town" label="Code postal" class="add-style">
+            <b-form-group id="code" label="Code postal" class="add-style">
               <b-form-input
                 v-model="code"
                 class="form-control" type="text" name="town"
               />
             </b-form-group>
+            <b-form-group id="town" label="Ville" class="add-style">
             <b-form-select v-model="form.city" :options="cities" :select-size="3">
               <div class="mt-3">Selected: <strong>{{ form.city }}</strong></div>
             </b-form-select>
+            </b-form-group>
 
           </b-col>
         </b-row>
@@ -293,7 +314,10 @@ export default {
       ending_at: '',
       nb_people_max: '',
       need_subscribe: false,
-      price: '',
+      price_one: '',
+      price_two: '',
+      price_three: '',
+      price_four: '',
       place: '',
       address: '',
       city: '',
@@ -342,6 +366,7 @@ export default {
         if(this.cities){
           this.cities = []
         }
+        console.log(this.form.city)
 
       }
       // this.form.city = value;
@@ -460,15 +485,16 @@ export default {
     },
     CreateEvent() {
       // Submit the form.
+      console.log("pass")
       console.log(this.form)
-      this.$api.post('/event/create', this.form).then(response => {
-          console.log(response)
-        }
-      ).catch(err => {
-        console.log(err)
-      })
-      // Redirect home.
-      this.$router.push('/events')
+      // this.$api.post('/event/create', this.form).then(response => {
+      //     console.log(response)
+      //   }
+      // ).catch(err => {
+      //   console.log(err)
+      // })
+      // // Redirect home.
+      // this.$router.push('/events')
     },
     processFile(event) {
       this.form.image = event.target.files[0]
@@ -490,13 +516,18 @@ export default {
       formData.append('ending_at', this.form.ending_at)
       formData.append('nb_people_max', this.form.nb_people_max)
       formData.append('need_subscribe', this.form.need_subscribe)
-      formData.append('price', this.form.price)
+      formData.append('price_one', this.form.price_one)
+      formData.append('price_two', this.form.price_two)
+      formData.append('price_three', this.form.price_three)
+      formData.append('price_four', this.form.price_four)
       formData.append('place', this.form.place)
       formData.append('address', this.form.address)
       formData.append('city', this.form.city)
       formData.append('event_type_id', this.form.event_type_id)
 
 
+      console.log(this.form)
+      console.log(this.form.city)
       console.log('before axios')
       this.$api.post('/event/create', formData)
         .then((res) => {

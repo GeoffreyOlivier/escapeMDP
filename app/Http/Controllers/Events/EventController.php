@@ -74,9 +74,12 @@ class EventController extends Controller
             'nb_people_max' => $request->nb_people_max,
             'need_subscribe' => $request->need_subscribe,
             'place' => $request->place,
-            'price' => $request->price,
+            'price_one' => $request->price_one,
+            'price_two' => $request->price_two,
+            'price_three' => $request->price_three,
+            'price_four' => $request->price_four,
             'address' => $request->address,
-            'city_id' => $request->city,
+            'city' => $request->city,
             'art_id' => $request->art,
             'api_google_id' => $request->api_google_id,
             'pictures' => $request->pictures,
@@ -100,9 +103,9 @@ class EventController extends Controller
             ->first();
 
 
-        $like = $interest->liked;
-        $join = $interest->joined;
-        $book = $interest->booked;
+        $like = $interest->liked ?? false;
+        $join = $interest->joined ?? false ;
+        $book = $interest->booked ?? false;
 
 
         switch ($type) {
@@ -156,7 +159,10 @@ class EventController extends Controller
         $tab_completed["nb_people_max"] = $event->nb_people_max;
         $tab_completed["need_subscribe"] = $event->need_subscribe;
         $tab_completed["place"] = $event->place;
-        $tab_completed["price"] = $event->price;
+        $tab_completed["price_one"] = $event->price_one;
+        $tab_completed["price_two"] = $event->price_two;
+        $tab_completed["price_three"] = $event->price_three;
+        $tab_completed["price_four"] = $event->price_four;
         $tab_completed["address"] = $event->address;
         $tab_completed["street"] = $event->street;
         $tab_completed["city"] = $event->city;
@@ -194,7 +200,10 @@ class EventController extends Controller
             $tab_completed["need_subscribe"] = $event->need_subscribe;
             $tab_completed["place"] = $event->place;
             $tab_completed["address"] = $event->address;
-            $tab_completed["price"] = $event->price;
+            $tab_completed["price_one"] = $event->price_one;
+            $tab_completed["price_two"] = $event->price_two;
+            $tab_completed["price_three"] = $event->price_three;
+            $tab_completed["price_four"] = $event->price_four;
             $tab_completed["city"] = $event->city;
             $tab_completed["api_google_id"] = $event->api_google_id;
             $tab_completed["created_at"] = $event->created_at;
@@ -241,7 +250,10 @@ class EventController extends Controller
             'created_at' => Carbon::now(),
             'start_at' => $request->start_at,
             'end_at' => $request->end_at,
-            'price' => $request->price,
+            'price_one' => $request->price_one,
+            'price_two' => $request->price_two,
+            'price_three' => $request->price_three,
+            'price_four' => $request->price_four,
             'nb_people_max' => $request->nb_people_max,
             'need_subscribe' => $request->need_subscribe,
             'api_google_id' => $request->api_google_id,
@@ -275,7 +287,10 @@ class EventController extends Controller
                 'created_at' => Carbon::now(),
                 'start_at' => $request->start_at,
                 'end_at' => $request->end_at,
-                'price' => $request->price,
+                'price_one' => $request->price_one,
+                'price_two' => $request->price_two,
+                'price_three' => $request->price_three,
+                'price_four' => $request->price_four,
                 'nb_people_max' => $request->nb_people_max,
                 'need_subscribe' => $request->need_subscribe,
                 'api_google_id' => $request->api_google_id,

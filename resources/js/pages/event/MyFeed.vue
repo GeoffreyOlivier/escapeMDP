@@ -10,10 +10,12 @@
     >
       <div class="stack-item " v-for="(item, id) in events" :key="id">
         <div class="container-img">
-          <router-link class="container-img" :to="{ name: 'anevent', params: { eventID: item.id } }">5555</router-link>
+          <router-link :to="{ name: 'anevent', params: { id: item.id } }">
           <img class="img-card" :src="item.image_path" alt="bar">
+          </router-link>
           <div class="bar-icon">
-            <svg v-if="item.liked !== 1" @click="interests('like', item)" class="filter-svg"
+            <svg v-if="loading === item.id" width="24" height="24" class="filter-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="more-horizotnal"><rect opacity="0"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/></g></g></svg>
+            <svg v-if="item.liked !== 1 && loading !== item.id " @click="interests('like', item)" class="filter-svg"
                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="heart">
@@ -23,8 +25,8 @@
                 </g>
               </g>
             </svg>
-            <svg v-if="item.liked === 1" @click="interests('like', item)" class="filter-svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="heart"><rect  opacity="0"/><path d="M12 21a1 1 0 0 1-.71-.29l-7.77-7.78a5.26 5.26 0 0 1 0-7.4 5.24 5.24 0 0 1 7.4 0L12 6.61l1.08-1.08a5.24 5.24 0 0 1 7.4 0 5.26 5.26 0 0 1 0 7.4l-7.77 7.78A1 1 0 0 1 12 21z"/></g></g></svg>
-            <svg v-if="item.booked !== 1" @click="interests('book', item)" class="filter-svg"
+            <svg v-if="item.liked === 1 && loading !== item.id " @click="interests('like', item)" class="filter-svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="heart"><rect  opacity="0"/><path d="M12 21a1 1 0 0 1-.71-.29l-7.77-7.78a5.26 5.26 0 0 1 0-7.4 5.24 5.24 0 0 1 7.4 0L12 6.61l1.08-1.08a5.24 5.24 0 0 1 7.4 0 5.26 5.26 0 0 1 0 7.4l-7.77 7.78A1 1 0 0 1 12 21z"/></g></g></svg>
+            <svg v-if="item.booked !== 1 && loading !== item.id " @click="interests('book', item)" class="filter-svg"
                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="bell">
@@ -34,7 +36,7 @@
                 </g>
               </g>
             </svg>
-            <svg v-if="item.booked === 1" @click="interests('book', item)" class="filter-svg" width="24" height="24"
+            <svg v-if="item.booked === 1 && loading !== item.id " @click="interests('book', item)" class="filter-svg" width="24" height="24"
                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="bell">
@@ -44,7 +46,7 @@
                 </g>
               </g>
             </svg>
-            <svg v-if="item.joined !== 1" @click="interests('join', item)" class="filter-svg"
+            <svg v-if="item.joined !== 1 && loading !== item.id " @click="interests('join', item)" class="filter-svg"
                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="person">
@@ -54,7 +56,7 @@
                 </g>
               </g>
             </svg>
-            <svg v-if="item.joined === 1" @click="interests('join', item)" class="filter-svg" width="24" height="24"
+            <svg v-if="item.joined === 1 && loading !== item.id " @click="interests('join', item)" class="filter-svg" width="24" height="24"
                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="person-done">
@@ -67,6 +69,7 @@
               </g>
             </svg>
           </div>
+
         </div>
 
         <div class="color" :class="{blue: id%2 === 0}">
@@ -94,6 +97,7 @@ export default {
     isLoading: false,
     bell_clicked: [],
     heat_liked: [],
+    loading: ''
 
   }),
   created() {
@@ -106,6 +110,7 @@ export default {
           console.log(response.data)
           this.events = response.data
           this.waitImg()
+          this.loading = ''
         })
         .catch((error) => {
           this.loading = false
@@ -130,15 +135,18 @@ export default {
       }
     },
     interests(v, i) {
+      this.loading = i.id
       this.$api.post('/event/' + i.id + "/interest/" + v)
         .then((response) => {
           console.log(response.data)
           this.fetchEvent()
+
         })
         .catch((error) => {
           console.log(error)
           console.log(error.response)
         })
+
     }
   },
 
