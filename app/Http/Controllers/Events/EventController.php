@@ -34,10 +34,6 @@ class EventController extends Controller
      */
     public function index()
     {
-
-//        $path = '/storage/app/json/france.json';
-//        $content = json_decode(file_get_contents($path), true);
-//        dd($content);
         return Event::with('eventType')
             ->with('eventStyle')
             ->with('eventSubStyle')
@@ -47,6 +43,17 @@ class EventController extends Controller
             ->get();
     }
 
+    public function afterCreateEvent($id)
+    {
+        return Event::with('eventType')
+            ->with('eventStyle')
+            ->with('eventSubStyle')
+            ->with('eventSport')
+            ->with('eventGame')
+            ->with('eventArt')
+            ->where('id', $id)
+            ->first();
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -217,15 +224,9 @@ class EventController extends Controller
                     $tab_completed["booked"] = $myEvent->booked;
                 }
             }
-
-
             array_push($tab_completeds, $tab_completed);
         }
-
-
         return $tab_completeds;
-
-
     }
 
     /**
@@ -242,7 +243,6 @@ class EventController extends Controller
         ]);
 
         $imageName = time() . '.' . $request->image->extension();
-
 
         $attributes = [
             'image' => $request->image->move(public_path('images'), $imageName),

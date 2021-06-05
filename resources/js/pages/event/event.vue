@@ -28,7 +28,16 @@
             </div>
           </div>
         </div>
-        <eva-icon name="github" animation="pulse" fill="limegreen"></eva-icon>
+      </div>
+    </b-container>
+    <b-container>
+      <div>
+        <h3>{{event.title}}</h3>
+        <div>{{event.date | moment('ll')}} • {{event.place}}</div>
+        <div>{{event.price_one}} • <p v-if="event.price_two">{{event.price_two}}</p> •
+          <p v-if="event.price_three">{{ event.price_three}}</p> • <p v-if="event.price_four">{{event.price_four}}</p></div>
+        <div>{{event.description}}</div>
+
       </div>
     </b-container>
   </div>
@@ -106,6 +115,7 @@ export default {
     fetchEvent() {
       this.$api.get('event/' + this.$route.params.id).then(response => {
           console.log(response)
+        this.id_event = this.$route.params.id
           this.event = response.data
           console.log(this.event)
 

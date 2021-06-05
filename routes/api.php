@@ -76,6 +76,8 @@ Route::post('event/art', [EventController::class, 'eventArt']);
 
 Route::get('events/myfeed', [EventController::class, 'myFeed']);
 Route::post('event/{event_id}/interest/{type}', [EventController::class, 'interestEvent']);
+Route::get('event/validate/{event_id}', [EventController::class, 'afterCreateEvent']);
+
 
 
 

@@ -20,6 +20,8 @@ export default [
 
   { path: '/events/:id', name: 'anevent', component: page('event/event.vue') },
   { path: '/event/create', name: 'event_create', component: page('event/create.vue') },
+  { path: '/event/validate', name: 'event_validate', component: page('event/promote.vue') },
+
   { path: '/home', name: 'home', component: page('home.vue') },
   {
     path: '/settings',

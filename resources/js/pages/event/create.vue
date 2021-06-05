@@ -8,28 +8,40 @@
             <h3>Information</h3>
             <b-form-group id="title" label="Titre" class="add-style">
               <b-form-input
+                :state="titleLimit"
+                required
                 id="example-input-1"
                 name="example-input-1"
                 v-model="form.title"
-                aria-describedby="input-1-live-feedback"
+                aria-describedby="input-title"
               ></b-form-input>
-              <div v-if="submitted && !$v.form.title.required" class="invalid-feedback">Le champs est obligatoire</div>
-              <div v-if="submitted && !$v.form.title.minLength" class="invalid-feedback">Le champs doit faire au minimum 4 caractères</div>
+              <b-form-invalid-feedback id="input-title">
+                Le titre doit contenir un minimum de 4 charactères
+              </b-form-invalid-feedback>
             </b-form-group>
 
             <b-form-group id="description" label="Description" class="add-style">
-              <b-form-input
+              <b-form-textarea
+                :state="descriptionLimit"
+                required
+                rows="3"
+                max-rows="6"
                 v-model="form.description"
                 class="form-control" type="text" name="description"
+                aria-describedby="input-description"
               />
-              <b-form-invalid-feedback
-                id="input-1-live-feedback"
-              >This is a required field and must be at least 3 characters.</b-form-invalid-feedback>
+              <b-form-invalid-feedback id="input-description">
+                Le titre doit contenir un minimum de 50 charactères
+              </b-form-invalid-feedback>
             </b-form-group>
-            <input id="file" type="file" @change="processFile($event)">
+            <input id="file" type="file" @change="processFile($event)" required>
             <b-form-group id="categorie" label="Catégorie" class="add-style mt-3">
-              <b-form-select v-on:change="changeItem()" v-model="form.event_type_id"
-                             :options="options_cat"></b-form-select>
+              <b-form-select
+                v-on:change="changeItem()"
+                v-model="form.event_type_id"
+                :options="options_cat"
+                required
+              ></b-form-select>
             </b-form-group>
             <b-form-group v-if="form.event_type_id === '1'" id="Style" label="Style musicale" class="add-style">
               <VueFuse
@@ -167,27 +179,28 @@
                 </div>
               </div>
             </b-form-group>
-            <b-form-group id="price" label="Premier tarif"  class="add-style">
+            <b-form-group id="price" label="Premier tarif" class="add-style">
               <b-form-input
+                required
                 placeholder="Sur place : 45€"
                 v-model="form.price_one"
                 class="form-control" type="text" name="price"
               />
             </b-form-group>
-            <b-form-group  v-if="form.price_one !== ''" id="price" label="Deuxième tarif " class="add-style">
+            <b-form-group v-if="form.price_one !== ''" id="price" label="Deuxième tarif (optionnel)" class="add-style">
               <b-form-input
                 placeholder="Early Bird : 35€"
                 v-model="form.price_two"
                 class="form-control" type="text" name="price"
               />
             </b-form-group>
-            <b-form-group v-if="form.price_two !== ''" id="price" label="Troisème tarif" class="add-style">
+            <b-form-group v-if="form.price_two !== ''" id="price" label="Troisème tarif (optionnel)" class="add-style">
               <b-form-input
                 v-model="form.price_three"
                 class="form-control" type="text" name="price"
               />
             </b-form-group>
-            <b-form-group  v-if="form.price_three !== ''" id="price" label="Quatrième tarif" class="add-style">
+            <b-form-group v-if="form.price_three !== ''" id="price" label="Quatrième tarif (optionnel)" class="add-style">
               <b-form-input
                 v-model="form.price_four"
                 class="form-control" type="text" name="price"
@@ -197,7 +210,7 @@
               <b-col class="col-7">
                 <b-form-checkbox
                   type="checkbox"
-                id="customSwitch1" v-model="form.need_subscribe" switch >
+                  id="customSwitch1" v-model="form.need_subscribe" switch>
                   Sur réservation ?
                 </b-form-checkbox>
               </b-col>
@@ -215,12 +228,14 @@
 
             <b-form-group id="date_start" label="Date et heure début" class="add-style">
               <b-form-input
+                required
                 v-model="form.start_at"
                 class="form-control" type="datetime-local" name="date"
               />
             </b-form-group>
             <b-form-group id="date_end" label="Date et heure fin" class="add-style">
               <b-form-input
+                required
                 v-model="form.ending_at"
                 class="form-control" type="datetime-local" name="date"
               />
@@ -230,26 +245,29 @@
             <h3>Localisation</h3>
             <b-form-group id="place" label="Lieu" class="add-style">
               <b-form-input
+                required
                 v-model="form.place"
                 class="form-control" type="text" name="place"
               />
             </b-form-group>
             <b-form-group id="address" label="Adresse" class="add-style">
               <b-form-input
+                required
                 v-model="form.address"
                 class="form-control" type="text" name="address"
               />
             </b-form-group>
             <b-form-group id="code" label="Code postal" class="add-style">
               <b-form-input
+                required
                 v-model="code"
                 class="form-control" type="text" name="town"
               />
             </b-form-group>
             <b-form-group id="town" label="Ville" class="add-style">
-            <b-form-select v-model="form.city" :options="cities" :select-size="3">
-              <div class="mt-3">Selected: <strong>{{ form.city }}</strong></div>
-            </b-form-select>
+              <b-form-select v-model="form.city" :options="cities" :select-size="3" required>
+                <div class="mt-3">Selected: <strong>{{ form.city }}</strong></div>
+              </b-form-select>
             </b-form-group>
 
           </b-col>
@@ -266,10 +284,11 @@
 </template>
 
 <script>
-import { required, minLength } from "vuelidate/lib/validators";
+import {required, minLength} from "vuelidate/lib/validators";
 import Form from 'vform'
 import VueFuse from "../components/fuse";
 import {LOGOUT} from "../../store/mutation-types";
+import router from "../../router";
 
 
 export default {
@@ -337,6 +356,24 @@ export default {
         threshold: 0.4
       }
     },
+    titleLimit() {
+      if (this.form.title.length > 3) {
+        return true
+      }if (this.form.title.length < 1){
+        return null
+      }else{
+        return false
+      }
+    },
+    descriptionLimit() {
+      if (this.form.description.length > 50) {
+        return true
+      }if (this.form.description.length < 1){
+        return null
+      }else{
+        return false
+      }
+    }
   },
   created() {
     this.fetchStyle()
@@ -344,13 +381,11 @@ export default {
     this.fetchGame()
     this.fetchSport()
     this.fetchCity()
-    console.log(this.form.need_subscribe)
   },
   watch: {
     code(value) {
       if (value.length === 5) {
         this.city_result = this.city.filter(e => e.code_postal === value)
-
         for (let i = 0; i < this.city_result.length; i++) {
           this.cities.push(
             {
@@ -359,25 +394,16 @@ export default {
             }
           )
         }
-        console.log(this.cities)
-        console.log(this.form.city)
-      }if (value.length < 5) {
+      }
+      if (value.length < 5) {
         console.log("pass if")
-        if(this.cities){
+        if (this.cities) {
           this.cities = []
         }
-        console.log(this.form.city)
-
       }
-      // this.form.city = value;
-      console.log(this.form.city)
     }
   },
-  validations: {
-    form: {
-      title: { required, minLength: minLength(3)},
-    }
-  },
+
   methods: {
     changeItem: function changeItem() {
       console.log("ok")
@@ -398,6 +424,7 @@ export default {
       }
     },
     add_style(v, c) {
+      console.log(v)
       if (!this.style_selecteds.find(e => e.item.id === v.item.id)) {
         console.log(this.style_selecteds)
         console.log("pass double")
@@ -409,6 +436,7 @@ export default {
       } else {
         this.sub_style_selecteds.push(v)
       }
+      console.log(this.sub_style_selecteds)
     },
     add_art(v, c) {
       if (this.art_selecteds.includes(v)) {
@@ -483,29 +511,10 @@ export default {
           this.loading = false
         })
     },
-    CreateEvent() {
-      // Submit the form.
-      console.log("pass")
-      console.log(this.form)
-      // this.$api.post('/event/create', this.form).then(response => {
-      //     console.log(response)
-      //   }
-      // ).catch(err => {
-      //   console.log(err)
-      // })
-      // // Redirect home.
-      // this.$router.push('/events')
-    },
     processFile(event) {
       this.form.image = event.target.files[0]
     },
     submitForm() {
-      // this.$v.form.$touch();
-      // if (this.$v.form.$invalid) {
-      //   return;
-      // }
-      //
-      // alert("Form submitted!");
       this.submitted = false
       const formData = new FormData()
 
@@ -525,14 +534,12 @@ export default {
       formData.append('city', this.form.city)
       formData.append('event_type_id', this.form.event_type_id)
 
-
-      console.log(this.form)
-      console.log(this.form.city)
-      console.log('before axios')
       this.$api.post('/event/create', formData)
         .then((res) => {
           console.log('success')
           this.associate(res.data[0])
+          console.log(res.data[0])
+          router.push( {name: 'event_validate', params: { 'id': res.data[0] } })
         })
         .catch((error) => {
           console.log('error')
@@ -602,7 +609,7 @@ export default {
               })
           }
           for (let i = 0; i < this.sub_style_selecteds.length; i++) {
-            this.$api.post('event/substyle', {event_id: v, sub_style_id: this.sub_style_selecteds[i].item.id})
+            this.$api.post('event/substyle', {event_id: v, sub_style_id: this.sub_style_selecteds[i].item.id_sub_style})
               .then((res) => {
                 console.log("substyle")
                 console.log('success')
@@ -619,18 +626,15 @@ export default {
           console.log(`Sorry, we are out of expression.`);
       }
     },
-
-
   },
-
-
 }
 </script>
 <style>
-.bottom{
+.bottom {
   height: 100px;
   position: relative;
 }
+
 .center {
   margin: 0;
   position: absolute;
@@ -641,7 +645,6 @@ export default {
 }
 
 
-
 .custom-control-input:checked ~
 .custom-control-label::before {
   border-color: #111D5E !important;
@@ -649,15 +652,17 @@ export default {
 }
 
 
-h3{
+h3 {
   font-family: 'Gobold_Extra2';
   color: #111D5E;
   padding-bottom: 25px;
 }
-.col-form-label{
+
+.col-form-label {
   font-family: 'Gobold_Extra2';
   color: #111D5E;
 }
+
 .btn-style {
   color: #000000;
   border-color: #111D5E;
