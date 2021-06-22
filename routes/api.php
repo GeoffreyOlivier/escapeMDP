@@ -49,34 +49,40 @@ Route::group(['middleware' => 'guest:api'], function () {
 
 // Events
 
-Route::post('event/create', [EventController::class, 'create']);
-Route::get('events', [EventController::class, 'index']);
-Route::get('event/{id}', [EventController::class, 'show']);
-Route::put('event/update/{id}', [EventController::class, 'update']);
-Route::post('event/delete/{id}', [EventController::class, 'destroy']);
-Route::post('event/join/{id}', [EventController::class, 'joinEvent']);
-Route::post('event/book/{id}', [EventController::class, 'bookEvent']);
-Route::post('event/like/{id}', [EventController::class, 'likeEvent']);
-Route::put('event/join/{id}', [EventController::class, 'unJoinEvent']);
-Route::put('event/book/{id}', [EventController::class, 'unBookEvent']);
-Route::put('event/like/{id}', [EventController::class, 'unLikeEvent']);
-
-Route::get('style', [EventController::class, 'getStyle']);
-Route::get('game', [EventController::class, 'getGame']);
-Route::get('sport', [EventController::class, 'getSport']);
-Route::get('art', [EventController::class, 'getCulturalJourney']);
-Route::get('city', [EventController::class, 'getCity']);
+    Route::get('events', [EventController::class, 'index']);
+    Route::get('event/{id}', [EventController::class, 'show']);
 
 
-Route::post('event/style', [EventController::class, 'eventStyle']);
-Route::post('event/substyle', [EventController::class, 'eventSubStyle']);
-Route::post('event/game', [EventController::class, 'eventGame']);
-Route::post('event/sport', [EventController::class, 'eventSport']);
-Route::post('event/art', [EventController::class, 'eventArt']);
 
-Route::get('events/myfeed', [EventController::class, 'myFeed']);
-Route::post('event/{event_id}/interest/{type}', [EventController::class, 'interestEvent']);
-Route::get('event/validate/{event_id}', [EventController::class, 'afterCreateEvent']);
+    Route::post('event/create', [EventController::class, 'create']);
+
+    Route::get('event/{id}', [EventController::class, 'show']);
+    Route::put('event/update/{id}', [EventController::class, 'update']);
+    Route::post('event/delete/{id}', [EventController::class, 'destroy']);
+//    Route::post('event/join/{id}', [EventController::class, 'joinEvent']);
+//    Route::post('event/book/{id}', [EventController::class, 'bookEvent']);
+//    Route::post('event/like/{id}', [EventController::class, 'likeEvent']);
+//    Route::put('event/join/{id}', [EventController::class, 'unJoinEvent']);
+//    Route::put('event/book/{id}', [EventController::class, 'unBookEvent']);
+//    Route::put('event/like/{id}', [EventController::class, 'unLikeEvent']);
+
+    Route::get('style', [EventController::class, 'getStyle']);
+    Route::get('game', [EventController::class, 'getGame']);
+    Route::get('sport', [EventController::class, 'getSport']);
+    Route::get('art', [EventController::class, 'getCulturalJourney']);
+    Route::get('city', [EventController::class, 'getCity']);
+
+
+    Route::post('event/style', [EventController::class, 'eventStyle']);
+    Route::post('event/substyle', [EventController::class, 'eventSubStyle']);
+    Route::post('event/game', [EventController::class, 'eventGame']);
+    Route::post('event/sport', [EventController::class, 'eventSport']);
+    Route::post('event/art', [EventController::class, 'eventArt']);
+
+    Route::get('events/myfeed', [EventController::class, 'myFeed']);
+    Route::post('event/{event_id}/interest/{type}', [EventController::class, 'interestEvent']);
+    Route::get('event/validate/{event_id}', [EventController::class, 'afterCreateEvent']);
+    Route::post('event/promote/{event_id}', [EventController::class, 'promote']);
 
 
 

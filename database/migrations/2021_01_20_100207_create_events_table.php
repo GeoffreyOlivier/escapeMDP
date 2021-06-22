@@ -29,7 +29,6 @@ class CreateEventsTable extends Migration
             $table->string('price_two')->nullable();
             $table->string('price_three')->nullable();
             $table->string('price_four')->nullable();
-            $table->string('city')->nullable();
             $table->string('api_google_id')->nullable();
             $table->string('coordinates')->nullable();
             $table->string('image_name')->nullable();

@@ -28,12 +28,20 @@
     <list default="true" id="e37c91a4-5743-4061-9d9b-9361fdbe38db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Event.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/EventGame.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EventGame.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_101406_create_promotes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_101406_create_promotes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_11_151712_create_event_game.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_11_151712_create_event_game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_13_091146_alter_event_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_091146_alter_event_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/register.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/create.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/event.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/event.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/promote.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/promote.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
@@ -248,8 +256,6 @@
       <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
       <option name="INTERPRETER_PATH" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="EXECUTE_IN_TERMINAL" value="true" />
-      <envs />
       <method v="2" />
     </configuration>
     <configuration name="hot" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -352,6 +358,14 @@
       <workItem from="1622723299885" duration="4471000" />
       <workItem from="1622803708653" duration="7729000" />
       <workItem from="1622812629081" duration="2852000" />
+      <workItem from="1622970763668" duration="11657000" />
+      <workItem from="1622990482208" duration="5794000" />
+      <workItem from="1622997277790" duration="734000" />
+      <workItem from="1623057862895" duration="355000" />
+      <workItem from="1623152614248" duration="1135000" />
+      <workItem from="1623236164880" duration="485000" />
+      <workItem from="1623675733884" duration="46000" />
+      <workItem from="1624378663891" duration="621000" />
     </task>
     <servers />
   </component>
@@ -391,5 +405,51 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="176" y="130" key="#Project_Structure" timestamp="1622888711370">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state x="176" y="130" key="#Project_Structure/0.0.2752.1112@0.0.2752.1112" timestamp="1622888711370" />
+    <state x="363" y="207" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1623153214900">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state x="363" y="207" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2752.1112@0.0.2752.1112" timestamp="1623153214900" />
+    <state x="419" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622972328886">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state x="419" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2752.1112@0.0.2752.1112" timestamp="1622972328886" />
+    <state x="94" y="100" width="1189" height="918" key="DiffContextDialog" timestamp="1622984153550">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state x="94" y="100" width="1189" height="918" key="DiffContextDialog/0.0.2752.1112@0.0.2752.1112" timestamp="1622984153550" />
+    <state width="1257" height="171" key="GridCell.Tab.0.bottom" timestamp="1623152770979">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1257" height="171" key="GridCell.Tab.0.bottom/0.0.2752.1112@0.0.2752.1112" timestamp="1623152770979" />
+    <state width="1257" height="171" key="GridCell.Tab.0.center" timestamp="1623152770979">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1257" height="171" key="GridCell.Tab.0.center/0.0.2752.1112@0.0.2752.1112" timestamp="1623152770979" />
+    <state width="1257" height="171" key="GridCell.Tab.0.left" timestamp="1623152770979">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1257" height="171" key="GridCell.Tab.0.left/0.0.2752.1112@0.0.2752.1112" timestamp="1623152770979" />
+    <state width="1257" height="171" key="GridCell.Tab.0.right" timestamp="1623152770979">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state width="1257" height="171" key="GridCell.Tab.0.right/0.0.2752.1112@0.0.2752.1112" timestamp="1623152770979" />
+    <state x="167" y="149" key="SettingsEditor" timestamp="1623152644118">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state x="167" y="149" key="SettingsEditor/0.0.2752.1112@0.0.2752.1112" timestamp="1623152644118" />
+    <state x="394" y="389" width="757" height="810" maximized="true" key="dock-window-1" timestamp="1622891888519">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state x="394" y="389" width="757" height="810" maximized="true" key="dock-window-1/0.0.2752.1112@0.0.2752.1112" timestamp="1622891888519" />
+    <state x="1188" y="337" width="910" height="534" key="find.popup" timestamp="1623675771448">
+      <screen x="0" y="0" width="2752" height="1112" />
+    </state>
+    <state x="1188" y="337" width="910" height="534" key="find.popup/0.0.2752.1112@0.0.2752.1112" timestamp="1623675771448" />
   </component>
 </project>

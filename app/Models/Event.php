@@ -29,7 +29,7 @@ class Event extends Model
         'price_four',
         'address',
         'street',
-        'city',
+        'city_id',
         'api_google_id',
         'image',
         'event_type_id',
@@ -39,7 +39,10 @@ class Event extends Model
     {
         return $this->belongsTo(EventType::class);
     }
-
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
     public function eventSport()
     {
         return $this->hasMany(EventSport::class);
@@ -56,20 +59,19 @@ class Event extends Model
     {
         return $this->hasOne(EventArt::class);
     }
-    public function eventGame()
+    public function eventGameRelation()
     {
-        return $this->hasMany(EventGame::class);
+        return $this->belongsToMany(EventGame::class, 'event_games', 'event_id', 'game_id');
     }
-
     public function user()
     {
         return $this->belongsToMany(User::class, 'interest', 'event_id', 'user_id');
     }
-
     public function interest()
     {
         return $this->hasMany(Interest::class);
     }
+
 
 
 

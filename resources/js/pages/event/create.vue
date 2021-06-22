@@ -515,6 +515,7 @@ export default {
       this.form.image = event.target.files[0]
     },
     submitForm() {
+      console.log(this.form)
       this.submitted = false
       const formData = new FormData()
 
@@ -533,6 +534,7 @@ export default {
       formData.append('address', this.form.address)
       formData.append('city', this.form.city)
       formData.append('event_type_id', this.form.event_type_id)
+
 
       this.$api.post('/event/create', formData)
         .then((res) => {

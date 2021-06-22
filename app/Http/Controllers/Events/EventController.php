@@ -16,6 +16,7 @@ use App\Models\EventStyle;
 use App\Models\EventSubStyle;
 use App\Models\Game;
 use App\Models\Interest;
+use App\Models\Promote;
 use App\Models\Sports;
 use App\Models\Style;
 use Carbon\Carbon;
@@ -38,22 +39,26 @@ class EventController extends Controller
             ->with('eventStyle')
             ->with('eventSubStyle')
             ->with('eventSport')
-            ->with('eventGame')
+//            ->with('eventGameRelation')
             ->with('eventArt')
             ->get();
     }
 
     public function afterCreateEvent($id)
     {
+
+
         return Event::with('eventType')
+            ->with('city')
             ->with('eventStyle')
             ->with('eventSubStyle')
             ->with('eventSport')
-            ->with('eventGame')
+            ->with('eventGameRelation')
             ->with('eventArt')
             ->where('id', $id)
             ->first();
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -86,7 +91,7 @@ class EventController extends Controller
             'price_three' => $request->price_three,
             'price_four' => $request->price_four,
             'address' => $request->address,
-            'city' => $request->city,
+            'city_id' => $request->city,
             'art_id' => $request->art,
             'api_google_id' => $request->api_google_id,
             'pictures' => $request->pictures,
@@ -101,6 +106,25 @@ class EventController extends Controller
         ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
 
+    public function promote(Request $request, $id)
+    {
+
+        $promote = Promote::updateOrCreate(
+            [
+                'event_id' => $id,
+
+                'price_per_clic' => 0.10,],
+            [
+                'start_at' => Carbon::now(),
+                'duration' => $request->selected
+            ]
+        );
+        return response()->json([
+            $promote,
+            'message' => __('event promoted succefully')
+        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+    }
 
     public function interestEvent($id, $type)
     {
@@ -111,14 +135,14 @@ class EventController extends Controller
 
 
         $like = $interest->liked ?? false;
-        $join = $interest->joined ?? false ;
+        $join = $interest->joined ?? false;
         $book = $interest->booked ?? false;
 
 
         switch ($type) {
             case "like":
                 $like = !$like;
-                 break;
+                break;
             case "join":
                 $join = !$join;
                 break;
@@ -138,11 +162,21 @@ class EventController extends Controller
 
     public function show($id)
     {
-         $event = Event::find($id);
+        $event = Event::with('eventType')
+            ->with('city')
+            ->with('eventStyle')
+            ->with('eventSubStyle')
+            ->with('eventSport')
+            ->with('eventGameRelation')
+            ->with('eventArt')
+            ->where('id', $id)
+            ->first();
 
-         $nb_liked = Interest::where('event_id', $id)
-             ->where('liked', 1)
-             ->count();
+
+
+        $nb_liked = Interest::where('event_id', $id)
+            ->where('liked', 1)
+            ->count();
         $nb_joined = Interest::where('event_id', $id)
             ->where('joined', 1)
             ->count();
@@ -150,38 +184,43 @@ class EventController extends Controller
             ->where('booked', 1)
             ->count();
 
-        $tab_completed = [];
+        $myEvents = Interest::where("user_id", Auth::id())
+            ->where("event_id", $id)
+            ->first();
 
-        $tab_completed["id"] = $event->id;
-        $tab_completed["title"] = $event->title;
-        $tab_completed["nb_like"] = $nb_liked;
-        $tab_completed["nb_join"] = $nb_joined;
-        $tab_completed["nb_book"] = $nb_booked;
-        $tab_completed["image_name"] = $event->file_name;
-        $tab_completed["image_path"] = $event->file_path;
-        $tab_completed["description"] = $event->description;
-        $tab_completed["created_at"] = $event->created_at;
-        $tab_completed["start_at"] = $event->start_at;
-        $tab_completed["ending_at"] = $event->ending_at;
-        $tab_completed["nb_people_max"] = $event->nb_people_max;
-        $tab_completed["need_subscribe"] = $event->need_subscribe;
-        $tab_completed["place"] = $event->place;
-        $tab_completed["price_one"] = $event->price_one;
-        $tab_completed["price_two"] = $event->price_two;
-        $tab_completed["price_three"] = $event->price_three;
-        $tab_completed["price_four"] = $event->price_four;
-        $tab_completed["address"] = $event->address;
-        $tab_completed["street"] = $event->street;
-        $tab_completed["city"] = $event->city;
-        $tab_completed["api_google_id"] = $event->api_google_id;
-        $tab_completed["pictures"] = $event->pictures;
-        $tab_completed["event_type_id"] = $event->event_type_id;
+//        $tab_completed = [];
+//
+//        $tab_completed["id"] = $event->id;
+//        $tab_completed["title"] = $event->title;
+//        $tab_completed["nb_like"] = $nb_liked;
+//        $tab_completed["nb_join"] = $nb_joined;
+//        $tab_completed["nb_book"] = $nb_booked;
+//        $tab_completed["image_name"] = $event->file_name;
+//        $tab_completed["image_path"] = $event->file_path;
+//        $tab_completed["description"] = $event->description;
+//        $tab_completed["created_at"] = $event->created_at;
+//        $tab_completed["start_at"] = $event->start_at;
+//        $tab_completed["ending_at"] = $event->ending_at;
+//        $tab_completed["nb_people_max"] = $event->nb_people_max;
+//        $tab_completed["need_subscribe"] = $event->need_subscribe;
+//        $tab_completed["place"] = $event->place;
+//        $tab_completed["price_one"] = $event->price_one;
+//        $tab_completed["price_two"] = $event->price_two;
+//        $tab_completed["price_three"] = $event->price_three;
+//        $tab_completed["price_four"] = $event->price_four;
+//        $tab_completed["address"] = $event->address;
+//        $tab_completed["street"] = $event->street;
+//        $tab_completed["city"] = $event->city;
+//        $tab_completed["api_google_id"] = $event->api_google_id;
+//        $tab_completed["pictures"] = $event->pictures;
+//        $tab_completed["event_type_id"] = $event->event_type_id;
 
-        return $tab_completed;
-        return response()->json([
-            $tab_completed,
-            'message' => __('event find successfully')
-        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        return ['event' => $event, 'nb_like' => $nb_liked, 'nb_join' => $nb_joined,
+            'nb_book' => $nb_booked, 'my_interest' => $myEvents];
+//        return response()->json([
+//            $tab_completed,
+//            'message' => __('event find successfully')
+//        ], 201, ['Content-type' => 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
 
     }
 

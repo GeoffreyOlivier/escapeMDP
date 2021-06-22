@@ -20,11 +20,14 @@
           <li v-if="!user || promoter === 1">
             <router-link to="#" class="nav-link">À propos</router-link>
           </li>
-          <li v-if="!user || promoter === 1">
-            <router-link to="/event/create" class="nav-link">Publier</router-link>
+          <li v-if="!user">
+            <router-link to="login" class="nav-link">Publier</router-link>
+          </li>
+          <li v-if="promoter === 1">
+            <router-link :to="{ name: 'event_create' }" class="nav-link">Publier</router-link>
           </li>
           <li v-if="promoter === 0">
-            <router-link to="my-feed" class="nav-link">Mon fil</router-link>
+            <router-link :to="{ name: 'my-feed' }" class="nav-link">Mon fil</router-link>
           </li>
           <li v-if="promoter === 0">
             <router-link to="#" class="nav-link">Agenda</router-link>
@@ -36,6 +39,10 @@
              Mon compte
             </a>
             <div class="dropdown-menu">
+              <router-link :to="{ name: 'profile' }" class="dropdown-item pl-3">
+                <fa icon="user" fixed-width />
+                Profile
+              </router-link>
               <router-link :to="{ name: 'settings.profile' }" class="dropdown-item pl-3">
                 <fa icon="cog" fixed-width />
                 {{ $t('settings') }}
@@ -80,10 +87,14 @@ export default {
 
   data: () => ({
     appName: window.config.appName,
-    promoter: ''
+    promoter: '',
+    loading: false
   }),
   created() {
+    if (this.user){
       this.promoter = this.user.promoter
+    }
+
   },
 
   computed: mapGetters({

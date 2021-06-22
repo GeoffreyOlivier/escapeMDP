@@ -119,7 +119,6 @@
               <b-form-input
                 v-model="form.site" :class="{ 'is-invalid': form.errors.has('site') }"
                 class="form-control" type="text" name="site"
-                required
               />
             </b-form-group>
             <b-form-group v-if="form.promoter" id="social" label="Réseaux sociaux" class="label">
@@ -127,7 +126,6 @@
                 v-model="form.social"
                 :class="{ 'is-invalid': form.errors.has('social') }" class="form-control" type="text"
                 name="social"
-                required
               />
             </b-form-group>
             <v-button :loading="formlogin.busy">
@@ -285,18 +283,26 @@ export default {
         // Update the user.
         await this.$store.dispatch('auth/updateUser', { user: data })
         // Redirect home.
-        this.$router.push({ name: 'my-feed' })
+        this.redirect()
       }
     },
     redirect () {
       const intendedUrl = Cookies.get('intended_url')
 
-      if (intendedUrl) {
-        Cookies.remove('intended_url')
-        this.$router.push({ path: intendedUrl })
-      } else {
-        this.$router.push({ name: 'home' })
+      console.log(this.form.promoter)
+      if (this.form.promoter){
+        this.$router.push({ name: 'events'})
+      }else{
+        this.$router.push({ name: 'my-feed'})
+
       }
+
+      // if (intendedUrl) {
+      //   Cookies.remove('intended_url')
+      //   this.$router.push({ path: intendedUrl })
+      // } else {
+      //   this.$router.push({ name: 'home' })
+      // }
     }
   }
 }

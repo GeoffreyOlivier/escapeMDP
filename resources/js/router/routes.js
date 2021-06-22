@@ -16,13 +16,12 @@ export default [
 
 
   { path: '/events', name: 'events', component: page('event/search.vue') },
-  { path: '/my-feed', name: 'my_feed', component: page('event/MyFeed.vue') },
+  { path: '/my-feed', name: 'my-feed', component: page('event/MyFeed.vue') },
 
   { path: '/events/:id', name: 'anevent', component: page('event/event.vue') },
   { path: '/event/create', name: 'event_create', component: page('event/create.vue') },
   { path: '/event/validate', name: 'event_validate', component: page('event/promote.vue') },
 
-  { path: '/home', name: 'home', component: page('home.vue') },
   {
     path: '/settings',
     component: page('settings/index.vue'),
