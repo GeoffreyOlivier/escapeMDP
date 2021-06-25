@@ -61,7 +61,7 @@ class Event extends Model
     }
     public function eventGameRelation()
     {
-        return $this->belongsToMany(EventGame::class, 'event_games', 'event_id', 'game_id');
+        return $this->belongsToMany(Game::class, 'event_game', 'event_id', 'game_id');
     }
     public function user()
     {

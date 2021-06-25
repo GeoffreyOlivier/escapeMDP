@@ -27,23 +27,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e37c91a4-5743-4061-9d9b-9361fdbe38db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Event.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/EventGame.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EventGame.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_100207_create_events_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_101406_create_promotes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_101406_create_promotes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_11_151712_create_event_game.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_11_151712_create_event_game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_13_091146_alter_event_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_13_091146_alter_event_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo.js" beforeDir="false" afterPath="$PROJECT_DIR$/labo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Navbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/data.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/register.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/event/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/event/event.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/event.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/event/MyFeed.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/MyFeed.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/promote.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/promote.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,8 +214,8 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="ts.external.directory.path" value="C:\logiciel divers\PhpStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="C:\logiciel divers\IntelliJ IDEA 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -243,26 +234,56 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.watch">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
-    <configuration name="phpunit" type="ShConfigurationType" temporary="true">
-      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/vendor/bin/phpunit" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/vendor/bin" />
-      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
-      <option name="INTERPRETER_PATH" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="hot" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="hot" />
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="prod" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="prod" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="production" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="production" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="watch-poll" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="watch-poll" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -280,9 +301,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.prod" />
+        <item itemvalue="npm.production" />
         <item itemvalue="npm.watch" />
-        <item itemvalue="Shell Script.phpunit" />
-        <item itemvalue="npm.hot" />
+        <item itemvalue="npm.watch-poll" />
       </list>
     </recent_temporary>
   </component>
@@ -365,7 +388,12 @@
       <workItem from="1623152614248" duration="1135000" />
       <workItem from="1623236164880" duration="485000" />
       <workItem from="1623675733884" duration="46000" />
-      <workItem from="1624378663891" duration="621000" />
+      <workItem from="1624378663891" duration="1246000" />
+      <workItem from="1624394693121" duration="691000" />
+      <workItem from="1624462460209" duration="1442000" />
+      <workItem from="1624536340299" duration="5317000" />
+      <workItem from="1624543005992" duration="2225000" />
+      <workItem from="1624553426261" duration="8687000" />
     </task>
     <servers />
   </component>
@@ -373,12 +401,12 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
+    <option name="COLUMN_ORDER">
       <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
       </list>
     </option>
   </component>
@@ -423,33 +451,33 @@
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
     <state x="94" y="100" width="1189" height="918" key="DiffContextDialog/0.0.2752.1112@0.0.2752.1112" timestamp="1622984153550" />
-    <state width="1257" height="171" key="GridCell.Tab.0.bottom" timestamp="1623152770979">
+    <state width="1331" height="408" key="GridCell.Tab.0.bottom" timestamp="1624565818436">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state width="1257" height="171" key="GridCell.Tab.0.bottom/0.0.2752.1112@0.0.2752.1112" timestamp="1623152770979" />
-    <state width="1257" height="171" key="GridCell.Tab.0.center" timestamp="1623152770979">
+    <state width="1331" height="408" key="GridCell.Tab.0.bottom/0.0.2752.1112@0.0.2752.1112" timestamp="1624565818436" />
+    <state width="1331" height="408" key="GridCell.Tab.0.center" timestamp="1624565818435">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state width="1257" height="171" key="GridCell.Tab.0.center/0.0.2752.1112@0.0.2752.1112" timestamp="1623152770979" />
-    <state width="1257" height="171" key="GridCell.Tab.0.left" timestamp="1623152770979">
+    <state width="1331" height="408" key="GridCell.Tab.0.center/0.0.2752.1112@0.0.2752.1112" timestamp="1624565818435" />
+    <state width="1331" height="408" key="GridCell.Tab.0.left" timestamp="1624565818435">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state width="1257" height="171" key="GridCell.Tab.0.left/0.0.2752.1112@0.0.2752.1112" timestamp="1623152770979" />
-    <state width="1257" height="171" key="GridCell.Tab.0.right" timestamp="1623152770979">
+    <state width="1331" height="408" key="GridCell.Tab.0.left/0.0.2752.1112@0.0.2752.1112" timestamp="1624565818435" />
+    <state width="1331" height="408" key="GridCell.Tab.0.right" timestamp="1624565818435">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state width="1257" height="171" key="GridCell.Tab.0.right/0.0.2752.1112@0.0.2752.1112" timestamp="1623152770979" />
-    <state x="167" y="149" key="SettingsEditor" timestamp="1623152644118">
+    <state width="1331" height="408" key="GridCell.Tab.0.right/0.0.2752.1112@0.0.2752.1112" timestamp="1624565818435" />
+    <state x="167" y="149" key="SettingsEditor" timestamp="1624542991021">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state x="167" y="149" key="SettingsEditor/0.0.2752.1112@0.0.2752.1112" timestamp="1623152644118" />
+    <state x="167" y="149" key="SettingsEditor/0.0.2752.1112@0.0.2752.1112" timestamp="1624542991021" />
     <state x="394" y="389" width="757" height="810" maximized="true" key="dock-window-1" timestamp="1622891888519">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
     <state x="394" y="389" width="757" height="810" maximized="true" key="dock-window-1/0.0.2752.1112@0.0.2752.1112" timestamp="1622891888519" />
-    <state x="1188" y="337" width="910" height="534" key="find.popup" timestamp="1623675771448">
+    <state x="1188" y="337" width="910" height="534" key="find.popup" timestamp="1624561421263">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state x="1188" y="337" width="910" height="534" key="find.popup/0.0.2752.1112@0.0.2752.1112" timestamp="1623675771448" />
+    <state x="1188" y="337" width="910" height="534" key="find.popup/0.0.2752.1112@0.0.2752.1112" timestamp="1624561421263" />
   </component>
 </project>

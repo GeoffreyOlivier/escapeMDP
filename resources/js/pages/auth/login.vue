@@ -1,9 +1,9 @@
 <template>
   <div>
     <b-container>
-      <h1>Mon compte</h1>
       <b-row>
         <b-col sm class="login-account col-sm-6 order-sm-12">
+
           <h2>Connexion</h2>
           <b-form @submit.prevent="login" @keydown="formlogin.onKeydown($event)">
             <b-form-group label="Mail" class="label">

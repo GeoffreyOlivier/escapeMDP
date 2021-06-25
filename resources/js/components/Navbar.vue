@@ -12,25 +12,31 @@
       <div id="navbarToggler" class="collapse navbar-collapse">
 
 
-        <ul class="navbar-nav ml-auto">
+        <ul  class="navbar-nav ml-auto">
           <!-- Authenticated -->
-          <li v-if="!user || promoter === 1">
+          <li v-if="user">
+            <router-link v-if="user.promoter === 1" to="/events" class="nav-link">Rechercher</router-link>
+          </li>
+          <li v-if="!user">
             <router-link to="/events" class="nav-link">Rechercher</router-link>
           </li>
-          <li v-if="!user || promoter === 1">
+          <li v-if="user">
+            <router-link v-if="user.promoter === 1" to="#" class="nav-link">À propos</router-link>
+          </li>
+          <li v-if="!user">
             <router-link to="#" class="nav-link">À propos</router-link>
+          </li>
+          <li v-if="user">
+            <router-link v-if="user.promoter === 1"  :to="{ name: 'event_create' }" class="nav-link">Publier</router-link>
           </li>
           <li v-if="!user">
             <router-link to="login" class="nav-link">Publier</router-link>
           </li>
-          <li v-if="promoter === 1">
-            <router-link :to="{ name: 'event_create' }" class="nav-link">Publier</router-link>
+          <li v-if="user">
+            <router-link v-if="user.promoter === 0" :to="{ name: 'my-feed' }" class="nav-link">Mon fil</router-link>
           </li>
-          <li v-if="promoter === 0">
-            <router-link :to="{ name: 'my-feed' }" class="nav-link">Mon fil</router-link>
-          </li>
-          <li v-if="promoter === 0">
-            <router-link to="#" class="nav-link">Agenda</router-link>
+          <li v-if="user">
+            <router-link v-if="user.promoter === 0" to="#" class="nav-link">Agenda</router-link>
           </li>
           <li v-if="user" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-dark"
@@ -77,7 +83,7 @@
 
 </style>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import LocaleDropdown from './LocaleDropdown'
 
 export default {
@@ -90,18 +96,15 @@ export default {
     promoter: '',
     loading: false
   }),
-  created() {
-    if (this.user){
-      this.promoter = this.user.promoter
-    }
-
-  },
 
   computed: mapGetters({
     user: 'auth/user'
   }),
 
   methods: {
+    ...mapActions([
+      'isConnected',
+    ]),
     async logout () {
       // Log out the user.
       await this.$store.dispatch('auth/logout')

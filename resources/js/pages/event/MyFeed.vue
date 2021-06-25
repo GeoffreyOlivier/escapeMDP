@@ -1,8 +1,25 @@
 <template>
   <div class="container body-height">
-    <h1>test</h1>
+    <h1>Mon fil</h1>
+    <div class="search-bar">
+      <div class="content-search-bar">
+        <svg class="filter-svg-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="search"><rect  opacity="0"/><path d="M20.71 19.29l-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z"/></g></g></svg>
+        Rechercher</div>
+      <div class="content-search-bar">
+        <svg class="filter-svg-black" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="pin"><rect  opacity="0"/><circle cx="12" cy="9.5" r="1.5"/><path d="M12 2a8 8 0 0 0-8 7.92c0 5.48 7.05 11.58 7.35 11.84a1 1 0 0 0 1.3 0C13 21.5 20 15.4 20 9.92A8 8 0 0 0 12 2zm0 11a3.5 3.5 0 1 1 3.5-3.5A3.5 3.5 0 0 1 12 13z"/></g></g></svg>
+        Lieu</div>
+      <div class="content-search-bar">
+        <svg class="filter-svg-black" width="24" height="24"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="grid"><rect opacity="0"/><path d="M9 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/><path d="M19 3h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/><path d="M9 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z"/><path d="M19 13h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z"/></g></g></svg>
+        Type</div>
+      <div class="content-search-bar">
+        <svg class="filter-svg-black" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="credit-card"><rect opacity="0"/><path d="M19 5H5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3zm-8 10H7a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zm6 0h-2a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2zm3-6H4V8a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1z"/></g></g></svg>
+        Tarif</div>
+      <div class="content-search-bar">
+        <svg class="filter-svg-black" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="calendar"><rect opacity="0"/><path d="M18 4h-1V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zM8 17a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm8 0h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zm3-6H5V7a1 1 0 0 1 1-1h1v1a1 1 0 0 0 2 0V6h6v1a1 1 0 0 0 2 0V6h1a1 1 0 0 1 1 1z"/></g></g></svg>
+        Date</div>
+    </div>
     <StackGrid
-      class="monitor-images-loaded"
+      class="monitor-images-loaded grid"
       :columnWidth="200"
       :gutterX="20"
       :gutterY="20"
@@ -11,11 +28,21 @@
       <div class="stack-item " v-for="(item, id) in events" :key="id">
         <div class="container-img">
           <router-link :to="{ name: 'anevent', params: { id: item.id } }">
-          <img class="img-card" :src="item.image_path" alt="bar">
+            <img class="img-card" :src="item.image_path" alt="bar">
           </router-link>
           <div class="bar-icon">
-            <svg v-if="loading === item.id" width="24" height="24" class="filter-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="more-horizotnal"><rect opacity="0"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/></g></g></svg>
-            <svg v-if="item.liked !== 1 && loading !== item.id " @click="interests('like', item)" class="filter-svg"
+            <svg v-if="loading === item.id" width="24" height="24" class="filter-svg-white" xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 24 24">
+              <g data-name="Layer 2">
+                <g data-name="more-horizotnal">
+                  <rect opacity="0"/>
+                  <circle cx="12" cy="12" r="2"/>
+                  <circle cx="19" cy="12" r="2"/>
+                  <circle cx="5" cy="12" r="2"/>
+                </g>
+              </g>
+            </svg>
+            <svg v-if="item.liked !== 1 && loading !== item.id " @click="interests('like', item)" class="filter-svg-white"
                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="heart">
@@ -25,8 +52,17 @@
                 </g>
               </g>
             </svg>
-            <svg v-if="item.liked === 1 && loading !== item.id " @click="interests('like', item)" class="filter-svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="heart"><rect  opacity="0"/><path d="M12 21a1 1 0 0 1-.71-.29l-7.77-7.78a5.26 5.26 0 0 1 0-7.4 5.24 5.24 0 0 1 7.4 0L12 6.61l1.08-1.08a5.24 5.24 0 0 1 7.4 0 5.26 5.26 0 0 1 0 7.4l-7.77 7.78A1 1 0 0 1 12 21z"/></g></g></svg>
-            <svg v-if="item.booked !== 1 && loading !== item.id " @click="interests('book', item)" class="filter-svg"
+            <svg v-if="item.liked === 1 && loading !== item.id " @click="interests('like', item)" class="filter-svg-white"
+                 width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g data-name="Layer 2">
+                <g data-name="heart">
+                  <rect opacity="0"/>
+                  <path
+                    d="M12 21a1 1 0 0 1-.71-.29l-7.77-7.78a5.26 5.26 0 0 1 0-7.4 5.24 5.24 0 0 1 7.4 0L12 6.61l1.08-1.08a5.24 5.24 0 0 1 7.4 0 5.26 5.26 0 0 1 0 7.4l-7.77 7.78A1 1 0 0 1 12 21z"/>
+                </g>
+              </g>
+            </svg>
+            <svg v-if="item.booked !== 1 && loading !== item.id " @click="interests('book', item)" class="filter-svg-white"
                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="bell">
@@ -36,7 +72,8 @@
                 </g>
               </g>
             </svg>
-            <svg v-if="item.booked === 1 && loading !== item.id " @click="interests('book', item)" class="filter-svg" width="24" height="24"
+            <svg v-if="item.booked === 1 && loading !== item.id " @click="interests('book', item)" class="filter-svg-white"
+                 width="24" height="24"
                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="bell">
@@ -46,7 +83,7 @@
                 </g>
               </g>
             </svg>
-            <svg v-if="item.joined !== 1 && loading !== item.id " @click="interests('join', item)" class="filter-svg"
+            <svg v-if="item.joined !== 1 && loading !== item.id " @click="interests('join', item)" class="filter-svg-white"
                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="person">
@@ -56,7 +93,8 @@
                 </g>
               </g>
             </svg>
-            <svg v-if="item.joined === 1 && loading !== item.id " @click="interests('join', item)" class="filter-svg" width="24" height="24"
+            <svg v-if="item.joined === 1 && loading !== item.id " @click="interests('join', item)" class="filter-svg-white"
+                 width="24" height="24"
                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <g data-name="Layer 2">
                 <g data-name="person-done">
@@ -153,10 +191,26 @@ export default {
 }
 </script>
 <style>
-.filter-svg {
+.search-bar{
+  max-width: fit-content;
+  display: flex;
+  flex-direction: row;
+  border: 2px #373b4f solid;
+  margin: 0 auto;
+  color: black;
+  font-family: 'Roboto', serif;
+  font-size: larger;
+
+}
+.content-search-bar{
+  padding: 5px 10px ;
+}
+.filter-svg-white {
   filter: invert(100%) sepia(95%) saturate(13%) hue-rotate(243deg) brightness(104%) contrast(100%);
 }
-
+.filter-svg-black{
+  filter: invert(11%) sepia(86%) saturate(7252%) hue-rotate(339deg) brightness(82%) contrast(106%);
+}
 .bar-icon {
   display: flex;
   justify-content: space-around;
@@ -166,7 +220,7 @@ export default {
   bottom: 0;
   z-index: 1000;
   width: 100%;
-  background-color: rgba(230, 230, 230, 0.6);
+  background-color: rgba(230, 230, 230, 0.5);
   padding: 5px;
   color: #000000;
   font-weight: bold;
@@ -186,7 +240,9 @@ export default {
 .blue {
   color: #2b40a7;
 }
-
+h1{
+  margin-bottom: 60px;
+}
 h6 {
   font-weight: bold;
 }
@@ -200,4 +256,8 @@ h6 {
 .container-img {
   position: relative;
 }
+.grid{
+  margin-top: 60px;
+}
+
 </style>
