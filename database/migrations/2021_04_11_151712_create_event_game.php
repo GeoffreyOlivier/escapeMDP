@@ -13,7 +13,7 @@ class CreateEventGame extends Migration
      */
     public function up()
     {
-        Schema::create('event_games', function (Blueprint $table) {
+        Schema::create('event_game', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('event_id')->nullable();
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');

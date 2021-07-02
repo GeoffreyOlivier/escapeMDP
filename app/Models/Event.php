@@ -45,7 +45,7 @@ class Event extends Model
     }
     public function eventSport()
     {
-        return $this->hasMany(EventSport::class);
+        return $this->belongsToMany(Sports::class, 'event_sport', 'event_id', 'sport_id');
     }
     public function eventStyle()
     {
@@ -53,7 +53,7 @@ class Event extends Model
     }
     public function eventSubStyle()
     {
-        return $this->belongsToMany(Substyle::class, 'event_substyle', 'event_id', 'substyle_id' );
+        return $this->belongsToMany(SubStyle::class, 'event_substyle', 'event_id', 'substyle_id' );
     }
     public function eventArt()
     {
@@ -71,9 +71,14 @@ class Event extends Model
     {
         return $this->hasMany(Interest::class);
     }
-
-
-
+    public function creator()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function promote()
+    {
+        return $this->hasOne(Promote::class);
+    }
 
 
 }

@@ -273,7 +273,7 @@
           </b-col>
         </b-row>
         <div class="bottom">
-          <v-button class="center" :loading="form.busy">
+          <v-button :loading="form.busy">
             Valider
           </v-button>
         </div>
@@ -691,6 +691,7 @@ h3 {
 
 .btn {
   border-radius: 25px;
+  margin: 0 auto;
 }
 
 .tag-style {

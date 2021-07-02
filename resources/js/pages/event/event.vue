@@ -1,42 +1,48 @@
 <template>
   <div>
-      <div class="header">
-        <div>
-          <img class="img-header" src="../../../images/bar.jpg" alt="bar">
+    <div class="header">
+      <div>
+        <img class="img-header" :src="event.image_path" alt="bar">
+      </div>
+      <div class="bar-button">
+        <div class="display-flex" @click="interests('like', event)">
+          <eva-icon v-if="!my_interest.liked" class="icon-heart" name="heart-outline" fill="#D70039" width="40px"
+                    height="40px"></eva-icon>
+          <eva-icon v-if="my_interest.liked " class="icon-heart" name="heart" fill="#D70039" width="40px"
+                    height="40px"></eva-icon>
+
+          <div class="text-bar">
+            <span>{{ nb_interest.nb_like }} PERS</span>
+          </div>
         </div>
-        <div class="bar-button">
-          <div class="display-flex" @click="interests('like', event)">
-            <eva-icon v-if="!my_interest.liked" class="icon-heart" name="heart-outline" fill="#D70039" width="40px" height="40px"></eva-icon>
-            <eva-icon v-if="my_interest.liked" class="icon-heart" name="heart" fill="#D70039" width="40px" height="40px"></eva-icon>
+        <div class="display-flex" @click="interests('join', event)">
+          <eva-icon v-if="!my_interest.joined" class="icon-heart" name="bell-outline" fill="#D70039" width="40px"
+                    height="40px"></eva-icon>
+          <eva-icon v-if="my_interest.joined" class="icon-heart" name="bell" fill="#D70039" width="40px"
+                    height="40px"></eva-icon>
 
-            <div class="text-bar">
-              <span>{{ nb_interest.nb_like }} PERS</span>
-            </div>
+          <div class="text-bar">
+            <div class="text-in-bar">Je participe</div>
+            <span>{{ nb_interest.nb_join }} PERS</span>
           </div>
-          <div class="display-flex" @click="interests('join', event)">
-            <eva-icon  v-if="!my_interest.joined" class="icon-heart" name="bell-outline" fill="#D70039" width="40px" height="40px"></eva-icon>
-            <eva-icon  v-if="my_interest.joined" class="icon-heart" name="bell" fill="#D70039" width="40px" height="40px"></eva-icon>
-
-            <div class="text-bar">
-              <div class="text-in-bar">Je participe</div>
-              <span>{{ nb_interest.nb_join }} PERS</span>
-            </div>
-          </div>
-          <div class="display-flex" @click="interests('book', event)">
-            <eva-icon  v-if="!my_interest.booked" class="icon-heart" name="person-outline" fill="#D70039" width="40px" height="40px"></eva-icon>
-            <eva-icon  v-if="my_interest.booked" class="icon-heart" name="person-done" fill="#D70039" width="40px" height="40px"></eva-icon>
-            <div class="text-bar">
-              <div class="text-in-bar">Je réserve</div>
-              <span>{{ nb_interest.nb_book }} PERS</span>
-            </div>
+        </div>
+        <div class="display-flex" @click="interests('book', event)">
+          <eva-icon v-if="!my_interest.booked" class="icon-heart" name="person-outline" fill="#D70039" width="40px"
+                    height="40px"></eva-icon>
+          <eva-icon v-if="my_interest.booked" class="icon-heart" name="person-done" fill="#D70039" width="40px"
+                    height="40px"></eva-icon>
+          <div class="text-bar">
+            <div class="text-in-bar">Je réserve</div>
+            <span>{{ nb_interest.nb_book }} PERS</span>
           </div>
         </div>
       </div>
+    </div>
     <b-container>
       <div class="bloc-description">
         <h3>{{ event.title }}</h3>
         <div class="text">{{ event.start_at | moment('ll') }} • {{ event.place }}</div>
-        <div class="text" >{{ event.price_one }}
+        <div class="text">{{ event.price_one }}
           <p v-if="event.price_two"> • {{ event.price_two }}</p>
           <p v-if="event.price_three"> • {{ event.price_three }}</p>
           <p v-if="event.price_four"> • {{ event.price_four }}</p>
@@ -79,19 +85,22 @@
   </div>
 </template>
 <style scoped>
-h3{
+h3 {
   color: #111D5E !important;
   font-weight: bolder;
   font-family: Gobold_Extra2, serif;
 }
-.bloc-description{
+
+.bloc-description {
   margin: 0 50px;
 }
+
 .header {
   display: flex;
   flex-direction: column;
 }
-.event-type{
+
+.event-type {
   display: inline-block;
   border: 2px #D70039 solid;
   border-radius: 20px;
@@ -99,7 +108,8 @@ h3{
   margin: 10px 10px;
   padding: 0px 10px;
 }
-.event-category{
+
+.event-category {
   display: inline-block;
   border: 2px #111D5E solid;
   border-radius: 20px;
@@ -107,28 +117,33 @@ h3{
   margin: 10px 5px;
   padding: 0px 10px;
 }
-.tag{
+
+.tag {
   display: flex;
   flex-direction: row;
 }
-.text{
+
+.text {
   color: #111D5E !important;
   font-size: medium;
   font-weight: bolder;
   font-family: Gobold_Extra2, serif;
   line-height: 30px;
 }
-.text-description{
+
+.text-description {
   padding: 20px 0;
   color: #111D5E !important;
   font-size: small;
   font-weight: bolder;
   font-family: roboto, serif;
 }
+
 .display-flex {
   display: flex;
 }
-.text-in-bar{
+
+.text-in-bar {
   padding-top: 10px;
   color: #D70039 !important;
   font-size: medium;
@@ -136,6 +151,7 @@ h3{
   font-family: Gobold_Extra2, serif;
   line-height: 10px;
 }
+
 .text-bar {
   display: flex;
   flex-direction: column;
@@ -186,12 +202,18 @@ export default {
   data: () => ({
     event: '',
     nb_interest: '',
-    my_interest: ''
+    my_interest:
+      {
+        liked: '',
+        joined: '',
+        booked: ''
+      }
+
+
   }),
   created() {
-    console.log(this.$route.params.id)
-
     this.fetchEvent()
+    console.log(this.$route.params.id)
   },
   methods: {
     ...Utils,
@@ -201,7 +223,10 @@ export default {
           this.id_event = this.$route.params.id
           this.event = response.data.event
           this.nb_interest = response.data
-          this.my_interest = response.data.my_interest
+          if (response.data.my_interest !== null) {
+            this.my_interest = response.data.my_interest
+          }
+
           console.log(response.data)
 
           console.log("success")

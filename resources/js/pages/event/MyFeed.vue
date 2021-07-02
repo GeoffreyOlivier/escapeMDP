@@ -190,12 +190,12 @@ export default {
 
 }
 </script>
-<style>
+<style scoped>
 .search-bar{
   max-width: fit-content;
   display: flex;
   flex-direction: row;
-  border: 2px #373b4f solid;
+  border: 1px #373b4f solid;
   margin: 0 auto;
   color: black;
   font-family: 'Roboto', serif;

@@ -19,11 +19,15 @@ use App\Models\Interest;
 use App\Models\Promote;
 use App\Models\Sports;
 use App\Models\Style;
+use App\Models\User;
 use Carbon\Carbon;
 use Doctrine\DBAL\Schema\AbstractAsset;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function PHPUnit\Framework\returnArgument;
 
 class EventController extends Controller
 {
@@ -31,7 +35,7 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Event[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
+     * @return Event[]|Collection|Response
      */
     public function index()
     {
@@ -39,9 +43,12 @@ class EventController extends Controller
             ->with('eventStyle')
             ->with('eventSubStyle')
             ->with('eventSport')
-//            ->with('eventGameRelation')
+            ->with('eventGameRelation')
             ->with('eventArt')
+            ->with('promote')
             ->get();
+
+
     }
 
     public function afterCreateEvent($id)
@@ -74,6 +81,9 @@ class EventController extends Controller
 
         $file_name = time() . '_' . $request->file('image')->getClientOriginalName();
         $file_path = $request->file('image')->storeAs('uploads', $file_name, 'public');
+
+
+
 
         $attributes = [
             'title' => $request->title,
@@ -112,7 +122,6 @@ class EventController extends Controller
         $promote = Promote::updateOrCreate(
             [
                 'event_id' => $id,
-
                 'price_per_clic' => 0.10,],
             [
                 'start_at' => Carbon::now(),
