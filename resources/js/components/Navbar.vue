@@ -46,7 +46,7 @@
             <div class="dropdown-menu">
               <router-link :to="{ name: 'profile' }" class="dropdown-item pl-3">
                 <fa icon="user" fixed-width />
-                Profile
+                Profil
               </router-link>
               <router-link :to="{ name: 'settings.profile' }" class="dropdown-item pl-3">
                 <fa icon="cog" fixed-width />

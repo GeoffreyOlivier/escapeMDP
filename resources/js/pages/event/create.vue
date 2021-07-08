@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container>
-      <h2>Mon évènement</h2>
+      <h3>Mon évènement</h3>
       <b-form @submit.prevent="submitForm">
         <b-row>
           <b-col>
@@ -259,8 +259,10 @@
             </b-form-group>
             <b-form-group id="code" label="Code postal" class="add-style">
               <b-form-input
+                :maxlength="max"
                 required
                 v-model="code"
+                v-text="(max - text.length)"
                 class="form-control" type="text" name="town"
               />
             </b-form-group>
@@ -297,6 +299,8 @@ export default {
     VueFuse,
   },
   data: () => ({
+    max: 5,
+    text: '',
     advanced: false,
     search: '',
     includeScore: false,
@@ -655,9 +659,11 @@ export default {
 
 
 h3 {
+  padding-top: 10px;
+  color: #D70039;
   font-family: 'Gobold_Extra2';
-  color: #111D5E;
-  padding-bottom: 25px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .col-form-label {

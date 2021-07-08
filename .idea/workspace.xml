@@ -26,15 +26,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37c91a4-5743-4061-9d9b-9361fdbe38db" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-vue-spa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-vue-spa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c75c8232-50c6-4572-b7fc-2c6606cb6dde.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Events/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_101406_create_promotes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_101406_create_promotes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_11_151712_create_event_game.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_11_151712_create_event_game.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Footer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/layouts/basic.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/layouts/basic.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/layouts/default.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/MyFeed.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/MyFeed.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/create.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/event/event.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/event/event.vue" afterDir="false" />
@@ -394,6 +394,10 @@
       <workItem from="1625041704806" duration="5553000" />
       <workItem from="1625053198268" duration="11598000" />
       <workItem from="1625126893264" duration="8309000" />
+      <workItem from="1625319092178" duration="2830000" />
+      <workItem from="1625474984675" duration="1901000" />
+      <workItem from="1625500755089" duration="1265000" />
+      <workItem from="1625730805174" duration="2020000" />
     </task>
     <servers />
   </component>

@@ -2,7 +2,7 @@
   <div class="main-layout">
     <navbar />
 
-    <div class="container mt-4">
+    <div class="container test mt-4">
       <child />
     </div>
     <foot/>
@@ -21,4 +21,23 @@ export default {
   }
 }
 </script>
+<style>
+.test{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main-layout{
+  min-height: 100vh;
+}
+/*html, body {*/
+/*  height: 100%;*/
+/*}*/
+
+/*#app {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  height: 100%;*/
+/*}*/
+</style>
 

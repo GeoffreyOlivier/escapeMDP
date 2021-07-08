@@ -46,6 +46,7 @@ class EventController extends Controller
             ->with('eventGameRelation')
             ->with('eventArt')
             ->with('promote')
+            ->orderBy('id','DESC')
             ->get();
 
 

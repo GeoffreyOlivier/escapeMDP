@@ -3,8 +3,8 @@
     <b-row>
       <b-col class="link-footer">
           <b-col class="ml-5">
-            <p>Mentions légales . Condition générales</p>
-            <p>Politique de confidentialitée</p>
+            <p>Mentions légales . Conditions générales</p>
+            <p>Politique de confidentialité</p>
           </b-col>
           <b-col>
             <p>Nous contacter</p>

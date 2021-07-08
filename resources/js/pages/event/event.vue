@@ -15,25 +15,25 @@
             <span>{{ nb_interest.nb_like }} PERS</span>
           </div>
         </div>
-        <div class="display-flex" @click="interests('join', event)">
-          <eva-icon v-if="!my_interest.joined" class="icon-heart" name="bell-outline" fill="#D70039" width="40px"
+        <div class="display-flex" @click="interests('book', event)">
+          <eva-icon v-if="!my_interest.booked" class="icon-heart" name="bell-outline" fill="#D70039" width="40px"
                     height="40px"></eva-icon>
-          <eva-icon v-if="my_interest.joined" class="icon-heart" name="bell" fill="#D70039" width="40px"
+          <eva-icon v-if="my_interest.booked" class="icon-heart" name="bell" fill="#D70039" width="40px"
                     height="40px"></eva-icon>
 
           <div class="text-bar">
             <div class="text-in-bar">Je participe</div>
-            <span>{{ nb_interest.nb_join }} PERS</span>
+            <span>{{ nb_interest.nb_book }} PERS</span>
           </div>
         </div>
-        <div class="display-flex" @click="interests('book', event)">
-          <eva-icon v-if="!my_interest.booked" class="icon-heart" name="person-outline" fill="#D70039" width="40px"
+        <div class="display-flex" @click="interests('join', event)">
+          <eva-icon v-if="!my_interest.joined" class="icon-heart" name="person-outline" fill="#D70039" width="40px"
                     height="40px"></eva-icon>
-          <eva-icon v-if="my_interest.booked" class="icon-heart" name="person-done" fill="#D70039" width="40px"
+          <eva-icon v-if="my_interest.joined" class="icon-heart" name="person-done" fill="#D70039" width="40px"
                     height="40px"></eva-icon>
           <div class="text-bar">
             <div class="text-in-bar">Je réserve</div>
-            <span>{{ nb_interest.nb_book }} PERS</span>
+            <span>{{ nb_interest.nb_join }} PERS</span>
           </div>
         </div>
       </div>
@@ -41,8 +41,8 @@
     <b-container>
       <div class="bloc-description">
         <h3>{{ event.title }}</h3>
-        <div class="text">{{ event.start_at | moment('ll') }} • {{ event.place }}</div>
-        <div class="text">{{ event.price_one }}
+        <div class="text">{{ event.start_at | moment('ll') }} • {{ event.place }} </div>
+        <div class="text display-flex">{{ event.price_one }}
           <p v-if="event.price_two"> • {{ event.price_two }}</p>
           <p v-if="event.price_three"> • {{ event.price_three }}</p>
           <p v-if="event.price_four"> • {{ event.price_four }}</p>
@@ -126,7 +126,7 @@ h3 {
 .text {
   color: #111D5E !important;
   font-size: medium;
-  font-weight: bolder;
+  font-weight: normal;
   font-family: Gobold_Extra2, serif;
   line-height: 30px;
 }

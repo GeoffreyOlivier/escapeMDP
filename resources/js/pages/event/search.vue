@@ -86,11 +86,11 @@
                   {{ style.name }}
                 </div>
               </div>
-              <div v-if="item.event_art">
-                <div class="event-category" v-for="(art,i) in item.event_art" :key="i">
-                  {{ art.name }}
-                </div>
-              </div>
+<!--              <div v-if="item.event_art">-->
+<!--                <div class="event-category" v-for="(art,i) in item.event_art" :key="i">-->
+<!--                  {{ art.name }}-->
+<!--                </div>-->
+<!--              </div>-->
               <div v-if="item.event_sport">
                 <div class="event-category" v-for="(sport,i) in item.event_sport" :key="i">
                   {{ sport.name }}

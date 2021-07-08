@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Mon évènement</h1>
+    <h3>Mon évènement</h3>
     <b-container>
       <b-row>
 
@@ -17,8 +17,8 @@
               </div>
               <div class="ml-2">
                 <div class="label">Sous catégories</div>
-                <div v-if="events.event_game">
-                  <div class="event-sub-type" v-for="(game,i) in events.event_game" :key="i">
+                <div v-if="events.event_game_relation">
+                  <div class="event-sub-type" v-for="(game,i) in events.event_game_relation" :key="i">
                     {{ game.name }}
                   </div>
                 </div>
@@ -27,7 +27,7 @@
                     {{ style.name }}
                   </div>
                 </div>
-                <div>
+                <div v-if="events.event_sub_style">
                   <div class="event-sub-type" v-for="(sub_style,i) in events.event_sub_style" :key="i">
                     {{ sub_style.sub_style_name }}
                   </div>
@@ -78,9 +78,9 @@
               <v-button>
                 Modifier
               </v-button>
-              <v-button>
+              <router-link :to="{ name: 'events' }" class=" btn-primary validate-btn btn">
                 Valider
-              </v-button>
+              </router-link>
             </div>
           </div>
         </b-col>
@@ -117,6 +117,8 @@
   </div>
 </template>
 <script>
+import Cookies from "js-cookie";
+
 export default {
   name: 'validate',
   data: () => ({
@@ -132,17 +134,19 @@ export default {
   ,
   methods: {
     fetchEvent() {
-      this.$api.get('/event/validate/' + 1)
+      this.$api.get('/event/validate/' + this.$route.params.id)
         .then((response) => {
           console.log(response.data)
           this.events = response.data
           console.log(this.events)
+
         })
         .catch((error) => {
           this.loading = false
           console.log(error)
           console.log(error.response)
         })
+
     },
     submitForm() {
       this.$api.post('/event/promote/' + this.$route.params.id, {selected: this.selected})
@@ -150,13 +154,15 @@ export default {
           console.log(response.data)
           this.events = response.data
           console.log(this.events)
+          alert("success")
         })
         .catch((error) => {
           this.loading = false
           console.log(error)
           console.log(error.response)
+          alert("error")
         })
-    }
+    },
   }
 }
 </script>
@@ -167,6 +173,13 @@ export default {
 
 h1 {
   padding-bottom: 50px;
+}
+h3{
+  padding-top: 10px;
+  color: #D70039;
+  font-family: 'Gobold_Extra2';
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 h4{
   color: #111D5E !important;

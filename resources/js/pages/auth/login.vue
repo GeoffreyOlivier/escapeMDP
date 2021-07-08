@@ -4,7 +4,7 @@
       <b-row>
         <b-col sm class="login-account col-sm-6 order-sm-12">
 
-          <h2>Connexion</h2>
+          <h3>Connexion</h3>
           <b-form @submit.prevent="login" @keydown="formlogin.onKeydown($event)">
             <b-form-group label="Mail" class="label">
               <b-form-input
@@ -35,7 +35,7 @@
         </b-col>
         <!----------------------- Register user ----------------->
         <b-col sm class="create-account col-sm-6 order-sm-1">
-          <h2>Création de compte</h2>
+          <h3>Création de compte</h3>
           <b-form @submit.prevent="registerPromoter" @keydown="form.onKeydown($event)">
             <b-form-group id="firstname" label="Prénom*" class="label">
               <b-form-input
@@ -153,6 +153,10 @@ h2 {
 
 h3 {
   padding-top: 10px;
+  color: #D70039;
+  font-family: 'Gobold_Extra2';
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .create-account {
